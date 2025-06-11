@@ -27,7 +27,7 @@ namespace BNG
         [SerializeField] private GameObject playerUIPrefab;
         [SerializeField] private Transform playerListParent;
         
-        private Dictionary<int, GameObject> playerUIObjects = new Dictionary<int, GameObject>();
+        private Dictionary<int, GameObject>  playerUIObjects = new Dictionary<int, GameObject>();
         Dictionary<int, PlayerInfo> playerInfoDict = new Dictionary<int, PlayerInfo>();
         
         private int readyPlayers = 0;
@@ -106,11 +106,8 @@ namespace BNG
                     readyPlayers++;
                 }
             }
-            Debug.Log($"Total players {totalPlayers}");
             RpcUpdateReadyCount(readyPlayers, totalPlayers);
-            Debug.Log($"is it this???");
             
-            Debug.Log("isserver?" + isServer);
             if (isServer) CheckStartCondition();
         }
 
@@ -134,8 +131,24 @@ namespace BNG
             }
 
             playerInfoDict[connId].playerName = name;
+            
+            RpcUpdatePlayerInfo(connId, name, playerInfoDict[connId].isReady);
         }
+        
+        [ClientRpc]
+        private void RpcUpdatePlayerInfo(int connId, string name, bool isReady)
+        {
+            if (!playerInfoDict.ContainsKey(connId))
+            {
+                playerInfoDict[connId] = new PlayerInfo();
+            }
 
+            playerInfoDict[connId].playerName = name;
+            playerInfoDict[connId].isReady = isReady;
+
+            UpdatePlayerListUI();
+        }
+        
         private void CheckStartCondition()
         {
             bool canStart = readyPlayers >= Mathf.CeilToInt(totalPlayers / 2f);
@@ -147,12 +160,10 @@ namespace BNG
             if (readyToggle.isOn)
             {
                 CmdPlayerReady();
-                Debug.LogWarning("readyToggle.isOn");
             }
             else
             {
                 CmdPlayerNotReady();
-                Debug.LogWarning("readyToggle.isOff");
             }
         }
         
@@ -173,11 +184,10 @@ namespace BNG
 
                 // Update UI
                 GameObject playerUI = playerUIObjects[connId];
-                TMP_Text nameText = playerUI.GetComponentInChildren<TMP_Text>();
-                Image bg = playerUI.GetComponent<Image>();
+                TMP_Text nameText = playerUI.GetComponent<PlayerUIPrefab>().nameText;
 
                 nameText.text = info.playerName;
-                bg.color = info.isReady ? Color.green : Color.white;
+                nameText.color = info.isReady ? Color.green : Color.white;
             }
 
             readyCountText.text = $"Ready: {readyPlayers}/{totalPlayers}";
@@ -203,7 +213,13 @@ namespace BNG
         private void DisplayLobbyInfo()
         {
             roomCodeText.text = PlayerPrefs.GetString("RoomCode", "Unknown");
-            CmdSetPlayerName(PlayerPrefs.GetString("PlayerName", $"Player {Random.Range(1000, 9999)}"));
+            string playerName = PlayerPrefs.GetString("PlayerName", $"Player {Random.Range(1000, 9999)}");
+
+            if (isClient)
+            {
+                CmdSetPlayerName(playerName);
+            }
+
             UpdatePlayerListUI();
         }
     }

@@ -1,16 +1,7 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerUIPrefab : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public TMP_Text nameText;
 }

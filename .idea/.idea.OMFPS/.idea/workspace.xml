@@ -6,10 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scenes/Connection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scenes/Connection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Settings/PlayMode/Co-op testing.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/PlayMode/Co-op testing.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Prefabs/UI/Players.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Prefabs/UI/Players.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/LobbyNetworkUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/LobbyNetworkUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/UITabSwitcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/UITabSwitcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/PlayerUIPrefab.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/PlayerUIPrefab.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +108,7 @@
       <updated>1749551584552</updated>
       <workItem from="1749551586327" duration="89000" />
       <workItem from="1749630667994" duration="1348000" />
+      <workItem from="1749649638459" duration="5840000" />
     </task>
     <servers />
   </component>
