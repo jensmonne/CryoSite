@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="" />
+    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scenes/Connection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scenes/Connection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/LobbyNetworkUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/LobbyNetworkUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/UITabSwitcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Unpacked VRIF Mirror setup/Scripts/UI/UITabSwitcher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

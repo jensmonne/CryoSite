@@ -66,7 +66,7 @@ namespace BNG
             {
                 playerInfoDict[connId] = new PlayerInfo
                 {
-                    playerName = $"Player {connId}", // Or pass in a real name
+                    playerName = $"Player {connId}",
                     isReady = true
                 };
             }
@@ -74,6 +74,7 @@ namespace BNG
             {
                 playerInfoDict[connId].isReady = true;
             }
+            Debug.LogWarning($"Player {sender.connectionId} ready");
 
             UpdatePlayerListUI();
             UpdateReadyCounts();
@@ -105,9 +106,11 @@ namespace BNG
                     readyPlayers++;
                 }
             }
-            
+            Debug.Log($"Total players {totalPlayers}");
             RpcUpdateReadyCount(readyPlayers, totalPlayers);
+            Debug.Log($"is it this???");
             
+            Debug.Log("isserver?" + isServer);
             if (isServer) CheckStartCondition();
         }
 
@@ -144,13 +147,16 @@ namespace BNG
             if (readyToggle.isOn)
             {
                 CmdPlayerReady();
+                Debug.LogWarning("readyToggle.isOn");
             }
             else
             {
                 CmdPlayerNotReady();
+                Debug.LogWarning("readyToggle.isOff");
             }
         }
         
+        // ReSharper disable Unity.PerformanceAnalysis
         private void UpdatePlayerListUI()
         {
             foreach (var kvp in playerInfoDict)
