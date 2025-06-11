@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Demolevel/Enemies/EnemyBase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Demolevel/Enemies/EnemyBase.cs.meta" afterDir="false" />
-    </list>
+    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +14,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Demolevel/Enemies/EnemyBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Health.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Magazine.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -102,7 +101,7 @@
       <option name="presentableId" value="Default" />
       <updated>1749551584552</updated>
       <workItem from="1749551586327" duration="89000" />
-      <workItem from="1749630667994" duration="1651000" />
+      <workItem from="1749630667994" duration="1348000" />
     </task>
     <servers />
   </component>
