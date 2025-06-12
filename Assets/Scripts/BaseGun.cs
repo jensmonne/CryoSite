@@ -21,9 +21,10 @@ public class BaseGun : MonoBehaviour
     [SerializeField] private AudioSource ShootSound;
     
     public PlayerInput playerInput;
-    [SerializeField] private InputAction FireAction;
+    private InputAction FireAction;
+    
 
-    [SerializeField] private SnapZone MagazineSocket;
+    [SerializeField] private SnapZone magSnapZone;
     private Magazine magazine;
     private bool triggerpulled = false;
     private bool previousTriggerPulled = false;
@@ -50,8 +51,7 @@ public class BaseGun : MonoBehaviour
     private void Start()
     {
         grabbable = GetComponent<Grabbable>();
-        MagazineSocket.OnSnapEvent.AddListener(CheckMagzineSocket);
-       
+        magSnapZone.OnSnapEvent.AddListener(CheckMagzineSocket);
     }
 
     void Update()
@@ -109,7 +109,7 @@ public class BaseGun : MonoBehaviour
 
     void CheckMagzineSocket(Grabbable mag)
     {
-        if (MagazineSocket != null)
+        if (magSnapZone != null)
         {
            magazine = mag.GetComponent<Magazine>(); 
         }
@@ -118,4 +118,5 @@ public class BaseGun : MonoBehaviour
             magazine = null;
         }
     }
+    
 }

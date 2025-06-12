@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "EjectMag",
+                    "type": "Button",
+                    "id": "95b82a83-4c2d-4f2a-86a3-89427b87826f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -59,22 +68,22 @@
                 {
                     "name": "",
                     "id": "d95d9a96-3d23-4d3a-b523-c09e43a9a4ca",
-                    "path": "<XRController>{LeftHand}/{PrimaryTrigger}",
+                    "path": "*/{TriggerButton}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Generic XR Controller",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "79ed2a9e-865e-4451-b6a0-bbd3e806528b",
-                    "path": "<XRController>{RightHand}/{PrimaryTrigger}",
+                    "id": "68e09eff-4cc6-45ed-bb19-b80647deb989",
+                    "path": "<XRController>/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Fire",
+                    "groups": ";Generic XR Controller",
+                    "action": "EjectMag",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
