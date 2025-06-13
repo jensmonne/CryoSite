@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class CubeDamage : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private int damage;
+    
+    private void OnCollisionEnter(Collision other)
     {
+        if (!other.gameObject.CompareTag("Player")) return;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        PlayerHealth hpScript = other.gameObject.GetComponent<PlayerHealth>();
+        if (hpScript == null) return;
         
+        hpScript.CurrentHealth = damage;
     }
 }
