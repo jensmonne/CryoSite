@@ -771,9 +771,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2227097703415110170, guid: e72283fa781b7b744a06c68820b453d8,
         type: 3}
+      propertyPath: slide
+      value: 
+      objectReference: {fileID: 2012236400}
+    - target: {fileID: 2227097703415110170, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
       propertyPath: magSnapZone
       value: 
       objectReference: {fileID: 1458922627}
+    - target: {fileID: 2309207560624707596, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      propertyPath: CanBeDropped
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2494294268547508999, guid: e72283fa781b7b744a06c68820b453d8,
         type: 3}
       propertyPath: m_Name
@@ -834,13 +844,62 @@ PrefabInstance:
       propertyPath: AutoSnapItem
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1280646419545487483, guid: e72283fa781b7b744a06c68820b453d8, type: 3}
-    - {fileID: 4512523428761519132, guid: e72283fa781b7b744a06c68820b453d8, type: 3}
+    - target: {fileID: 4512523428761519132, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512523428761519132, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4512523428761519132, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915292898448631737, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4299709098116646452, guid: e72283fa781b7b744a06c68820b453d8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2012236400}
   m_SourcePrefab: {fileID: 100100000, guid: e72283fa781b7b744a06c68820b453d8, type: 3}
+--- !u!1 &2012236392 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4299709098116646452, guid: e72283fa781b7b744a06c68820b453d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2012236391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2012236394 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7915292898448631737, guid: e72283fa781b7b744a06c68820b453d8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2012236391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2012236400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012236392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4d87eacc5f5ea4bbe6b680a12e7aa6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slideTransform: {fileID: 2012236394}
+  slideLocalOffset: {x: 0.3, y: 0, z: 0}
+  slideSpeed: 10
 --- !u!1001 &7679853863209865745
 PrefabInstance:
   m_ObjectHideFlags: 0

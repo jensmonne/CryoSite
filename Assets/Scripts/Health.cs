@@ -19,6 +19,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("TakeDamage");
         currentHealth -= damage;
         hit.Play();
         if (currentHealth <= 0)

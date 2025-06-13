@@ -16,6 +16,8 @@ public class BaseGun : MonoBehaviour
     [SerializeField] float fireRate;
     [SerializeField] private int range;
     [SerializeField] int damageAmount;
+    
+    [SerializeField] Slider slide;
 
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource ShootSound;
@@ -88,10 +90,15 @@ public class BaseGun : MonoBehaviour
         {
             return;
         }
-        
+
         Fire();
         magazine.consumeAmmo();
         lastFireTime = Time.time;
+        
+        if (slide != null)
+        {
+            slide.OnFired(); 
+        }
     }
 
     void Fire()
