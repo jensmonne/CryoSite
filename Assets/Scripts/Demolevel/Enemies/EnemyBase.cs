@@ -57,6 +57,5 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void UpdateAttack() { }
     protected virtual void UpdateDead() { }
     
-    public abstract void TakeDamage(int amount);
     public abstract void Die();
 }
