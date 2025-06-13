@@ -126,4 +126,13 @@ public class BaseGun : MonoBehaviour
         }
     }
     
+    private void OnDrawGizmos()
+    {
+        if (muzzleTransform != null)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(muzzleTransform.position, muzzleTransform.forward * range);
+        }
+    }
+    
 }
