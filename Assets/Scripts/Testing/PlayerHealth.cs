@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private int maxHealth = 100;
+    [SerializeField] private float maxPlayerHealth = 100;
 
-    [SerializeField] private int health;
+    [SerializeField] private float playerHealth;
 
     private void Start()
     {
-        health = maxHealth;
+        playerHealth = maxPlayerHealth;
     }
 
-    public int CurrentHealth
+    public float CurrentPlayerHealth
     {
-        get { return health; }
-        set { health -= Mathf.Clamp(value, 0, maxHealth); }
+        get { return playerHealth; }
+        set { playerHealth -= Mathf.Clamp(value, 0, maxPlayerHealth); }
     }
 }

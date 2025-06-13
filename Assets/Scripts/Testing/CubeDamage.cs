@@ -11,6 +11,6 @@ public class CubeDamage : MonoBehaviour
         PlayerHealth hpScript = other.gameObject.GetComponent<PlayerHealth>();
         if (hpScript == null) return;
         
-        hpScript.CurrentHealth = damage;
+        hpScript.CurrentPlayerHealth = damage;
     }
 }
