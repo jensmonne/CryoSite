@@ -1,16 +1,14 @@
-using System;
 using UnityEngine;
-using BNG;
 
 public enum MagazineType
 {
-    pistol,
-    rifle
+    Pistol,
+    Rifle
 }
 
 public class Magazine : MonoBehaviour
 {
-    [SerializeField] private MagazineType magType;
+    [SerializeField] private MagazineType magazineType;
     public int MaxAmmo;
     public int currentAmmo;
     void Start()

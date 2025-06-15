@@ -13,7 +13,6 @@ public class UITabSwitcher : MonoBehaviour
 
     public void ShowLobby() 
     {
-        Debug.LogError("this got called");
         connectPanel.SetActive(false);
         lobbyPanel.SetActive(true);
         settingsPanel.SetActive(false);
