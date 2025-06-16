@@ -4,20 +4,15 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    private static int currentHealth;
+    private int currentHealth;
     [SerializeField] ParticleSystem hit;
+    [SerializeField] private kamikazeEnemy kamikaze;
     
     void Start()
     {
         currentHealth = maxHealth;
     }
-
-    private void Update()
-    {
-        
-    }
-
-
+    
     public void TakeDamage(int damage)
     {
         Debug.Log("TakeDamage");
@@ -33,6 +28,6 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Debug.Log("You killed him why did you do that");
-        EnemyBase.ChangeState(EnemyBase.EnemyState.Dead);
+        kamikaze.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

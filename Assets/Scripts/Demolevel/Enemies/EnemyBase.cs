@@ -12,20 +12,24 @@ public abstract class EnemyBase : MonoBehaviour
         Dead
     }
     
-    public static EnemyState currentState;
+    public EnemyState currentState;
     [SerializeField] int FollowDistance;
     
     [SerializeField] Vector3 patrolCenter;
     [SerializeField] Vector3 patrolSize;
     [SerializeField] float waitTimeAtDestination;
 
-    [SerializeField] private int AttackDistance;
+    [SerializeField] private float AttackDistance;
+    [SerializeField] private float AttackRate;
+    private float lastAttackTime;
     
     private Transform Player;
     public NavMeshAgent agent;
 
     private float waitTimer;
     private bool destinationSet;
+
+    private bool isDead = false;
 
     protected virtual void Start()
     {
@@ -45,7 +49,7 @@ public abstract class EnemyBase : MonoBehaviour
         SetState();
     }
 
-    public static void ChangeState(EnemyState newState)
+    public void ChangeState(EnemyState newState)
     {
         currentState = newState;
         Debug.Log($"State changed to {newState}");
@@ -63,7 +67,7 @@ public abstract class EnemyBase : MonoBehaviour
             ChangeState(EnemyState.Wandering);
         }
 
-        if (distance < AttackDistance)
+        if (distance < AttackDistance && Time.time - lastAttackTime >= AttackRate)
         {
             UpdateAttack();
         }
@@ -86,6 +90,7 @@ public abstract class EnemyBase : MonoBehaviour
                 UpdateAttack();
                 break;
             case EnemyState.Dead:
+                if (isDead) return;
                 UpdateDead();
                 break;
         }
@@ -122,11 +127,15 @@ public abstract class EnemyBase : MonoBehaviour
     {
         agent.SetDestination(Player.position);
     }
-    protected virtual void UpdateAttack() { }
+
+    protected virtual void UpdateAttack()
+    {
+        lastAttackTime = Time.time;
+    }
 
     protected virtual void UpdateDead()
     {
-        Destroy(gameObject, 1.5f);
+        Destroy(gameObject, 0.5f);
     }
     
     protected Vector3 GetRandomPatrolPosition()

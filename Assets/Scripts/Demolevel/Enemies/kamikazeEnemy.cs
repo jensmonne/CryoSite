@@ -5,6 +5,8 @@ public class kamikazeEnemy : EnemyBase
 {
     [SerializeField] private float explosionRange = 5f;
     [SerializeField] private int explosionDamage = 50;
+    private bool Exploded = false;
+    
 
     protected override void UpdatePatrol()
     {
@@ -20,7 +22,11 @@ public class kamikazeEnemy : EnemyBase
 
     protected override void UpdateAttack()
     {
-        UpdateDead();
+        if (!Exploded)
+        {
+            ChangeState(EnemyState.Dead);
+            Exploded = true;
+        }
     }
 
     protected override void UpdateDead()
