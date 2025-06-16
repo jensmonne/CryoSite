@@ -11,9 +11,13 @@ public class PlayerHealth : MonoBehaviour
         playerHealth = maxPlayerHealth;
     }
 
-    public float CurrentPlayerHealth
+    public void TakeDamage(float amount)
     {
-        get { return playerHealth; }
-        set { playerHealth -= Mathf.Clamp(value, 0, maxPlayerHealth); }
+        playerHealth = Mathf.Clamp(playerHealth - amount, 0, maxPlayerHealth);
+    }
+
+    public void Heal(float amount)
+    {
+        playerHealth = Mathf.Clamp(playerHealth + amount, 0, maxPlayerHealth);
     }
 }

@@ -48,7 +48,7 @@ public class kamikazeEnemy : EnemyBase
             var playerHealth = collider.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
-                playerHealth.CurrentPlayerHealth = explosionDamage;
+                playerHealth.TakeDamage(explosionDamage);
             }
         }
         

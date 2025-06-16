@@ -5008,7 +5008,7 @@ MonoBehaviour:
   AttackRate: 1
   agent: {fileID: 0}
   explosionRange: 3
-  explosionDamage: 5
+  explosionDamage: 50
 --- !u!195 &270865675989549427
 NavMeshAgent:
   m_ObjectHideFlags: 0
