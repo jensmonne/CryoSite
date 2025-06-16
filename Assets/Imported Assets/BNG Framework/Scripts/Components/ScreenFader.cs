@@ -106,6 +106,10 @@ namespace BNG {
             if (fadeRoutine != null) {
                 StopCoroutine(fadeRoutine);
             }
+            
+            if (fadeImage != null) {
+                fadeImage.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, 1);
+            }
 
             // Do the fade routine
             if (canvasGroup != null) {
