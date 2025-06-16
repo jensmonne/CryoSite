@@ -10,11 +10,7 @@ public class GameManager : MonoBehaviour
     
     public static float bombTimer { get; private set; }
 
-    public float RemainingTime
-    {
-        get { return Mathf.Max(0f, bombDuration - bombTimer); }
-        private set {}
-    }
+    public float RemainingTime => Mathf.Max(0f, bombDuration - bombTimer);
 
     private void Awake()
     {
@@ -32,12 +28,17 @@ public class GameManager : MonoBehaviour
     {
         if (IsBombActive)
         {
-            bombTimer += Time.deltaTime;
+            bombTimer += Time.deltaTime * 6;
 
-            if (bombTimer >= bombDuration)
-            {
-                
-            }
+            if (bombTimer < bombDuration) return;
+            
+            BigKaboom();
         }
+    }
+
+    private void BigKaboom()
+    {
+        // implement more shit here when bomb goes BOOM
+        BigKaboomSnap.ActivateBlast();
     }
 }
