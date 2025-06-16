@@ -90,8 +90,11 @@ public abstract class EnemyBase : MonoBehaviour
                 UpdateAttack();
                 break;
             case EnemyState.Dead:
-                if (isDead) return;
-                UpdateDead();
+                if (!isDead)
+                {
+                    UpdateDead();
+                }
+
                 break;
         }
     }
@@ -136,6 +139,7 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void UpdateDead()
     {
         Destroy(gameObject, 0.5f);
+        enabled = false;
     }
     
     protected Vector3 GetRandomPatrolPosition()
