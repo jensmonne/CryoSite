@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public static int maxHealth;
+    [SerializeField] private int maxHealth;
     private static int currentHealth;
     [SerializeField] ParticleSystem hit;
     
@@ -11,11 +12,11 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void Update()
+    private void Update()
     {
-
+        
     }
-    
+
 
     public void TakeDamage(int damage)
     {
@@ -32,6 +33,6 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Debug.Log("You killed him why did you do that");
-        Destroy(gameObject);
+        EnemyBase.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

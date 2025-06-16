@@ -1,21 +1,61 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class kamikazeEnemy : EnemyBase
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private float explosionRange = 5f;
+    [SerializeField] private int explosionDamage = 50;
+
+    protected override void UpdatePatrol()
     {
-        
+        base.UpdatePatrol();
+        agent.speed = 0.5f;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void UpdateChase()
     {
+        base.UpdateChase();
+        agent.speed = 2.5f;
+    }
+
+    protected override void UpdateAttack()
+    {
+        UpdateDead();
+    }
+
+    protected override void UpdateDead()
+    {
+        base.UpdateDead();
+        
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
+
+        foreach (Collider collider in hitColliders)
+        {
+
+            var health = collider.GetComponent<Health>();
+            if (health != null)
+            {
+                health.TakeDamage(explosionDamage);
+                continue;
+            }
+            
+            var playerHealth = collider.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.CurrentPlayerHealth = explosionDamage;
+            }
+        }
         
     }
 
     public override void Die()
     {
         
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRange);
     }
 }

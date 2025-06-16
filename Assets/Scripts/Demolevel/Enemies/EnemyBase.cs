@@ -12,15 +12,17 @@ public abstract class EnemyBase : MonoBehaviour
         Dead
     }
     
-    protected EnemyState currentState;
+    public static EnemyState currentState;
     [SerializeField] int FollowDistance;
     
     [SerializeField] Vector3 patrolCenter;
     [SerializeField] Vector3 patrolSize;
     [SerializeField] float waitTimeAtDestination;
+
+    [SerializeField] private int AttackDistance;
     
     private Transform Player;
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
 
     private float waitTimer;
     private bool destinationSet;
@@ -43,7 +45,7 @@ public abstract class EnemyBase : MonoBehaviour
         SetState();
     }
 
-    protected void ChangeState(EnemyState newState)
+    public static void ChangeState(EnemyState newState)
     {
         currentState = newState;
         Debug.Log($"State changed to {newState}");
@@ -52,12 +54,18 @@ public abstract class EnemyBase : MonoBehaviour
     protected void SetState()
     {
         if (currentState == EnemyState.Dead) return;
-        ChangeState(EnemyState.Wandering);
-        agent.ResetPath();
         float distance = Vector3.Distance(transform.position, Player.position);
-        if (distance < FollowDistance)
+        if (distance < FollowDistance && currentState != EnemyState.Attack)
         {
             ChangeState(EnemyState.Chase);
+        } else if (distance > FollowDistance)
+        {
+            ChangeState(EnemyState.Wandering);
+        }
+
+        if (distance < AttackDistance)
+        {
+            UpdateAttack();
         }
     }
 
@@ -115,7 +123,11 @@ public abstract class EnemyBase : MonoBehaviour
         agent.SetDestination(Player.position);
     }
     protected virtual void UpdateAttack() { }
-    protected virtual void UpdateDead() { }
+
+    protected virtual void UpdateDead()
+    {
+        Destroy(gameObject, 1.5f);
+    }
     
     protected Vector3 GetRandomPatrolPosition()
     {
