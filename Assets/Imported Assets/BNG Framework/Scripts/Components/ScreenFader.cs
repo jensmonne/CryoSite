@@ -15,9 +15,9 @@ namespace BNG {
         public Color FadeColor = Color.black;
 
         [Tooltip("How fast to fade in / out")]
-        public float FadeInSpeed = 6f;
+        public float FadeInSpeed = 1f;
 
-        public float FadeOutSpeed = 6f;
+        public float FadeOutSpeed = 1f;
 
         [Tooltip("Wait X seconds before fading scene in")]
         public float SceneFadeInDelay = 1f;
@@ -100,7 +100,7 @@ namespace BNG {
         /// <summary>
         /// Fade from transparent to solid color
         /// </summary>
-        public virtual void DoFadeIn() {
+        public virtual void DoFadeIn(Action onFadeComplete = null) {
 
             // Stop if currently running
             if (fadeRoutine != null) {
@@ -113,7 +113,7 @@ namespace BNG {
 
             // Do the fade routine
             if (canvasGroup != null) {
-                fadeRoutine = doFade(canvasGroup.alpha, 1);
+                fadeRoutine = doFade(canvasGroup.alpha, 1, onFadeComplete);
                 StartCoroutine(fadeRoutine);
             }
         }
@@ -145,15 +145,16 @@ namespace BNG {
             StartCoroutine(fadeRoutine);
         }
 
-        IEnumerator doFade(float alphaFrom, float alphaTo) {
+        IEnumerator doFade(float alphaFrom, float alphaTo, Action onFadeComplete = null) {
 
             float alpha = alphaFrom;
 
             updateImageAlpha(alpha);
 
-            while (alpha != alphaTo) {
-
-                if (alphaFrom < alphaTo) {
+            while (alpha != alphaTo)
+            {
+                if (alphaFrom < alphaTo)
+                {
                     alpha += Time.deltaTime * FadeInSpeed;
                     if (alpha > alphaTo) {
                         alpha = alphaTo;
@@ -175,6 +176,7 @@ namespace BNG {
 
             // Ensure alpha is always applied
             updateImageAlpha(alphaTo);
+            onFadeComplete?.Invoke();
         }
 
         protected virtual void updateImageAlpha(float alphaValue) {

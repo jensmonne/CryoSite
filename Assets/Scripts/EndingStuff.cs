@@ -1,5 +1,6 @@
 using BNG;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndingStuff : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EndingStuff : MonoBehaviour
     {
         if (!GameManager.IsBombActive) return;
 
-        fader.DoFadeIn();
+        fader.DoFadeIn(() => {
+            SceneManager.LoadScene("DarkBox");
+        });
     }
 }
