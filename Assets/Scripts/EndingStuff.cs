@@ -15,6 +15,8 @@ public class EndingStuff : MonoBehaviour
     {
         if (!GameManager.IsBombActive) return;
 
+        GameManager.Instance.CurrentState = GameManager.GameState.GameWon;
+        
         fader.DoFadeIn(() => {
             SceneManager.LoadScene("DarkBox");
         });
