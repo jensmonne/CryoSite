@@ -11,7 +11,7 @@ public class kamikazeEnemy : EnemyBase
     protected override void UpdatePatrol()
     {
         base.UpdatePatrol();
-        agent.speed = 0.5f;
+        agent.speed = 1f;
     }
 
     protected override void UpdateChase()

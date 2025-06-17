@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class SpawnZone : MonoBehaviour
 { 
@@ -25,7 +27,7 @@ public class SpawnZone : MonoBehaviour
             GameObject enemy = Instantiate(selectedEnemy,spawnpos,Quaternion.identity);
         }
     }
-
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

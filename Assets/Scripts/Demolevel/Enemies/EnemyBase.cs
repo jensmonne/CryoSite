@@ -15,9 +15,9 @@ public abstract class EnemyBase : MonoBehaviour
     public EnemyState currentState;
     [SerializeField] int FollowDistance;
     
-    [SerializeField] Vector3 patrolCenter;
-    [SerializeField] Vector3 patrolSize;
-    [SerializeField] float waitTimeAtDestination;
+    public BoxCollider patrolZone;
+    [SerializeField] private float waitTimeAtDestination;
+    private float patrolTimer = 0f;
 
     [SerializeField] private float AttackDistance;
     [SerializeField] private float AttackRate;
@@ -39,8 +39,8 @@ public abstract class EnemyBase : MonoBehaviour
         if (playerObj != null)
         Player = playerObj.transform;
         
-        if (patrolCenter == Vector3.zero)
-            patrolCenter = transform.position;
+        if (patrolZone == null)
+            patrolZone = FindNearestPatrolZone();
     }
 
     protected virtual void Update()
@@ -62,7 +62,8 @@ public abstract class EnemyBase : MonoBehaviour
         if (distance < FollowDistance && currentState != EnemyState.Attack)
         {
             ChangeState(EnemyState.Chase);
-        } else if (distance > FollowDistance)
+        } 
+        else if (distance > FollowDistance)
         {
             ChangeState(EnemyState.Wandering);
         }
@@ -106,22 +107,36 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void UpdatePatrol()
     {
+        if (patrolZone == null) return;
+
         if (!destinationSet || agent.remainingDistance <= agent.stoppingDistance)
         {
             waitTimer += Time.deltaTime;
 
             if (waitTimer >= waitTimeAtDestination)
             {
-                Vector3 randomPos = GetRandomPatrolPosition();
-                NavMeshHit hit;
-
-                if (NavMesh.SamplePosition(randomPos, out hit, 2f, NavMesh.AllAreas))
+                Vector3 randomPos = GetRandomPointInPatrolZone();
+                if (NavMesh.SamplePosition(randomPos, out NavMeshHit hit, 2f, NavMesh.AllAreas))
                 {
                     agent.SetDestination(hit.position);
                     destinationSet = true;
+                    patrolTimer = 0f; // Reset stuck timer
                 }
 
                 waitTimer = 0f;
+            }
+        }
+        else
+        {
+            // Increment patrol stuck timer
+            patrolTimer += Time.deltaTime;
+
+            if (patrolTimer >= 10f)
+            {
+                agent.ResetPath();
+                destinationSet = false;
+                patrolTimer = 0f;
+                Debug.Log($"{gameObject.name} reset patrol path after 10s.");
             }
         }
     }
@@ -142,21 +157,50 @@ public abstract class EnemyBase : MonoBehaviour
         enabled = false;
     }
     
-    protected Vector3 GetRandomPatrolPosition()
+    protected BoxCollider FindNearestPatrolZone()
     {
-        Vector3 randomOffset = new Vector3(
-            Random.Range(-patrolSize.x / 2, patrolSize.x / 2),
-            0,
-            Random.Range(-patrolSize.z / 2, patrolSize.z / 2)
-        );
-        return patrolCenter + randomOffset;
+        GameObject[] zones = GameObject.FindGameObjectsWithTag("PetrolZone");
+        BoxCollider nearest = null;
+        float minDistance = Mathf.Infinity;
+
+        foreach (GameObject zoneObj in zones)
+        {
+            BoxCollider zone = zoneObj.GetComponent<BoxCollider>();
+            if (zone == null) continue;
+
+            float dist = Vector3.Distance(transform.position, zone.transform.position);
+            if (dist < minDistance)
+            {
+                minDistance = dist;
+                nearest = zone;
+            }
+        }
+
+        return nearest;
     }
+    
+    protected Vector3 GetRandomPointInPatrolZone()
+    {
+        Vector3 center = patrolZone.transform.position + patrolZone.center;
+        Vector3 size = patrolZone.size;
+
+        float x = Random.Range(-size.x / 2, size.x / 2);
+        float z = Random.Range(-size.z / 2, size.z / 2);
+
+        Vector3 randomPoint = new Vector3(x, 0, z);
+        return center + patrolZone.transform.rotation * randomPoint;
+    }
+    
     
     public abstract void Die();
     
     protected virtual void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(patrolCenter == Vector3.zero ? transform.position : patrolCenter, patrolSize);
+        if (patrolZone != null)
+        {
+            Gizmos.color = Color.green;
+            Gizmos.matrix = patrolZone.transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(patrolZone.center, patrolZone.size);
+        }
     }
 }
