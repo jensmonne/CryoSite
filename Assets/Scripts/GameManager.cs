@@ -1,8 +1,22 @@
 using UnityEngine;
 
+/// <summary>
+/// It's a gamemanager... what more do you want. I would like to remove the statics (its a fucking singleton so it only brings clutter) but im to lazy to do that right now...
+/// I'll just add a to-do and hope that it magically fixes itself :D
+/// </summary>
+// TODO: Remove the statics in this script.
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public enum GameState
+    {
+        StartMenu,
+        Playing,
+        GameOver,
+        GameWon
+    }
+    public GameState CurrentState { get; set; }
 
     public static bool IsBombActive { get; set; }
     
@@ -22,6 +36,13 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        
+        DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        CurrentState = GameState.StartMenu;
     }
 
     private void Update()
