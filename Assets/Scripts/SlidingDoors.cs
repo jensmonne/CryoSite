@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -26,18 +25,12 @@ public class SlidingDoors : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Uncomment if only the player/npc's is supposed to open the doors
-        // if (!other.CompareTag("Player") || !other.CompareTag("NPC")) return;
-        
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(MoveDoors(leftOpenPos, rightOpenPos));
     }
 
     private void OnTriggerExit(Collider other)
     {
-        // Uncomment if only the player/npc's is supposed to open the doors
-        // if (!other.CompareTag("Player") || !other.CompareTag("NPC")) return;
-        
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(MoveDoors(leftClosedPos, rightClosedPos));
     }
