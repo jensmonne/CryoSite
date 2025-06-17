@@ -5,11 +5,12 @@ using UnityEngine.InputSystem;
 
 public class MagazineEject : MonoBehaviour
 {
-    public SnapZone magSnapZone; // Assign this to the SnapZone that holds your magazine
+    public SnapZone magSnapZone; 
     public ControllerHand ejectHand = ControllerHand.Left;
     public float gripThreshold = 0.9f;
     public PlayerInput playerInput;
     private InputAction EjectMag;
+    public Magazine mag;
 
     private bool gripWasPressed = false;
 
@@ -30,6 +31,10 @@ public class MagazineEject : MonoBehaviour
     }
 
     void Update() {
+        if (mag == null)
+        {
+            mag = magSnapZone.GetComponentInChildren<Magazine>();
+        }
         bool ejectButtonPressed = EjectMag.IsPressed();
         float gripValue = GetGripValue();
 
@@ -39,6 +44,7 @@ public class MagazineEject : MonoBehaviour
         gripWasPressed = gripValue > gripThreshold;
 
         if (gripPressedThisFrame || ejectButtonPressed) {
+            mag.EjectMag();
             TryEjectMagazine();
         }
     }
