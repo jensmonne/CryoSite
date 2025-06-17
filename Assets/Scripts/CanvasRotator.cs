@@ -9,6 +9,12 @@ public class CanvasRotator : MonoBehaviour
     [SerializeField] private float distanceFromCamera = 2f;
     [SerializeField] private float heightOffset = 0.0f;
 
+    private void Start()
+    {
+        if (centerEyeAnchor) return;
+        centerEyeAnchor = GameObject.Find("CenterEyeAnchor");
+    }
+    
     private void LateUpdate()
     {
         Vector3 targetPosition = centerEyeAnchor.transform.position + centerEyeAnchor.transform.forward * distanceFromCamera;
