@@ -255,6 +255,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 29464835}
   m_CullTransparentMesh: 1
+--- !u!4 &212993555 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3020532185100619225, guid: 16611e621d86b26448ca939f4c4f1d49,
+    type: 3}
+  m_PrefabInstance: {fileID: 675462744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &510093479
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,10 +837,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1478824673180357742, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1996175485843864035, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2226960964048931117, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3020532185100619224, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3276470696357005583, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
@@ -971,9 +992,29 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5834420467045697560, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7550344387755106103, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7550344389176349957, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7756394878387334229, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101965273887181041, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9115362084799969232, guid: 16611e621d86b26448ca939f4c4f1d49,
@@ -1128,6 +1169,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698060527}
   m_CullTransparentMesh: 1
+--- !u!4 &704048047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3020532185020073537, guid: 16611e621d86b26448ca939f4c4f1d49,
+    type: 3}
+  m_PrefabInstance: {fileID: 675462744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169842097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,8 +2210,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SendPointerHoverToParent: 1
   SelectedHand: 1
-  LeftPointerTransform: {fileID: 0}
-  RightPointerTransform: {fileID: 0}
+  LeftPointerTransform: {fileID: 212993555}
+  RightPointerTransform: {fileID: 704048047}
   ControllerInput: 0f000000
   UIInputAction: {fileID: -6728727643101440195, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}

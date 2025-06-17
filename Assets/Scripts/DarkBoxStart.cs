@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /// <summary>
-/// This script has to start asap when the player loads into the darkbox scene. It handles the win/lose screen, you'll find out why yourself...
+/// This script has to start asap when the player loads into the darkbox scene. It handles the win/lose screen
 /// </summary>
 public class DarkBoxStart : MonoBehaviour
 {
