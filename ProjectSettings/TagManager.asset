@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Enemy
   - PetrolZone
+  - PlayerHand
+  - Bomb
   layers:
   - Default
   - TransparentFX
