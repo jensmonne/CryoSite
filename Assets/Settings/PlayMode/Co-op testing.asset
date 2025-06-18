@@ -31,7 +31,7 @@ MonoBehaviour:
     m_PlayerTag: 
     m_InitialScene: {fileID: 0}
     m_AdvancedConfiguration:
-      StreamLogsToMainEditor: 1
+      StreamLogsToMainEditor: 0
       LogsColor: {r: 0.7820344, g: 0.084905684, b: 1, a: 1}
   m_LocalInstances: []
   m_RemoteInstances: []
