@@ -27,7 +27,7 @@ public class BaseGun : MonoBehaviour
     
 
     [SerializeField] private SnapZone magSnapZone;
-    private Magazine magazine;
+    public Magazine magazine;
     private bool triggerpulled = false;
     private bool previousTriggerPulled = false;
 
@@ -109,6 +109,7 @@ public class BaseGun : MonoBehaviour
         Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
         if (Physics.Raycast(ray, out RaycastHit hit, range))
         {
+            Debug.Log("Hit" + hit.transform.name);
             Health health = hit.collider.gameObject.GetComponent<Health>();
             health.TakeDamage(damageAmount);
         }
