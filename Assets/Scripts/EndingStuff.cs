@@ -19,6 +19,6 @@ public class EndingStuff : MonoBehaviour
         
         fader.DoFadeIn(() => {
             SceneManager.LoadScene("DarkBox");
-        });
+        }, Color.black);
     }
 }

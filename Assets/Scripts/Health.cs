@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -8,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField] ParticleSystem hit;
     [SerializeField] private kamikazeEnemy kamikaze;
     
-    void Start()
+    private void Start()
     {
         currentHealth = maxHealth;
     }
@@ -18,13 +17,11 @@ public class Health : MonoBehaviour
         Debug.Log("TakeDamage");
         currentHealth -= damage;
         hit.Play();
-        if (currentHealth <= 0)
-        {
-            Death();
-        }
+        if (currentHealth <= 0) Death();
 
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     private void Death()
     {
         Debug.Log("You killed him why did you do that");

@@ -100,11 +100,15 @@ namespace BNG {
         /// <summary>
         /// Fade from transparent to solid color
         /// </summary>
-        public virtual void DoFadeIn(Action onFadeComplete = null) {
-
+        public virtual void DoFadeIn(Action onFadeComplete = null, Color? overrideColor = default)
+		{
             // Stop if currently running
             if (fadeRoutine != null) {
                 StopCoroutine(fadeRoutine);
+            }
+
+			if (overrideColor.HasValue) {
+        		FadeColor = overrideColor.Value;
             }
             
             if (fadeImage != null) {
