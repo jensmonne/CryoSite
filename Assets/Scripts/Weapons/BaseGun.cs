@@ -1,6 +1,8 @@
 using BNG;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using UnityEngine.UI;
 
 public enum FiringType
 {
@@ -33,7 +35,14 @@ public class BaseGun : MonoBehaviour
 
     private Grabbable grabbable;
     
+    public TextMeshProUGUI AmmoText;
+    
     [SerializeField] private LayerMask enemyLayerMask;
+    
+    // Debug line for check
+    [SerializeField] private GameObject hitMarkerPrefab;
+
+    private GameObject activeHitMarker;
 
     private void Awake()
     {
@@ -81,6 +90,15 @@ public class BaseGun : MonoBehaviour
             }
             previousTriggerPulled = isTriggerPulled;
         }
+
+        if (magazine != null)
+        {
+            AmmoText.text = magazine.currentAmmo.ToString();
+        }
+        else
+        {
+            AmmoText.text = "No Mag";
+        }
     }
 
     void TryFire()
@@ -105,17 +123,23 @@ public class BaseGun : MonoBehaviour
     {
         muzzleFlash.Play();
         ShootSound.Play();
-        
+
         Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
+        Vector3 endPoint = muzzleTransform.position + muzzleTransform.forward * range;
+
         if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
         {
+            endPoint = hit.point;
             Debug.Log("Hit " + hit.transform.name);
+
             Health health = hit.collider.gameObject.GetComponent<Health>();
             if (health != null)
             {
                 health.TakeDamage(damageAmount);
             }
         }
+
+        UpdateDebugRay(muzzleTransform.position, endPoint);
     }
 
     void CheckMagzineSocket(Grabbable mag)
@@ -127,6 +151,19 @@ public class BaseGun : MonoBehaviour
         else
         {
             magazine = null;
+        }
+    }
+    
+    void UpdateDebugRay(Vector3 start, Vector3 end)
+    {
+        if (hitMarkerPrefab != null)
+        {
+            if (activeHitMarker != null)
+            {
+                Destroy(activeHitMarker);
+            }
+
+            activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
         }
     }
     
