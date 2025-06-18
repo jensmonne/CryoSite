@@ -25,15 +25,15 @@ public class BaseGun : MonoBehaviour
     public PlayerInput playerInput;
     private InputAction FireAction;
     
-
     [SerializeField] private SnapZone magSnapZone;
     public Magazine magazine;
     private bool triggerpulled = false;
     private bool previousTriggerPulled = false;
-
     private float lastFireTime;
 
     private Grabbable grabbable;
+    
+    [SerializeField] private LayerMask enemyLayerMask;
 
     private void Awake()
     {
@@ -107,11 +107,14 @@ public class BaseGun : MonoBehaviour
         ShootSound.Play();
         
         Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
-        if (Physics.Raycast(ray, out RaycastHit hit, range))
+        if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
         {
-            Debug.Log("Hit" + hit.transform.name);
+            Debug.Log("Hit " + hit.transform.name);
             Health health = hit.collider.gameObject.GetComponent<Health>();
-            health.TakeDamage(damageAmount);
+            if (health != null)
+            {
+                health.TakeDamage(damageAmount);
+            }
         }
     }
 

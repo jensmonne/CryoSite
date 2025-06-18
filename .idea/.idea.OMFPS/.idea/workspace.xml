@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BaseGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Magazine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Magazine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/MagazineEject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/MagazineEject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/DynamicsManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,6 +128,7 @@
       <workItem from="1750146839193" duration="1001000" />
       <workItem from="1750151155792" duration="2335000" />
       <workItem from="1750161193300" duration="2012000" />
+      <workItem from="1750231213211" duration="889000" />
     </task>
     <servers />
   </component>
