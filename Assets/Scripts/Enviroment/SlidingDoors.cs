@@ -1,8 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
-public class SlidingDoors : MonoBehaviour
+public class SlidingDoors : MonoBehaviour, IUnlockableDoor
 {
+    [SerializeField] public bool canAutoOpen;
     [SerializeField] private Transform leftDoor;
     [SerializeField] private Transform rightDoor;
     [SerializeField] private float slideDistance = 1f;
@@ -14,6 +15,11 @@ public class SlidingDoors : MonoBehaviour
     private Vector3 rightOpenPos;
     private Coroutine moveCoroutine;
 
+    public void Unlock()
+    {
+        canAutoOpen = true;
+    }
+    
     private void Start()
     {
         leftClosedPos = leftDoor.localPosition;
@@ -25,6 +31,7 @@ public class SlidingDoors : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!canAutoOpen) return;
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(MoveDoors(leftOpenPos, rightOpenPos));
     }

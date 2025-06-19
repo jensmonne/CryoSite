@@ -8,6 +8,7 @@ TagManager:
   - PetrolZone
   - PlayerHand
   - Bomb
+  - Key
   layers:
   - Default
   - TransparentFX
