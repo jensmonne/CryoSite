@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] ParticleSystem hit;
-    [SerializeField] private kamikazeEnemy kamikaze;
+    [SerializeField] private EnemyBase Enemyscirpt;
     
     private void Start()
     {
@@ -25,6 +25,6 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Debug.Log("You killed him why did you do that");
-        kamikaze.ChangeState(EnemyBase.EnemyState.Dead);
+        Enemyscirpt.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

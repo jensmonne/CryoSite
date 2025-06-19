@@ -20,8 +20,8 @@ public abstract class EnemyBase : MonoBehaviour
     private float patrolTimer = 0f;
 
     [SerializeField] private float AttackDistance;
-    [SerializeField] private float AttackRate;
-    private float lastAttackTime;
+    [SerializeField] protected float AttackRate;
+    protected float lastAttackTime;
     
     private Transform Player;
     public NavMeshAgent agent;
@@ -59,6 +59,12 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (currentState == EnemyState.Dead) return;
         float distance = Vector3.Distance(transform.position, Player.position);
+        
+        if (distance < AttackDistance)
+        {
+            ChangeState(EnemyState.Attack);
+        }
+        
         if (distance < FollowDistance && currentState != EnemyState.Attack)
         {
             ChangeState(EnemyState.Chase);
@@ -68,10 +74,7 @@ public abstract class EnemyBase : MonoBehaviour
             ChangeState(EnemyState.Wandering);
         }
 
-        if (distance < AttackDistance && Time.time - lastAttackTime >= AttackRate)
-        {
-            UpdateAttack();
-        }
+
     }
 
     protected virtual void HandleState()

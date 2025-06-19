@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 1865594248079114982}
   - component: {fileID: 8121928583429109953}
   - component: {fileID: 5541651701142101524}
-  - component: {fileID: 2834366414194726859}
   - component: {fileID: 2841274751898793938}
   - component: {fileID: 9113603034510096624}
   - component: {fileID: 2135555798788360858}
   - component: {fileID: 4833866723128660775}
+  - component: {fileID: 9133260499373092963}
   m_Layer: 0
   m_Name: Mag Pistol
   m_TagString: Untagged
@@ -91,28 +91,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2834366414194726859
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324913149723137023}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -8678823145569952518, guid: 918de3f19348e324bae6e2b688e96c75, type: 3}
 --- !u!114 &2841274751898793938
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,9 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magazineType: 0
-  MaxAmmo: 16
+  MaxAmmo: 100
   currentAmmo: 0
   basegun: {fileID: 0}
+  mageject: {fileID: 0}
 --- !u!54 &9113603034510096624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -241,3 +220,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LocalPositionOffset: {x: -0.001, y: 0.0057, z: -0.0012}
   LocalRotationOffset: {x: 0, y: 90, z: 0}
+--- !u!136 &9133260499373092963
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324913149723137023}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.21
+  m_Height: 0.85158026
+  m_Direction: 2
+  m_Center: {x: 0, y: -6.7163995e-17, z: 0.031508304}
