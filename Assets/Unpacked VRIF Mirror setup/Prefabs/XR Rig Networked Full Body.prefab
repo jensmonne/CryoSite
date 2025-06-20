@@ -6090,6 +6090,8 @@ GameObject:
   - component: {fileID: 3020532185020073537}
   - component: {fileID: 3020532185020073538}
   - component: {fileID: 2226960964093152175}
+  - component: {fileID: 5835174269040403389}
+  - component: {fileID: 7272553685564827787}
   m_Layer: 0
   m_Name: RightHandPointer
   m_TagString: Untagged
@@ -6226,7 +6228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3020532185020073536}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a3c617ac42a6be146adcb780250b8eb0, type: 3}
   m_Name: 
@@ -6241,6 +6243,56 @@ MonoBehaviour:
   CursorMaxScale: 6
   LineDistanceModifier: 0.8
   lineRenderer: {fileID: 3020532185020073538}
+--- !u!114 &5835174269040403389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020532185020073536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6722d4a1d085824585e65b32181b3fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControllerSide: 1
+  AutoUpdateUITransforms: 1
+  cursor: {fileID: 2255670627275077591, guid: cda3e347c37ecf24e89b8cd380c7f9f2, type: 3}
+  HidePointerIfNoObjectsFound: 1
+  FixedPointerLength: 0.5
+  CursorScaling: 1
+  CursorMinScale: 0.6
+  CursorMaxScale: 6
+  LineDistanceModifier: 0.8
+  lineRenderer: {fileID: 3020532185020073538}
+--- !u!114 &7272553685564827787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3020532185020073536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2818b947b41ac2045839165021ecfa03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LaserLine: {fileID: 0}
+  useDynamicGraphics: 0
+  Cursor: {fileID: 2255670627275077591, guid: cda3e347c37ecf24e89b8cd380c7f9f2, type: 3}
+  CursorScaling: 1
+  CursorMinScale: 0.6
+  CursorMaxScale: 6
+  ButtonInput: 15
+  hitFound: 0
+  useThisHand: 1
+  HandSide: 0
+  otherUIPointer: {fileID: 0}
+  uiLayerMask:
+    serializedVersion: 2
+    m_Bits: 32
+  leftTriggerBinding: 9
+  rightTriggerBinding: 15
 --- !u!1 &3020532185100619224
 GameObject:
   m_ObjectHideFlags: 0
