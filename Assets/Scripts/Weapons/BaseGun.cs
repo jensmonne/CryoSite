@@ -137,6 +137,11 @@ public class BaseGun : MonoBehaviour
             {
                 health.TakeDamage(damageAmount);
             }
+            BossHealth bossHealth = hit.collider.gameObject.GetComponent<BossHealth>();
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(damageAmount);
+            }
         }
 
         UpdateDebugRay(muzzleTransform.position, endPoint);
