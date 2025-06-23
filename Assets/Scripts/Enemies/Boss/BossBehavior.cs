@@ -40,6 +40,7 @@ public class BossBehavior : MonoBehaviour
     // Attack 2 (Gun)
     [SerializeField] private Transform[] shootpoints;
     [SerializeField] private int RangeGun;
+    [SerializeField] private float FireRateGun;
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamountGun;
 
@@ -83,6 +84,7 @@ public class BossBehavior : MonoBehaviour
             }
         }
         
+        elapsed += Time.deltaTime;
         SetState();
         HandleState();
     }
@@ -130,7 +132,7 @@ public class BossBehavior : MonoBehaviour
                 break;
 
             case BossState.Recharging: 
-           
+                elapsed = 0f;
                 Invoke(nameof(ResetToIdle), 1f);
                 break;
 
@@ -200,25 +202,38 @@ public class BossBehavior : MonoBehaviour
     private IEnumerator GunAttackRoutine(float speedMultiplier)
     {
         float attackDuration = 1.5f / speedMultiplier;
+        float[] firetimer = new float[shootpoints.Length];
         for (int i = 0; i < shootpoints.Length; i++)
         {
-            Ray ray  = new Ray(shootpoints[i].position, shootpoints[i].forward);
-            if (Physics.Raycast(ray, out RaycastHit hit, RangeGun, playerlayer))
+            firetimer[i] = 0f;
+        }
+        while (elapsed < attackDuration)
+        {
+            for (int i = 0; i < shootpoints.Length; i++)
             {
-                PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
-                if (playerHealth != null)
+                Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);
+                if (Physics.Raycast(ray, out RaycastHit hit, RangeGun, playerlayer))
                 {
-                    playerHealth.TakeDamage(damageamountGun);
+                    if (firetimer[i] <= 0f)
+                    {
+                        PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
+                        if (playerHealth != null)
+                        {
+                            playerHealth.TakeDamage(damageamountGun);
+                            firetimer[i] = FireRateGun;
+                        }
+                    }
                 }
+                firetimer[i] -= Time.deltaTime;
             }
         }
+
         yield return new WaitForSeconds(attackDuration); 
     }
     //Attack3 (Lazer)
     private IEnumerator LazerShoot()
     {
         isFiringLazer = true;
-        elapsed = 0f;
 
         LineRenderer[] lasers = new LineRenderer[firePoints.Length];
         float[] tickTimers = new float[firePoints.Length];
@@ -262,7 +277,7 @@ public class BossBehavior : MonoBehaviour
             }
 
             LazerRotator.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-            elapsed += Time.deltaTime;
+            
             yield return null;
         }
         
@@ -286,8 +301,6 @@ public class BossBehavior : MonoBehaviour
         yield return StartCoroutine(DroneAttackRoutine());
     }
     
-    // attack 2
-
     
     
     

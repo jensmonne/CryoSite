@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Miranda/Prefabs/PF_boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Miranda/Prefabs/PF_boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossBehavior.cs" afterDir="false" />
@@ -129,7 +130,7 @@
       <workItem from="1750161193300" duration="2012000" />
       <workItem from="1750231213211" duration="3167000" />
       <workItem from="1750416373565" duration="6719000" />
-      <workItem from="1750661081910" duration="9945000" />
+      <workItem from="1750661081910" duration="12408000" />
     </task>
     <servers />
   </component>
