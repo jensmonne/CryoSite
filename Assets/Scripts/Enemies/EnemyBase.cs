@@ -13,18 +13,20 @@ public abstract class EnemyBase : MonoBehaviour
         Dead
     }
     
+    private float aiActivationDelay = 0.5f; // delay before AI starts thinking
+    private float spawnTime;
     public EnemyState currentState;
-    [SerializeField] int FollowDistance;
+    [SerializeField] protected int FollowDistance;
     
     public BoxCollider patrolZone;
     [SerializeField] private float waitTimeAtDestination;
     private float patrolTimer = 0f;
 
-    [SerializeField] private float AttackDistance;
+    [SerializeField] protected float AttackDistance;
     [SerializeField] protected float AttackRate;
     protected float lastAttackTime;
     
-    private Transform Player;
+    protected Transform Player;
     public NavMeshAgent agent;
 
     private float waitTimer;
@@ -35,17 +37,22 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        spawnTime = Time.time;
+    
         ChangeState(EnemyState.Idle);
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null)
-        Player = playerObj.transform;
-        
+            Player = playerObj.transform;
+
         if (patrolZone == null)
             patrolZone = FindNearestPatrolZone();
     }
 
     protected virtual void Update()
     {
+        if (Time.time - spawnTime < aiActivationDelay)
+            return; 
+
         HandleState();
         SetState();
     }
@@ -56,7 +63,7 @@ public abstract class EnemyBase : MonoBehaviour
         Debug.Log($"State changed to {newState}");
     }
 
-    protected void SetState()
+    protected virtual void SetState()
     {
         if (currentState == EnemyState.Dead) return;
         float distance = Vector3.Distance(transform.position, Player.position);
