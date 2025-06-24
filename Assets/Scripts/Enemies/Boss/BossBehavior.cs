@@ -35,6 +35,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private GameObject KamikazeDrones;
     [SerializeField] private GameObject SpawnpointDrone;
     [SerializeField] private float Timebetweenspawns;
+    [SerializeField] private int droneCount = 5;
     
     [Header("Gun")]
     // Attack 2 (Gun)
@@ -43,6 +44,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float FireRateGun;
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamountGun;
+    [SerializeField] private float rayThickness = 0.25f;
 
     [Header("Lazer")]
     // Attack 3 (Lazer)
@@ -141,6 +143,11 @@ public class BossBehavior : MonoBehaviour
                 currentStage = BossStage.Stage2;
                 Stageswap();
                 break;
+            
+            case BossState.Death:
+                Debug.Log("Boss died");
+                Death();
+                break;
         }
     }
     
@@ -194,42 +201,54 @@ public class BossBehavior : MonoBehaviour
     //Attack 1 (Drone)
     private IEnumerator DroneAttackRoutine()
     {
+        for (int i = 0; i < droneCount; i++)
+        {
+            Instantiate(KamikazeDrones, SpawnpointDrone.transform.position, SpawnpointDrone.transform.rotation);
+            
+            yield return new WaitForSeconds(Timebetweenspawns); 
+        }
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f); 
     }
     
     //Attack2 (Gun)
     private IEnumerator GunAttackRoutine(float speedMultiplier)
     {
         float attackDuration = 1.5f / speedMultiplier;
-        float[] firetimer = new float[shootpoints.Length];
-        for (int i = 0; i < shootpoints.Length; i++)
-        {
-            firetimer[i] = 0f;
-        }
-        while (elapsed < attackDuration)
+        float elapsedGun = 0f;
+        float[] fireTimer = new float[shootpoints.Length];
+
+        for (int i = 0; i < fireTimer.Length; i++)
+            fireTimer[i] = 0f;
+
+        while (elapsedGun < attackDuration)
         {
             for (int i = 0; i < shootpoints.Length; i++)
             {
-                Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);
-                if (Physics.Raycast(ray, out RaycastHit hit, RangeGun, playerlayer))
+                fireTimer[i] -= Time.deltaTime;
+
+                if (fireTimer[i] <= 0f)
                 {
-                    if (firetimer[i] <= 0f)
+                    Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);
+                    Debug.DrawRay(ray.origin, ray.direction * RangeGun, Color.red, 0.1f);
+                    if (Physics.SphereCast(ray, rayThickness, out RaycastHit hit, RangeGun, playerlayer))
                     {
                         PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
                         if (playerHealth != null)
                         {
                             playerHealth.TakeDamage(damageamountGun);
-                            firetimer[i] = FireRateGun;
+                            fireTimer[i] = FireRateGun;
                         }
                     }
                 }
-                firetimer[i] -= Time.deltaTime;
+                fireTimer[i] -= Time.deltaTime;
             }
-        }
 
-        yield return new WaitForSeconds(attackDuration); 
+            elapsedGun += Time.deltaTime;
+            yield return null;
+        }
     }
+
     //Attack3 (Lazer)
     private IEnumerator LazerShoot()
     {
@@ -297,13 +316,12 @@ public class BossBehavior : MonoBehaviour
     // attack 1 
     private IEnumerator Stage2ComboAttackRoutine()
     {
-        yield return StartCoroutine(LazerShoot());
-        yield return StartCoroutine(DroneAttackRoutine());
+        Coroutine lazerCoroutine = StartCoroutine(LazerShoot());
+        Coroutine droneCoroutine = StartCoroutine(DroneAttackRoutine());
+        
+        yield return lazerCoroutine;
+        yield return droneCoroutine;
     }
-    
-    
-    
-    
 
     private void ResetToIdle()
     {
@@ -329,12 +347,36 @@ public class BossBehavior : MonoBehaviour
         ChangeState(BossState.Idle);
     }
 
+    private void Death()
+    {
+        Destroy(gameObject, 1f);
+    }
+
     private void OnDrawGizmos()
     {
-        for (int i = 0; i < shootpoints.Length; i++)
+        int shootpointSegments = 15;  
+        if (shootpoints != null)
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawRay(shootpoints[i].position, shootpoints[i].forward * RangeGun);
+            for (int i = 0; i < shootpoints.Length; i++)
+            {
+                if (shootpoints[i] == null) continue;
+
+                Vector3 origin = shootpoints[i].position;
+                Vector3 direction = shootpoints[i].forward.normalized;
+                float length = RangeGun;
+
+                // Main ray
+                Gizmos.color = Color.yellow;
+                Gizmos.DrawRay(origin, direction * length);
+                
+                for (int j = 0; j < shootpointSegments; j++)
+                {
+                    float angle = (360f / shootpointSegments) * j;
+                    Quaternion rot = Quaternion.AngleAxis(angle, direction);
+                    Vector3 offset = rot * Vector3.up * rayThickness;
+                    Gizmos.DrawRay(origin + offset, direction * length);
+                }
+            }
         }
         for (int i = 0; i < firePoints.Length; i++)
         {

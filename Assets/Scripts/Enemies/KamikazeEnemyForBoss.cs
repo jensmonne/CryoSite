@@ -1,68 +1,79 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class kamikazeEnemy : EnemyBase
+public class KamikazeEnemyForBoss : EnemyBase
 {
     [SerializeField] private float explosionRange = 5f;
     [SerializeField] private int explosionDamage = 50;
-    private bool Exploded = false;
+    private bool exploded = false;
 
     protected override void Start()
     {
         base.Start();
-        Exploded = false;
+        exploded = false;
+    }
+
+    protected override void SetState()
+    {
+        if (currentState == EnemyState.Dead) return;
+        if (Player == null) return;
+
+        float distance = Vector3.Distance(transform.position, Player.position);
+
+        if (distance < AttackDistance)
+        {
+            ChangeState(EnemyState.Attack);
+        }
+        else if (distance < FollowDistance)
+        {
+            ChangeState(EnemyState.Chase);
+        }
+        else
+        {
+            ChangeState(EnemyState.Idle);
+        }
+    }
+
+    protected override void UpdatePatrol()
+    {
     }
 
     protected override void UpdateAttack()
     {
-        if (!Exploded)
+        if (!exploded)
         {
-            Exploded = true;
-            StartCoroutine(ExplodeAfterDelay());
+            ChangeState(EnemyState.Dead);
+            exploded = true;
         }
-    }
-    
-    private IEnumerator ExplodeAfterDelay()
-    {
-        yield return new WaitForSeconds(0.1f); // small delay gives NavMeshAgent time to settle
-        ChangeState(EnemyState.Dead);
     }
 
     protected override void UpdateDead()
     {
         base.UpdateDead();
-        
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)
         {
-
             var health = collider.GetComponent<Health>();
             if (health != null)
             {
                 health.TakeDamage(explosionDamage);
                 continue;
             }
-            
+
             var playerHealth = collider.GetComponent<PlayerHealth>();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(explosionDamage);
             }
         }
-        
     }
 
     public override void Die()
     {
-        if (!Exploded)
-        {
-            Exploded = true;
-            ChangeState(EnemyState.Dead);
-        }
     }
-    
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
