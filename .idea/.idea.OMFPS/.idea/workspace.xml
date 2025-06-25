@@ -7,13 +7,10 @@
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Modular Asset Kit Arctic Scifi Base_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Modular Asset Kit Arctic Scifi Base_1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1/NavMesh-NavMesh surface.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1/NavMesh-NavMesh surface.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/MagazineEject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/MagazineEject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +139,7 @@
       <workItem from="1750416373565" duration="6719000" />
       <workItem from="1750661081910" duration="12408000" />
       <workItem from="1750751281872" duration="9829000" />
-      <workItem from="1750835149408" duration="4961000" />
+      <workItem from="1750835149408" duration="7001000" />
     </task>
     <servers />
   </component>

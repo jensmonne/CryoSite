@@ -38,6 +38,7 @@ public class BaseGun : MonoBehaviour
     public TextMeshProUGUI AmmoText;
     
     [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private LayerMask WallsLayerMask;
     
     // Debug line for check
     [SerializeField] private GameObject hitMarkerPrefab;
@@ -142,6 +143,9 @@ public class BaseGun : MonoBehaviour
             {
                 bossHealth.TakeDamage(damageAmount);
             }
+        } else if (Physics.Raycast(ray, out RaycastHit hits, range, WallsLayerMask))
+        {
+            endPoint = hits.point;
         }
 
         UpdateDebugRay(muzzleTransform.position, endPoint);
