@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,10 +8,13 @@ public class ButtonStuff : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
-
-    public void NewGame()
+    
+    [Server]
+    public void ChangeScene()
     {
-        SceneManager.LoadScene("Level1");
+        // Change the scene for all clients
+        //  ServerChangeScene(sceneToLoad);
+        NetworkManager.singleton.ServerChangeScene("Level1");
     }
     
     public void Quit()
