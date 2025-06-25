@@ -13,8 +13,6 @@ public abstract class EnemyBase : MonoBehaviour
         Dead
     }
     
-    private float aiActivationDelay = 0.5f; // delay before AI starts thinking
-    private float spawnTime;
     public EnemyState currentState;
     [SerializeField] protected int FollowDistance;
     
@@ -37,7 +35,6 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        spawnTime = Time.time;
     
         ChangeState(EnemyState.Idle);
         GameObject playerObj = GameObject.FindWithTag("Player");
@@ -50,9 +47,6 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (Time.time - spawnTime < aiActivationDelay)
-            return; 
-
         HandleState();
         SetState();
     }
@@ -131,7 +125,7 @@ public abstract class EnemyBase : MonoBehaviour
                 {
                     agent.SetDestination(hit.position);
                     destinationSet = true;
-                    patrolTimer = 0f; // Reset stuck timer
+                    patrolTimer = 0f; 
                 }
 
                 waitTimer = 0f;
@@ -139,7 +133,6 @@ public abstract class EnemyBase : MonoBehaviour
         }
         else
         {
-            // Increment patrol stuck timer
             patrolTimer += Time.deltaTime;
 
             if (patrolTimer >= 10f)
