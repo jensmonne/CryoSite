@@ -1,7 +1,8 @@
 using System.Collections;
+using Mirror;
 using UnityEngine;
 
-public class BossBehavior : MonoBehaviour
+public class NetworkedBossBehavior : NetworkBehaviour
 {
     public enum BossState
     {
@@ -16,7 +17,7 @@ public class BossBehavior : MonoBehaviour
         Stage1, 
         Stage2 
     }
-
+    
     public BossState currentState = BossState.Idle;
     public BossStage currentStage = BossStage.Stage1;
 
@@ -69,6 +70,8 @@ public class BossBehavior : MonoBehaviour
 
     private void Update()
     {
+        if (!isServer) return;
+        
         if (bossHealth == null)
         {
             bossHealth = GetComponent<BossHealth>();
@@ -205,7 +208,8 @@ public class BossBehavior : MonoBehaviour
     {
         for (int i = 0; i < droneCount; i++)
         {
-            Instantiate(KamikazeDrones, SpawnpointDrone.transform.position, SpawnpointDrone.transform.rotation);
+            GameObject drone = Instantiate(KamikazeDrones, SpawnpointDrone.transform.position, SpawnpointDrone.transform.rotation);
+            NetworkServer.Spawn(drone);
             
             yield return new WaitForSeconds(Timebetweenspawns); 
         }
