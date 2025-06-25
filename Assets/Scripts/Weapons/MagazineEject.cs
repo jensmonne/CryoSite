@@ -43,7 +43,7 @@ public class MagazineEject : MonoBehaviour
 
         gripWasPressed = gripValue > gripThreshold;
 
-        if (gripPressedThisFrame || ejectButtonPressed) {
+        if (ejectButtonPressed) {
             mag.EjectMag();
             TryEjectMagazine();
         }
@@ -73,7 +73,7 @@ public class MagazineEject : MonoBehaviour
 
             Rigidbody rb = mag.GetComponent<Rigidbody>();
             if (rb != null) {
-                rb.AddForce(transform.forward * 1f + transform.up * 0.5f, ForceMode.Impulse);
+                rb.AddForce(transform.right * 3f + transform.up * 0.5f, ForceMode.Impulse);
             }
 
             Debug.Log("Magazine ejected.");

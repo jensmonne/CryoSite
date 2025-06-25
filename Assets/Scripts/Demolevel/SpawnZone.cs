@@ -7,7 +7,7 @@ public class SpawnZone : MonoBehaviour
     public GameObject[] enemies;
 
     [SerializeField]private int enemycount = 10;
-    public Vector3 SpawnArea = new Vector3(10, 0, 10);
+    public Vector3 SpawnArea;
 
     void Start()
     {

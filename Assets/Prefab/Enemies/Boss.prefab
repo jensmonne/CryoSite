@@ -5406,7 +5406,7 @@ MonoBehaviour:
   stageTwoThreshold: 50
   attackCooldown: 2
   playerTransform: {fileID: 0}
-  KamikazeDrones: {fileID: 8609127162638694200, guid: 9840a036c64077d458e13dcbc78ed8f3,
+  KamikazeDrones: {fileID: 5320751839200388998, guid: 638305308e7bdee45b1bb33836c62590,
     type: 3}
   SpawnpointDrone: {fileID: 3495029799260040299}
   Timebetweenspawns: 0.5
