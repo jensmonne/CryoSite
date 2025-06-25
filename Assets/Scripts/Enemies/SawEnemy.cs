@@ -4,29 +4,55 @@ using UnityEngine;
 
 public class SawEnemy : EnemyBase
 {
-    private PlayerHealth health;
-    private bool Dealdamage;
+
+    [SerializeField] private PlayerHealth health;
+    [SerializeField] private bool Dealdamage;
     [SerializeField] private int Damage;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float attackRate = 1f;
+    private float attacktimer;
+
+    protected override void Update()
+    {
+        base.Update();
+        if (Dealdamage == false)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+
+        if (health == null)
+        {
+            health = FindObjectOfType<PlayerHealth>();
+
+        }
+
+        Debug.Log(health);
+    }
     
     protected void OnTriggerEnter(Collider other)
     {
         Dealdamage = true;
-        health = other.GetComponent<PlayerHealth>();
+
     }
 
     protected void OnTriggerExit(Collider other)
     {
         Dealdamage = false;
-        health = null;
     }
 
     protected override void UpdateAttack()
     {
-      if (!Dealdamage) return;
-      health.TakeDamage(Damage);
+        if (Dealdamage == false) return;
+
+        attacktimer += Time.deltaTime;
+
+        if ( attacktimer>= attackRate)
+        {
+            health.TakeDamage(Damage);
+            animator.SetBool("IsAttacking", true);
+            attacktimer = 0f;
+        }
     }
-
-
 
     public override void Die()
     {

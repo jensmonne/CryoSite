@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemies:
-  - {fileID: 8609127162638694200, guid: 9840a036c64077d458e13dcbc78ed8f3, type: 3}
+  - {fileID: 5320751839200388998, guid: 9840a036c64077d458e13dcbc78ed8f3, type: 3}
   - {fileID: 6125349684691994301, guid: ebb6a2a52193b6b4780e203f2822e847, type: 3}
+  - {fileID: 5268241899856274486, guid: ce2ba925f531cc0489a1e92168e4c4b2, type: 3}
   enemycount: 5
   SpawnArea: {x: 20, y: 0.1, z: 20}

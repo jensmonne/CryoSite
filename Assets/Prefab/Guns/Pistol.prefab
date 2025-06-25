@@ -5443,7 +5443,8 @@ MonoBehaviour:
   MaxDropTime: 0.1
   LastSnapTime: 0
   LastUnsnapTime: 0
-  OnlyAllowNames: []
+  OnlyAllowNames:
+  - Mag Pistol
   ExcludeTransformNames: []
   SoundOnSnap: {fileID: 0}
   SoundOnUnsnap: {fileID: 0}

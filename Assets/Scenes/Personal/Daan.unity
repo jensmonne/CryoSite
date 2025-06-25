@@ -1037,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 1066992918553635083, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
         type: 3}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1066992918553635083, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
         type: 3}
@@ -1048,6 +1048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.y
       value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1124343231399843117, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1328778849893280477, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
         type: 3}
@@ -1122,7 +1127,7 @@ PrefabInstance:
     - target: {fileID: 3044703715400566358, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
         type: 3}
       propertyPath: m_Radius
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3044703715400566358, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
         type: 3}
@@ -1133,6 +1138,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IncludeLayers.m_Bits
       value: 3857
+      objectReference: {fileID: 0}
+    - target: {fileID: 5184150831130160948, guid: 9f87e785e9ac9c14bb8dc5718f4378d0,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1824,6 +1834,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3680617100270037232, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4150285269379077511, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4336840770696024797, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767804758773500405, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 4780393660647964300, guid: ce2ba925f531cc0489a1e92168e4c4b2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1878,6 +1908,66 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Saw Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5268241899856274486, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5812133142672047283, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5836980385630169525, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5929297918031479298, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6318380048365331357, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328375079244702919, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645463363593917513, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722802223288258013, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968560165252191827, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: Dealdamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968560165252191827, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: attackRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968560165252191827, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: waitTimeAtDestination
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8298473785258257321, guid: ce2ba925f531cc0489a1e92168e4c4b2,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

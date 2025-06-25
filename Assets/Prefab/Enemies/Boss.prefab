@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8425562419912687969}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShootPoint Lazer Front
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2383473811622346897}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShootPoint Lazer Back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5446909480327671779}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5211355505591077654}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DroneSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +4968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8474509477583393135}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShootPoint right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5000,7 +5000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 505635486597817852}
   - component: {fileID: 3382143136713889494}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LineRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5138,7 +5138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1838231961073870707}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ShootPoint Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5248,10 +5248,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f0fd6f0de639f174d8444ac1b268e61a, type: 2}
+    - target: {fileID: -1933523199200363918, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -1503147149071235303, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: -1104016840495352980, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       propertyPath: m_Name
       value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 3023771294661767193, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
@@ -5268,6 +5288,16 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: f0fd6f0de639f174d8444ac1b268e61a, type: 2}
+    - target: {fileID: 6139391430586834607, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7216246099518183216, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
