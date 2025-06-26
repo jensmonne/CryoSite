@@ -11,7 +11,7 @@ namespace BNG {
         public int InternalAmmoCount = 0;
 
         // Start is called before the first frame update
-        void Start() {
+        private void Start() {
             raycastWeapon = GetComponent<RaycastWeapon>();
             damage = raycastWeapon.Damage;
             raycastWeapon.onRaycastHitEvent.AddListener(DoNetworkDamage);
