@@ -913,6 +913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
+  Magcount: 0
 --- !u!4 &1405603805
 Transform:
   m_ObjectHideFlags: 0

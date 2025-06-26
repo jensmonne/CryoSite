@@ -18,11 +18,19 @@ public interface IUnlockableDoor
 
 public class LockNKey : MonoBehaviour
 {
+    [SerializeField] private MonoBehaviour doorScript;
+
+    private IUnlockableDoor door;
+
+    private void Start()
+    {
+        door = doorScript as IUnlockableDoor;
+    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Key")) return;
-
-        var door = other.GetComponent<IUnlockableDoor>();
-        if (door != null) door.Unlock();
+        
+        door?.Unlock();
     }
 }
