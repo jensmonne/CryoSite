@@ -1,6 +1,6 @@
 using Mirror;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.UI
 {
     public class QuitGameUI : NetworkBehaviour
     {
@@ -13,15 +13,9 @@ namespace BNG
         
         private void QuitGame()
         {
-            if (isClient)
-            {
-                NetworkManager.singleton.StopClient();
-            }
+            if (isClient) NetworkManager.singleton.StopClient();
 
-            if (isServer)
-            {
-                NetworkManager.singleton.StopHost();
-            }
+            if (isServer) NetworkManager.singleton.StopHost();
         }
     }
 }

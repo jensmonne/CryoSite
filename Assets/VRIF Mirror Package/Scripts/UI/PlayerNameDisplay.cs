@@ -1,16 +1,17 @@
-using UnityEngine;
 using Mirror;
 using TMPro;
+using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace BNG {
+namespace VRIF_Mirror_Package.Scripts.UI {
     public class PlayerNameDisplay : NetworkBehaviour
     {
         [SerializeField] private TMP_Text playerNameText;
 
         [SerializeField] private Canvas PlayerInfoCanvas;
 
-        [Tooltip("If true this transform will always look at the Camera in Update")]
-        public bool LookAtCamera = true;
+        [FormerlySerializedAs("LookAtCamera")] [Tooltip("If true this transform will always look at the Camera in Update")]
+        public bool lookAtCamera = true;
 
         // Cache the camera transform if we want to look at it in Update
         Transform camTransform;
@@ -41,7 +42,7 @@ namespace BNG {
         private void Update() {
             CheckNameUpdate();
 
-            if (LookAtCamera) {
+            if (lookAtCamera) {
                 UpdateCameraLook();
             }
         }

@@ -20602,6 +20602,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  maxPlayers: 0
   networkManager: {fileID: 5049453358765126927}
   playerNameInput: {fileID: 8602203048132179149}
   roomCodeInput: {fileID: 8570721353222418274}
