@@ -52,7 +52,12 @@ public class MagPickUp : MonoBehaviour
 
     private void Update()
     {
-        if (GM == null || GM.Magcount <= 0)
+        if (GM == null)
+        {
+            FindFirstObjectByType<GameManager>();
+        }
+        
+        if (GM.Magcount <= 0)
             return;
 
         if (RightHandInZone && gripRightAction.action.WasPressedThisFrame())
