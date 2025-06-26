@@ -1610,7 +1610,7 @@ PrefabInstance:
     - target: {fileID: 4313148249170617267, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4313148249170617269, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
@@ -1630,7 +1630,7 @@ PrefabInstance:
     - target: {fileID: 4313148249170664453, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4313148249170664459, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}

@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     public float RemainingTime => Mathf.Max(0f, bombDuration - bombTimer);
 
+    public float Magcount;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -61,5 +63,10 @@ public class GameManager : MonoBehaviour
     {
         // implement more shit here when bomb goes BOOM
         BigKaboomSnap.ActivateBlast();
+    }
+
+    public void AddMag()
+    {
+        Magcount += 1f;
     }
 }

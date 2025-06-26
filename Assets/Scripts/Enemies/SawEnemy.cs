@@ -14,12 +14,7 @@ public class SawEnemy : EnemyBase
 
     protected override void Update()
     {
-        base.Update();
-        if (Dealdamage == false)
-        {
-            animator.SetBool("IsAttacking", false);
-        }
-
+        
         if (health == null)
         {
             health = FindObjectOfType<PlayerHealth>();
@@ -49,7 +44,6 @@ public class SawEnemy : EnemyBase
         if ( attacktimer>= attackRate)
         {
             health.TakeDamage(Damage);
-            animator.SetBool("IsAttacking", true);
             attacktimer = 0f;
         }
     }
