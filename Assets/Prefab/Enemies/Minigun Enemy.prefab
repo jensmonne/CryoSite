@@ -5203,6 +5203,9 @@ MonoBehaviour:
   AttackDistance: 5
   AttackRate: 0.2
   agent: {fileID: 4801834505846786444}
+  Pickups:
+  - {fileID: 4397681289519072845, guid: af5527ea4e71baf44a4fca70ac02eac5, type: 3}
+  - {fileID: 7501139402697480483, guid: 2e7c711f1c64be444aeb7c2a2b7add97, type: 3}
   shootpoints:
   - {fileID: 5059599989164752027}
   - {fileID: 8642969876133895209}

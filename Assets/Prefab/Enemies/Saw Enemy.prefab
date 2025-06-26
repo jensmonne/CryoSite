@@ -265,6 +265,9 @@ MonoBehaviour:
   AttackDistance: 2
   AttackRate: 3
   agent: {fileID: 6430747678620000570}
+  Pickups:
+  - {fileID: 4397681289519072845, guid: af5527ea4e71baf44a4fca70ac02eac5, type: 3}
+  - {fileID: 7501139402697480483, guid: 2e7c711f1c64be444aeb7c2a2b7add97, type: 3}
   health: {fileID: 0}
   Dealdamage: 0
   Damage: 10

@@ -30,6 +30,8 @@ public abstract class EnemyBase : MonoBehaviour
     private float waitTimer;
     private bool destinationSet;
 
+    [SerializeField] private GameObject[] Pickups;
+
     private bool isDead = false;
 
     protected virtual void Start()
@@ -157,6 +159,12 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void UpdateDead()
     {
+        if (Pickups.Length > 0 && Random.value <= 0.2f)
+        {
+            int index = Random.Range(0, Pickups.Length);
+            Instantiate(Pickups[index], transform.position, Quaternion.identity);
+        }
+
         Destroy(gameObject, 0.5f);
         enabled = false;
     }
