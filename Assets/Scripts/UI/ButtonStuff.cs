@@ -2,13 +2,13 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ButtonStuff : NetworkBehaviour
+public class ButtonStuff : MonoBehaviour
 {
     public void MainMenu()
     {
-        if (isClient) NetworkManager.singleton.StopClient();
+        if (NetworkServer.active && NetworkClient.isConnected) NetworkManager.singleton.StopClient();
 
-        if (isServer) NetworkManager.singleton.StopHost();
+        if (NetworkClient.isConnected) NetworkManager.singleton.StopHost();
         
         SceneManager.LoadScene("MainMenu");
     }
