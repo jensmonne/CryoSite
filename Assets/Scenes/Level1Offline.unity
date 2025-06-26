@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
-  Magcount: 0
+  Magcount: 3
 --- !u!1 &1154166315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,6 +2654,11 @@ PrefabInstance:
       propertyPath: GM
       value: 
       objectReference: {fileID: 923371739}
+    - target: {fileID: 5769298735508705822, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 31551
+      objectReference: {fileID: 0}
     - target: {fileID: 6381075640337857054, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2703,6 +2708,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266359293244965801, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7403187424999465311, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
