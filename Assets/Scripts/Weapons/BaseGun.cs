@@ -2,7 +2,6 @@ using BNG;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
-using UnityEngine.UI;
 
 public enum FiringType
 {
@@ -25,7 +24,7 @@ public class BaseGun : MonoBehaviour
     [SerializeField] private AudioSource ShootSound;
     
     public PlayerInput playerInput;
-    private InputAction FireAction;
+    private InputAction fireAction;
     
     [SerializeField] private SnapZone magSnapZone;
     public Magazine magazine;
@@ -38,7 +37,7 @@ public class BaseGun : MonoBehaviour
     public TextMeshProUGUI AmmoText;
     
     [SerializeField] private LayerMask enemyLayerMask;
-    [SerializeField] private LayerMask WallsLayerMask;
+    [SerializeField] private LayerMask wallsLayerMask;
     
     // Debug line for check
     [SerializeField] private GameObject hitMarkerPrefab;
@@ -47,80 +46,62 @@ public class BaseGun : MonoBehaviour
 
     private void Awake()
     {
-        FireAction = playerInput.actions["Fire"];
+        fireAction = playerInput.actions["Fire"];
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        FireAction.Enable();
+        fireAction.Enable();
     }
     
-    void OnDisable()
+    private void OnDisable()
     {
         
-        FireAction.Disable();
+        fireAction.Disable();
     }
+    
     private void Start()
     {
         grabbable = GetComponent<Grabbable>();
-        magSnapZone.OnSnapEvent.AddListener(CheckMagzineSocket);
+        magSnapZone.OnSnapEvent.AddListener(CheckMagazineSocket);
     }
 
-    void Update()
+    private void Update()
     {
         if (grabbable && grabbable.BeingHeld)
         {
-            float triggerValue = FireAction.ReadValue<float>();
+            float triggerValue = fireAction.ReadValue<float>();
             bool isTriggerPulled = triggerValue > 0.5f;
 
             switch (firingType)
             {
                 case  FiringType.Semi:
-                    if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate)
-                    {
-                        TryFire();
-                    }
+                    if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate) TryFire();
                     break;
                 
                 case  FiringType.Automatic:
-                    if (isTriggerPulled && Time.time - lastFireTime > fireRate)
-                    {
-                        TryFire();
-                    }
+                    if (isTriggerPulled && Time.time - lastFireTime > fireRate) TryFire();
                     break;
             }
             previousTriggerPulled = isTriggerPulled;
         }
 
-        if (magazine != null)
-        {
-            AmmoText.text = magazine.currentAmmo.ToString();
-        }
-        else
-        {
-            AmmoText.text = "No Mag";
-        }
+        AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "No Mag";
     }
 
-    void TryFire()
+    private void TryFire()
     {
-        Debug.Log("Firing!");
-        if (magazine == null || magazine.currentAmmo <= 0)
-        {
-            return;
-        }
+        if (!magazine || magazine.currentAmmo <= 0) return;
 
         Fire();
         magazine.consumeAmmo();
         lastFireTime = Time.time;
         
-        if (slide != null)
-        {
-            slide.OnFired(); 
-        }
+        if (slide) slide.OnFired(); 
     }
 
-    void Fire()
+    // ReSharper disable Unity.PerformanceAnalysis
+    private void Fire()
     {
         muzzleFlash.Play();
         ShootSound.Play();
@@ -131,58 +112,40 @@ public class BaseGun : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
         {
             endPoint = hit.point;
-            Debug.Log("Hit " + hit.transform.name);
 
             Health health = hit.collider.gameObject.GetComponent<Health>();
-            if (health != null)
-            {
-                health.TakeDamage(damageAmount);
-            }
+            if (health) health.TakeDamage(damageAmount);
+            
             BossHealth bossHealth = hit.collider.gameObject.GetComponent<BossHealth>();
-            if (bossHealth != null)
-            {
-                bossHealth.TakeDamage(damageAmount);
-            }
-        } else if (Physics.Raycast(ray, out RaycastHit hits, range, WallsLayerMask))
+            if (bossHealth) bossHealth.TakeDamage(damageAmount);
+            
+        } else if (Physics.Raycast(ray, out RaycastHit hits, range, wallsLayerMask))
         {
             endPoint = hits.point;
         }
 
-        UpdateDebugRay(muzzleTransform.position, endPoint);
+        UpdateDebugRay(endPoint);
     }
 
-    void CheckMagzineSocket(Grabbable mag)
+    private void CheckMagazineSocket(Grabbable mag)
     {
-        if (magSnapZone != null)
-        {
-           magazine = mag.GetComponent<Magazine>(); 
-        }
-        else
-        {
-            magazine = null;
-        }
+        if (magSnapZone != null) magazine = mag.GetComponent<Magazine>(); 
     }
     
-    void UpdateDebugRay(Vector3 start, Vector3 end)
+    private void UpdateDebugRay(Vector3 end)
     {
-        if (hitMarkerPrefab != null)
-        {
-            if (activeHitMarker != null)
-            {
-                Destroy(activeHitMarker);
-            }
+        if (hitMarkerPrefab == null) return;
+        if (activeHitMarker != null) Destroy(activeHitMarker);
 
-            activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
-        }
+        activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
     }
     
     private void OnDrawGizmos()
     {
-        if (muzzleTransform != null)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(muzzleTransform.position, muzzleTransform.forward * range);
-        }
+        if (muzzleTransform == null) return;
+        
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(muzzleTransform.position, muzzleTransform.forward * range);
     }
     
 }

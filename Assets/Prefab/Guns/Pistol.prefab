@@ -5644,15 +5644,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7684802822369119950}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4480201707885392988}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8071827568315907231}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5416190760294436131}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8783491683292292408}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7684802822369119950}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1450336978991426380}
     - targetCorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
@@ -5697,6 +5709,9 @@ MonoBehaviour:
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
+  wallsLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   hitMarkerPrefab: {fileID: 6509661838080930647, guid: a952d84720c22834f879344ca8b0b9c8,
     type: 3}
 --- !u!65 &8601400342866990856
@@ -5835,6 +5850,85 @@ MonoBehaviour:
   m_DefaultActionMap: XR HMD
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!54 &4480201707885392988
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8071827568315907231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaf71a28c7fdcef41a0000045f04a4bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magSnapZone: {fileID: 4020752773045502729}
+  ejectHand: 0
+  gripThreshold: 0.9
+  playerInput: {fileID: 7210213311703300145}
+  mag: {fileID: 0}
+--- !u!114 &5416190760294436131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51328566bbd01dd4e8681341199abe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8783491683292292408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cce03842b078b04a8ebe721ba0d0ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  objectIndex: 0
+  grabbables: []
+  ringCanvas: {fileID: 0}
+  ringHelper: {fileID: 0}
+  LeftHandPoseIndex: 1
+  RightHandPoseIndex: 0
+  holdingStatus: 0
+  flightStatus: 0
 --- !u!114 &7684802822369119950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5907,34 +6001,7 @@ MonoBehaviour:
   UseCustomInspector: 1
   lastFlickTime: 0
   FlickForce: 1
---- !u!54 &4480201707885392988
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3167029896872874686}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &8071827568315907231
+--- !u!114 &1450336978991426380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5943,14 +6010,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3167029896872874686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaf71a28c7fdcef41a0000045f04a4bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magSnapZone: {fileID: 4020752773045502729}
-  ejectHand: 0
-  gripThreshold: 0.9
-  playerInput: {fileID: 7210213311703300145}
-  mag: {fileID: 0}
+  sceneId: 0
+  _assetId: 3574520521
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &3658520631851712397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,

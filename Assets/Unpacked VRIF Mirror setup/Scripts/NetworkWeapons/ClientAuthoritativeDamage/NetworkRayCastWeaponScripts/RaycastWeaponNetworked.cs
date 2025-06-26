@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
@@ -28,15 +26,15 @@ namespace BNG {
         }
 
         [ClientRpc(includeOwner = false)]
-        void RpcSyncCharge(bool _setCharged) {
+        private void RpcSyncCharge(bool _setCharged) {
             raycastWeapon.OnWeaponCharged(_setCharged);
         }
 
-        void OnWeaponCharged() {
+        private void OnWeaponCharged() {
             SetInternalAmmoCount((int)raycastWeapon.InternalAmmo);
         }
 
-        void OnShoot() {
+        private void OnShoot() {
 
             // Update Server with our new value
             SetInternalAmmoCount((int)raycastWeapon.InternalAmmo);
@@ -48,7 +46,7 @@ namespace BNG {
         }
 
         [Command]
-        void CmdSyncShoot() {
+        private void CmdSyncShoot() {
 
             InternalAmmoCount = (int)raycastWeapon.InternalAmmo;
 
@@ -56,7 +54,7 @@ namespace BNG {
         }
 
         [ClientRpc(includeOwner = false)]
-        void RpcSyncShoot() {
+        private void RpcSyncShoot() {
             raycastWeapon.Shoot();
             raycastWeapon.DoMuzzleFlash();
         }
@@ -87,7 +85,7 @@ namespace BNG {
             raycastWeapon.InternalAmmo = newValue;
         }
 
-        void DoNetworkDamage(RaycastHit hit) {
+        private void DoNetworkDamage(RaycastHit hit) {
             if (!isOwned)
                 return;
 
@@ -120,7 +118,7 @@ namespace BNG {
         }
 
         [Command]
-        void CmdSyncNetworkDamage(NetworkIdentity _netId) {
+        private void CmdSyncNetworkDamage(NetworkIdentity _netId) {
 
             NetworkDamageable nD = _netId.gameObject.GetComponent<NetworkDamageable>();
 
