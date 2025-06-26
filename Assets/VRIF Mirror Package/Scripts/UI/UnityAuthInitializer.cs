@@ -4,7 +4,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using UnityEngine;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.UI
 {
     public class UnityAuthInitializer : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace BNG
             await Authenticate();
         }
 
-        public static async Task Authenticate()
+        private static async Task Authenticate()
         {
             if (IsAuthenticated || isAuthenticating) return;
 

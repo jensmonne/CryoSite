@@ -1,5 +1,6 @@
 using Mirror;
 using UnityEngine;
+using VRIF_Mirror_Package.Scripts.UI;
 
 public class NetworkedPlayer : NetworkBehaviour
 {

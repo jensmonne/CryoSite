@@ -1,15 +1,16 @@
 using System;
+using System.Threading.Tasks;
+using BNG;
 using Mirror;
 using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
-using Unity.Services.Core;
 using Unity.Services.Authentication;
-using System.Threading.Tasks;
+using Unity.Services.Core;
+using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Utp;
 
-namespace BNG {
+namespace VRIF_Mirror_Package.Scripts.UI {
     public class SimpleNetworkUI : NetworkBehaviour
     {
         private ScreenFader screenFader;
@@ -32,7 +33,7 @@ namespace BNG {
         
         private void Start()
         {
-            screenFader = FindObjectOfType<ScreenFader>();
+            screenFader = FindAnyObjectByType<ScreenFader>();
         }
 
         private async Task EnsureAuthentication()

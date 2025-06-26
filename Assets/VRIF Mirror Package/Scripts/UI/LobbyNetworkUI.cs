@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utp;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.UI
 {
     public class PlayerInfo
     {

@@ -1,14 +1,14 @@
-using UnityEngine;
 using Mirror;
+using UnityEngine;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.SceneLoadingScripts
 {
     public class BNGServerChangeScene : MonoBehaviour
     {
         public UnityEngine.UI.Button changeSceneButton; // Assign this in the Inspector
         public string sceneToLoad; // Specify the name of the scene to load
 
-        void Start()
+        private void Start()
         {
             // Ensure the button is set up to call ChangeScene on click
             if (changeSceneButton != null)

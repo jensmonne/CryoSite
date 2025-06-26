@@ -1,14 +1,17 @@
+using BNG;
+using Mirror;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utp;
-using Mirror;
-using UnityEngine.SceneManagement;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.UI
 {
     public class ConnectNetworkUI : NetworkBehaviour
     {
+        [SerializeField] private int maxPlayers = 4;
+        
         [Header("Network Manager")]
         [SerializeField] private RelayNetworkManager networkManager;
         
@@ -26,7 +29,7 @@ namespace BNG
         private void Start()
         {
             if (screenFader == null)
-                screenFader = FindObjectOfType<ScreenFader>();
+                screenFader = FindAnyObjectByType<ScreenFader>();
         }
 
         /// <summary>
@@ -51,13 +54,11 @@ namespace BNG
                 return;
             }
             
-            int delay = 10;
-            
             statusText.text += "Starting Relay Host...\n";
             
             // Now you are connected to the lobby but the scene does not change
-            // TODO: Lets you choose the maxPlayers
-            networkManager.StartRelayHost(4, () =>
+            // TODO: Let you choose the maxPlayers
+            networkManager.StartRelayHost(maxPlayers, () =>
             {
                 tabSwitcher.ShowLobby();
                 lobbyNetworkUI.OnHost();
