@@ -1,8 +1,9 @@
-•	✅Betere Room Code Display
-•	Loading screen
-•	Disconnect button in de Online Scene (has some bugs)
-•	✅Grabbables Network Sync
-•	✅Player Names
-•	Player Skins (Waarschijnlijk gaat dit niet gebeuren)
-•	Laat de UI button dissapearence werken
-•	✅Fixing UI Raycasts
+✅Better Room Code Display
+Loading screen
+Disconnect button inside the Online Scene (has some bugs)
+✅Grabbables Network Sync
+✅Player Names
+Player Skins (This is probably not going to happen)
+✅Fixing UI Raycasts
+Max player setting
+Client connected player display
