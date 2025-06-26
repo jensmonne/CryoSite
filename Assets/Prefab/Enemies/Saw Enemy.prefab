@@ -124,14 +124,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -791655073891165180}
-    - targetCorrespondingSourceObject: {fileID: 1546211887802475988, guid: 86d08ed9405a79449828177a7beb7394,
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 844336832757027912}
-    - targetCorrespondingSourceObject: {fileID: 1546211887802475988, guid: 86d08ed9405a79449828177a7beb7394,
+      addedObject: {fileID: 5576903082474179487}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5896308872149463880}
+      addedObject: {fileID: 1295065207089388659}
   m_SourcePrefab: {fileID: 100100000, guid: 86d08ed9405a79449828177a7beb7394, type: 3}
 --- !u!1 &5268241899856274486 stripped
 GameObject:
@@ -5131,19 +5131,13 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &5812133142672047283 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1546211887802475988, guid: 86d08ed9405a79449828177a7beb7394,
-    type: 3}
-  m_PrefabInstance: {fileID: 5034434811424282983}
-  m_PrefabAsset: {fileID: 0}
---- !u!135 &844336832757027912
+--- !u!135 &5576903082474179487
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812133142672047283}
+  m_GameObject: {fileID: 5268241899856274486}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -5158,13 +5152,13 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.24
   m_Center: {x: 0, y: 0.07, z: 0}
---- !u!136 &5896308872149463880
+--- !u!136 &1295065207089388659
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5812133142672047283}
+  m_GameObject: {fileID: 5268241899856274486}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2

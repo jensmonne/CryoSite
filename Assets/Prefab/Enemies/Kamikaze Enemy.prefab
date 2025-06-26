@@ -461,10 +461,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  FollowDistance: 10
+  FollowDistance: 2
   patrolZone: {fileID: 0}
   waitTimeAtDestination: 1
-  AttackDistance: 5
+  AttackDistance: 0.75
   AttackRate: 0.5
   agent: {fileID: 5985351015711056986}
   Pickups:
