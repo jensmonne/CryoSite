@@ -35,8 +35,7 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
 
         private void Start()
         {
-            //if (screenFader == null)
-            screenFader = FindObjectOfType<ReworkedScreenFader>();
+            if (screenFader == null) screenFader = FindObjectOfType<ReworkedScreenFader>();
         }
 
         /// <summary>
