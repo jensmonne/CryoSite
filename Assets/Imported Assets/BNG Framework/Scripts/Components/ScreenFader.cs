@@ -1,5 +1,6 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,9 +15,9 @@ namespace BNG {
         public Color FadeColor = Color.black;
 
         [Tooltip("How fast to fade in / out")]
-        public float FadeInSpeed = 1f;
+        public float FadeInSpeed = 6f;
 
-        public float FadeOutSpeed = 1f;
+        public float FadeOutSpeed = 6f;
 
         [Tooltip("Wait X seconds before fading scene in")]
         public float SceneFadeInDelay = 1f;
@@ -99,24 +100,16 @@ namespace BNG {
         /// <summary>
         /// Fade from transparent to solid color
         /// </summary>
-        public virtual void DoFadeIn(Action onFadeComplete = null, Color? overrideColor = default)
-		{
+        public virtual void DoFadeIn() {
+
             // Stop if currently running
             if (fadeRoutine != null) {
                 StopCoroutine(fadeRoutine);
             }
 
-			if (overrideColor.HasValue) {
-        		FadeColor = overrideColor.Value;
-            }
-            
-            if (fadeImage != null) {
-                fadeImage.color = new Color(FadeColor.r, FadeColor.g, FadeColor.b, 1);
-            }
-
             // Do the fade routine
             if (canvasGroup != null) {
-                fadeRoutine = doFade(canvasGroup.alpha, 1, onFadeComplete);
+                fadeRoutine = doFade(canvasGroup.alpha, 1);
                 StartCoroutine(fadeRoutine);
             }
         }
@@ -148,16 +141,15 @@ namespace BNG {
             StartCoroutine(fadeRoutine);
         }
 
-        IEnumerator doFade(float alphaFrom, float alphaTo, Action onFadeComplete = null) {
+        IEnumerator doFade(float alphaFrom, float alphaTo) {
 
             float alpha = alphaFrom;
 
             updateImageAlpha(alpha);
 
-            while (alpha != alphaTo)
-            {
-                if (alphaFrom < alphaTo)
-                {
+            while (alpha != alphaTo) {
+
+                if (alphaFrom < alphaTo) {
                     alpha += Time.deltaTime * FadeInSpeed;
                     if (alpha > alphaTo) {
                         alpha = alphaTo;
@@ -179,7 +171,6 @@ namespace BNG {
 
             // Ensure alpha is always applied
             updateImageAlpha(alphaTo);
-            onFadeComplete?.Invoke();
         }
 
         protected virtual void updateImageAlpha(float alphaValue) {
@@ -203,4 +194,3 @@ namespace BNG {
         }
     }
 }
-
