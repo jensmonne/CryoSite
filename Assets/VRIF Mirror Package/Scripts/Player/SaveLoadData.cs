@@ -1,6 +1,7 @@
+using BNG;
 using UnityEngine;
 
-namespace BNG
+namespace VRIF_Mirror_Package.Scripts.Player
 {
     // Script to save and load data from PlayerPrefs
     public class SaveLoadData : MonoBehaviour

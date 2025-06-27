@@ -16,8 +16,6 @@ public class ButtonStuff : MonoBehaviour
     [Server]
     public void ChangeScene()
     {
-        // Change the scene for all clients
-        //  ServerChangeScene(sceneToLoad);
         NetworkManager.singleton.ServerChangeScene("Level1");
     }
 
