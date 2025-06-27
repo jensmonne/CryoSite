@@ -8506,6 +8506,7 @@ GameObject:
   - component: {fileID: 2719732729746324445}
   - component: {fileID: 2226960965265090231}
   - component: {fileID: 8527895581709936218}
+  - component: {fileID: 963878672204114607}
   m_Layer: 0
   m_Name: CenterEyeAnchor
   m_TagString: MainCamera
@@ -8630,7 +8631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac09bf699d4234448aa42c086c9f964c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FadeOnSceneLoaded: 1
+  FadeOnSceneLoaded: 0
   FadeColor: {r: 0, g: 0, b: 0, a: 0.9882353}
   FadeInSpeed: 2
   FadeOutSpeed: 1
@@ -8692,6 +8693,23 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &963878672204114607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4313148249170664461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8102f567bdeae3046b1da6c2c1cb39bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeOutOnSceneLoaded: 1
+  sceneFadeInDelay: 0.2
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeOutSpeed: 2
+  fadeInSpeed: 1
 --- !u!1 &4313148249170664463
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,8 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utp;
+using VRIF_Mirror_Package.Scripts.UI.Utils;
 
-namespace VRIF_Mirror_Package.Scripts.UI
+namespace VRIF_Mirror_Package.Scripts.UI.Network
 {
     public class ConnectNetworkUI : NetworkBehaviour
     {
@@ -19,17 +20,23 @@ namespace VRIF_Mirror_Package.Scripts.UI
         [SerializeField] private InputField playerNameInput;
         [SerializeField] private InputField roomCodeInput;
         [SerializeField] private TMP_Text statusText;
-        [SerializeField] private ScreenFader screenFader;
-        [SerializeField] private SceneLoader sceneLoader;
+        [SerializeField] private ReworkedScreenFader screenFader;
         [SerializeField] private UITabSwitcher tabSwitcher;
         [SerializeField] private LobbyNetworkUI lobbyNetworkUI;
+#if UNITY_EDITOR
+        [Tooltip("The scene that loads when you press the button.")]
+        [SerializeField] private UnityEditor.SceneAsset sceneToLoad;
+#endif
+        
+        [Tooltip("Name of the scene to load (auto-filled from sceneToLoad).")]
+        [SerializeField, HideInInspector] private string sceneName;
         
         private bool clientConnected;
 
         private void Start()
         {
-            if (screenFader == null)
-                screenFader = FindAnyObjectByType<ScreenFader>();
+            //if (screenFader == null)
+            screenFader = FindObjectOfType<ReworkedScreenFader>();
         }
 
         /// <summary>
@@ -111,9 +118,9 @@ namespace VRIF_Mirror_Package.Scripts.UI
         /// </summary>
         public void OnOfflineButton()
         {
-            // Should probably change the way im doing this cuz it works but it very janky... should probably do this with a sceneobject...
-            string sceneName = System.IO.Path.GetFileNameWithoutExtension(SceneUtility.GetScenePathByBuildIndex(2));
-            sceneLoader.LoadScene(sceneName);
+            screenFader.DoFadeIn(() => {
+                SceneManager.LoadScene(sceneName);
+            }, Color.black);
         }
 
         /// <summary>
@@ -144,5 +151,17 @@ namespace VRIF_Mirror_Package.Scripts.UI
             clientConnected = false;
             statusText.text += "Disconnected from lobby.\n";
         }
+        
+#if UNITY_EDITOR
+        protected override void OnValidate()
+        {
+            if (sceneToLoad != null)
+            {
+                string path = UnityEditor.AssetDatabase.GetAssetPath(sceneToLoad);
+                sceneName = System.IO.Path.GetFileNameWithoutExtension(path);
+            }
+            else sceneName = string.Empty;
+        }
+#endif
     }
 }

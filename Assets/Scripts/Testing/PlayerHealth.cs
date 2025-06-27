@@ -1,6 +1,6 @@
-using BNG;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VRIF_Mirror_Package.Scripts.UI.Utils;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,12 +8,12 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float playerHealth;
 
-    private ScreenFader fader;
+    private ReworkedScreenFader fader;
     
     private void Start()
     {
         playerHealth = maxPlayerHealth;
-        fader = FindObjectOfType<ScreenFader>();
+        fader = FindAnyObjectByType<ReworkedScreenFader>();
     }
 
     public void TakeDamage(float amount)

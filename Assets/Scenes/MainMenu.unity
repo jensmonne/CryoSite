@@ -1195,6 +1195,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2719732729746324445, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: FadeInSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719732729746324445, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: SceneFadeInDelay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2719732729746324445, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: FadeOnSceneLoaded
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3020532185100619224, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_IsActive
@@ -1318,6 +1333,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2014185152}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2014185154 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 963878672204114607, guid: 16611e621d86b26448ca939f4c4f1d49,
+    type: 3}
+  m_PrefabInstance: {fileID: 2014185152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014185153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8102f567bdeae3046b1da6c2c1cb39bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &15213416224774809
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20607,10 +20634,11 @@ MonoBehaviour:
   playerNameInput: {fileID: 8602203048132179149}
   roomCodeInput: {fileID: 8570721353222418274}
   statusText: {fileID: 935220866013932860}
-  screenFader: {fileID: 0}
-  sceneLoader: {fileID: 1078982950418634862}
+  screenFader: {fileID: 2014185154}
   tabSwitcher: {fileID: 2287166340648536066}
   lobbyNetworkUI: {fileID: 4967278159187128624}
+  sceneToLoad: {fileID: 102900000, guid: fed480f6d1fe3234181c7f788c099fd1, type: 3}
+  sceneName: Level1Offline
 --- !u!222 &4007619518357003527
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25466,7 +25494,7 @@ MonoBehaviour:
   headlessStartMode: 0
   editorAutoStart: 0
   sendRate: 60
-  offlineScene: Assets/Unpacked VRIF Mirror setup/Scenes/Connection.unity
+  offlineScene: 
   onlineScene: 
   offlineSceneLoadDelay: 0
   transport: {fileID: 7243766554818975710}

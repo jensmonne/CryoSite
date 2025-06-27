@@ -1,14 +1,14 @@
-using BNG;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using VRIF_Mirror_Package.Scripts.UI.Utils;
 
 public class EndingStuff : MonoBehaviour
 {
-    private ScreenFader fader;
+    private ReworkedScreenFader fader;
     
     private void Start()
     {
-        fader = FindObjectOfType<ScreenFader>();
+        fader = FindAnyObjectByType<ReworkedScreenFader>();
     }
     
     private void OnTriggerEnter(Collider other)

@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Utp;
 
-namespace VRIF_Mirror_Package.Scripts.UI
+namespace VRIF_Mirror_Package.Scripts.UI.Network
 {
     public class PlayerInfo
     {
