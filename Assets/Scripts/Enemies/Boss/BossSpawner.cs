@@ -4,7 +4,7 @@ using UnityEngine;
 public class BossSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject bossPrefab;
-    private bool BossSpawned = false;
+    private bool BossSpawned;
 
     private void Start()
     {
@@ -13,7 +13,7 @@ public class BossSpawner : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && !BossSpawned)
+        if (other.CompareTag("Player") && BossSpawned == false)
         {
             Instantiate(bossPrefab, transform.position, Quaternion.identity);
             BossSpawned = true;

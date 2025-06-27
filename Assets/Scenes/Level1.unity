@@ -2468,7 +2468,7 @@ GameObject:
   - component: {fileID: 923371738}
   - component: {fileID: 923371739}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2502,7 +2502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
-  Magcount: 0
+  Magcount: 5
 --- !u!1 &1154166315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3125,6 +3125,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 447379923170730216, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: GM
+      value: 
+      objectReference: {fileID: 923371739}
+    - target: {fileID: 5769298735508705822, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769298735508705822, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5769298735508705822, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6381075640337857054, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -5413,7 +5413,7 @@ MonoBehaviour:
   KamikazeDrones: {fileID: 5320751839200388998, guid: 638305308e7bdee45b1bb33836c62590,
     type: 3}
   SpawnpointDrone: {fileID: 3495029799260040299}
-  Timebetweenspawns: 0.5
+  Timebetweenspawns: 1
   droneCount: 5
   shootpoints:
   - {fileID: 1838231961073870707}
