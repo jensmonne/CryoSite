@@ -19,6 +19,8 @@ public interface IUnlockableDoor
 public class LockNKey : MonoBehaviour
 {
     [SerializeField] private MonoBehaviour doorScript;
+    [SerializeField] private GameObject light;
+    [SerializeField] private Material material;
 
     private IUnlockableDoor door;
 
@@ -32,5 +34,11 @@ public class LockNKey : MonoBehaviour
         if (!other.CompareTag("Key")) return;
         
         door?.Unlock();
+        
+        var renderer = light.GetComponent<Renderer>();
+        if (renderer != null)
+        {
+            renderer.material = material;
+        }
     }
 }
