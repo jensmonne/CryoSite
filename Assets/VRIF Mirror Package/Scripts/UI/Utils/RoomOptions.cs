@@ -1,9 +1,10 @@
 using Mirror;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utp;
 
-namespace VRIF_Mirror_Package.Scripts.UI
+namespace VRIF_Mirror_Package.Scripts.UI.Utils
 {
     public class RoomOptions : MonoBehaviour
     {
@@ -34,6 +35,11 @@ namespace VRIF_Mirror_Package.Scripts.UI
             if (NetworkServer.active) networkManager.StopHost();
             else if (NetworkClient.active) networkManager.StopClient();
             else Debug.LogWarning("Neither server nor client is active.");
+            ReworkedScreenFader sf = FindObjectOfType<ReworkedScreenFader>();
+            
+            sf.DoFadeIn(() => {
+                SceneManager.LoadScene("MainMenu");
+            }, Color.black);
         }
     }
 }
