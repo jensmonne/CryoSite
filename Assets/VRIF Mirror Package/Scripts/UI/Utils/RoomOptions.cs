@@ -9,12 +9,12 @@ namespace VRIF_Mirror_Package.Scripts.UI.Utils
     public class RoomOptions : MonoBehaviour
     {
         [SerializeField] private TMP_Text roomCodeText;
-        private RelayNetworkManager networkManager;
+        private RelayNetworkManager _networkManager;
     
         private void Start()
         {
-            networkManager = FindFirstObjectByType<RelayNetworkManager>();
-            if (networkManager == null)
+            _networkManager = FindFirstObjectByType<RelayNetworkManager>();
+            if (_networkManager == null)
             {
                 Debug.LogError("RelayNetworkManager not found in the scene.");
                 return;
@@ -32,8 +32,8 @@ namespace VRIF_Mirror_Package.Scripts.UI.Utils
 
         public void OnDisconnectButton()
         {
-            if (NetworkServer.active) networkManager.StopHost();
-            else if (NetworkClient.active) networkManager.StopClient();
+            if (NetworkServer.active) _networkManager.StopHost();
+            else if (NetworkClient.active) _networkManager.StopClient();
             else Debug.LogWarning("Neither server nor client is active.");
             ReworkedScreenFader sf = FindObjectOfType<ReworkedScreenFader>();
             

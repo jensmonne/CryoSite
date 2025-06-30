@@ -30,8 +30,6 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
         [Tooltip("Name of the scene to load (auto-filled from sceneToLoad).")]
         [SerializeField, HideInInspector] private string sceneName;
         
-        private bool clientConnected;
-
         private void Start()
         {
             if (screenFader == null) screenFader = FindObjectOfType<ReworkedScreenFader>();
@@ -127,7 +125,6 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
         public override void OnStartClient()
         {
             Debug.Log("Client started.");
-            clientConnected = true;
             statusText.text += "Client connected.\n";
         }
         
@@ -146,7 +143,6 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
         public override void OnStopClient()
         {
             Debug.Log("Client disconnected.");
-            clientConnected = false;
             statusText.text += "Disconnected from lobby.\n";
         }
         
