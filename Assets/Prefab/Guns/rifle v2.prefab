@@ -5489,6 +5489,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d0741cc65df231f4fb2a4d7c3659b555, type: 2}
+    - target: {fileID: -3824174062919389013, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d0741cc65df231f4fb2a4d7c3659b555, type: 2}
     - target: {fileID: -1748870114207317541, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -5618,6 +5628,9 @@ MonoBehaviour:
   damageAmount: 5
   shotgunPelletCount: 8
   shotgunSpreadAngle: 12
+  slideTransform: {fileID: 0}
+  slideForwardPosition: 0
+  slidePullThreshold: 0.15
   slide: {fileID: 8843833406375642873}
   muzzleFlash: {fileID: 5642715559944188038}
   ShootSound: {fileID: 4346663035830564574}
