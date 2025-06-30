@@ -4,6 +4,7 @@ public class SettingsStuff : MonoBehaviour
 {
     [SerializeField] private VRSettingsManager vrSettingsManager;
     [SerializeField] private UnityEngine.UI.Slider slider;
+    [SerializeField] private GameObject menu;
     
     public void TurnSetting()
     {
@@ -15,5 +16,11 @@ public class SettingsStuff : MonoBehaviour
         {
             vrSettingsManager.TurnSetting = TurnType.Smooth;
         }
+    }
+
+    public void Back()
+    {
+        menu.SetActive(true);
+        gameObject.SetActive(false);
     }
 }
