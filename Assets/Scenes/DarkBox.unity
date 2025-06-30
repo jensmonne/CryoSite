@@ -291,7 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 585202335}
-  loseScreen: {fileID: 0}
+  loseScreen: {fileID: 621400583}
 --- !u!4 &566297543
 Transform:
   m_ObjectHideFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &621400584
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1403,6 +1403,7 @@ GameObject:
   - component: {fileID: 1766451826}
   - component: {fileID: 1766451825}
   - component: {fileID: 1766451824}
+  - component: {fileID: 1766451827}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -1524,6 +1525,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766451822}
   m_CullTransparentMesh: 1
+--- !u!65 &1766451827
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766451822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1000, y: 900, z: 10}
+  m_Center: {x: 0, y: 0, z: 20}
 --- !u!1 &1933218573
 GameObject:
   m_ObjectHideFlags: 0
