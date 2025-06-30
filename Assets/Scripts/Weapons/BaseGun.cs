@@ -56,7 +56,7 @@ public class BaseGun : MonoBehaviour
     [SerializeField] private GameObject hitMarkerPrefab;
 
     private InputAction fireAction;
-    private InputAction swapFireTypeAction; // NEW
+    private InputAction swapFireTypeAction; 
     private bool previousTriggerPulled = false;
     private float lastFireTime;
     private bool isCocked = true;
@@ -95,7 +95,7 @@ public class BaseGun : MonoBehaviour
         {
             float triggerValue = fireAction.ReadValue<float>();
             bool isTriggerPulled = triggerValue > 0.5f;
-
+            Debug.Log($"Trigger Pulled: {isTriggerPulled}");
             switch (firingType)
             {
                 case FiringType.Pistol:
@@ -132,6 +132,7 @@ public class BaseGun : MonoBehaviour
             }
             
         }
+        
 
         AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "";
     }
