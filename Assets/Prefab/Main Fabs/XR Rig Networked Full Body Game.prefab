@@ -7658,10 +7658,12 @@ MonoBehaviour:
     type: 3}
   gripLeftAction: {fileID: -6131295136447488360, guid: e39f4b35a6db18348b41eb0262520e69,
     type: 3}
-  magPrefab: {fileID: 6324913149723137023, guid: 8a8e617d93efc0e409814c7ec732bbd2,
-    type: 3}
   leftSpawnPos: {fileID: 7177875324192877825}
   rightSpawnPos: {fileID: 623490200791330828}
+  pistolMagPrefab: {fileID: 6324913149723137023, guid: 8a8e617d93efc0e409814c7ec732bbd2,
+    type: 3}
+  rifleMagPrefab: {fileID: 5893129068408462031, guid: e2ee8487d9f8e944f9f20109f7425d89,
+    type: 3}
 --- !u!54 &2562012301174817716
 Rigidbody:
   m_ObjectHideFlags: 0

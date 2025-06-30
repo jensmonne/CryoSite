@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Input/VRIF Default Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Input/VRIF Default Input Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" afterDir="false" />
     </list>
@@ -30,6 +35,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/MagPickUp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Testing/HandUIStuff.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Testing/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/SlideLockController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@fe5368074162/Runtime/UniversalRenderPipeline.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -142,6 +148,7 @@
       <workItem from="1750920228900" duration="7896000" />
       <workItem from="1751020648524" duration="9655000" />
       <workItem from="1751268287631" duration="301000" />
+      <workItem from="1751272899911" duration="4708000" />
     </task>
     <servers />
   </component>

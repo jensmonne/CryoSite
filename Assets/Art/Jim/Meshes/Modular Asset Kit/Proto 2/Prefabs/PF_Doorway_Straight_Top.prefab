@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1022706976015884487}
   - component: {fileID: 3981069565283855807}
   - component: {fileID: 6159860844635357501}
+  - component: {fileID: 1110890487700319410}
+  - component: {fileID: 8231611599127432725}
   m_Layer: 0
   m_Name: PF_Doorway_Straight_Top
   m_TagString: Untagged
@@ -133,6 +135,44 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.002503405, y: 0.0033177072, z: 0.028500004}
   m_Center: {x: -0.000485595, y: -0.013341288, z: -0.010749991}
+--- !u!114 &1110890487700319410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906940258691920079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8795375d9bca5b74481fbfacfdb0c93d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAutoOpen: 1
+  leftDoor: {fileID: 1073354782625687412}
+  rightDoor: {fileID: 6213547152644031925}
+  slideDistance: 1
+  slideSpeed: 2
+--- !u!65 &8231611599127432725
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906940258691920079}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.01, y: 0.023, z: 0.026}
+  m_Center: {x: 0, y: 0, z: -0.01}
 --- !u!1 &967441225490349996
 GameObject:
   m_ObjectHideFlags: 0
