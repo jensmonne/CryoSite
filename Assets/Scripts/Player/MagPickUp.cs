@@ -9,6 +9,8 @@ public class MagPickUp : MonoBehaviour
     public Transform righthand;
     public Grabber leftGrabber;
     public Grabber rightGrabber;
+    public HandTriggerDetector leftHandDetector;
+    public HandTriggerDetector rightHandDetector;
 
     [SerializeField] private bool LeftHandInZone = false;
     [SerializeField] private bool RightHandInZone = false;
@@ -24,6 +26,8 @@ public class MagPickUp : MonoBehaviour
     
     [SerializeField] private GameObject pistolMagPrefab;
     [SerializeField] private GameObject rifleMagPrefab;
+    
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -84,52 +88,55 @@ public class MagPickUp : MonoBehaviour
             return;
         }
 
-        Transform handTransform = hand == "Right" ? righthand : lefthand;
-        Grabber grabber = hand == "Right" ? rightGrabber : leftGrabber;
         Transform spawnPoint = hand == "Right" ? rightSpawnPos : leftSpawnPos;
+        Grabber grabbingHandGrabber = hand == "Right" ? rightGrabber : leftGrabber;
+        
+        BaseGun heldGun = null;
 
-        // Default to rifleMagPrefab
-        GameObject selectedMagPrefab = rifleMagPrefab;
-
-        // Check if hand is holding a gun
-        if (grabber.HeldGrabbable != null)
+        if (rightHandDetector.currentGun != null)
         {
-            BaseGun gun = grabber.HeldGrabbable.GetComponent<BaseGun>();
-            if (gun != null)
-            {
-                if (gun.firingType == FiringType.Pistol)
-                {
-                    selectedMagPrefab = pistolMagPrefab;
-                    Debug.Log("Held gun is a pistol, spawning pistol mag.");
-                }
-                else
-                {
-                    Debug.Log("Held gun is Rifle or Shotgun, spawning rifle mag.");
-                }
-            }
-            else
-            {
-                Debug.Log("Held object is not a gun.");
-            }
+            heldGun = rightHandDetector.currentGun;
+            Debug.Log("Right hand trigger is overlapping " + heldGun.name);
+        }
+        else if (leftHandDetector.currentGun != null)
+        {
+            heldGun = leftHandDetector.currentGun;
+            Debug.Log("Left hand trigger is overlapping " + heldGun.name);
         }
         else
         {
-            Debug.Log("Nothing held in this hand, using default mag.");
+            Debug.Log("Neither hand is overlapping a gun. Defaulting to rifle mag.");
         }
 
-        GameObject magInstance = Instantiate(selectedMagPrefab, spawnPoint.position, spawnPoint.rotation);
+        // Choose mag prefab
+        GameObject selectedMagPrefab = rifleMagPrefab;
 
+        if (heldGun != null)
+        {
+            if (heldGun.firingType == FiringType.Pistol)
+            {
+                selectedMagPrefab = pistolMagPrefab;
+                Debug.Log("Held gun is a pistol, spawning pistol mag.");
+            }
+            else
+            {
+                Debug.Log("Held gun is rifle or shotgun, spawning rifle mag.");
+            }
+        }
+
+        // Spawn
+        GameObject magInstance = Instantiate(selectedMagPrefab, spawnPoint.position, spawnPoint.rotation);
         Grabbable grabbable = magInstance.GetComponent<Grabbable>();
         if (grabbable == null)
         {
-            Debug.LogError("Spawned mag prefab is missing Grabbable component!");
+            Debug.LogError("Spawned mag is missing Grabbable component!");
             Destroy(magInstance);
             return;
         }
 
         GM.Magcount--;
 
-        StartCoroutine(ForceGrab(grabbable, grabber));
+        StartCoroutine(ForceGrab(grabbable, grabbingHandGrabber));
     }
 
     private IEnumerator ForceGrab(Grabbable grabbable, Grabber grabber)

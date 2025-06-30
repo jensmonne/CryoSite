@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 804203cdc71657347bc071dfeba41047, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalPositionOffset: {x: 0, y: -0.02, z: -0.009}
+  LocalPositionOffset: {x: -0.009, y: 0.012, z: -0.009}
   LocalRotationOffset: {x: 0, y: 90, z: 90}
 --- !u!65 &9044001428583002050
 BoxCollider:
