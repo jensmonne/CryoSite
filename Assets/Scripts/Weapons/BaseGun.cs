@@ -145,12 +145,14 @@ public class BaseGun : MonoBehaviour
 
         if (firingType == FiringType.Shotgun && slideTransform != null)
         {
-            float slideZ = slideTransform.localPosition.z;
-            if (slideZ <= (slideForwardPosition - slidePullThreshold))
+            Vector3 localSlidePos = transform.InverseTransformPoint(slideTransform.position);
+            if (localSlidePos.z <= (slideForwardPosition - slidePullThreshold))
             {
                 isCocked = true;
             }
+            Debug.Log($"Local slide Z: {localSlidePos.z}");
         }
+        
 
         AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "No Mag";
     }
