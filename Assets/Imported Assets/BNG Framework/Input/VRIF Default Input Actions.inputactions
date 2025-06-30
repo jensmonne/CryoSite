@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwapFireType",
+                    "type": "Button",
+                    "id": "16d04965-bac7-40de-9e29-36a5fdb55c2b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,6 +93,17 @@
                     "processors": "",
                     "groups": ";Generic XR Controller",
                     "action": "EjectMag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5cef9339-1426-4815-a20f-d70cce6b28cc",
+                    "path": "<XRController>/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapFireType",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

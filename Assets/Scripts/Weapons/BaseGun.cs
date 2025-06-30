@@ -13,100 +13,74 @@ public enum FiringType
 public class BaseGun : MonoBehaviour
 {
     [Header("General Settings")]
-    [Tooltip("Select the firing type for this gun.")]
-    [SerializeField] private FiringType firingType = FiringType.Pistol;
-
-    [Tooltip("Point where bullets originate.")]
+    public FiringType firingType = FiringType.Pistol;
     [SerializeField] private Transform muzzleTransform;
-
-    [Tooltip("Time between shots.")]
     [SerializeField] private float fireRate = 0.2f;
-
-    [Tooltip("Maximum shooting distance.")]
     [SerializeField] private int range = 50;
-
-    [Tooltip("Damage dealt per hit.")]
     [SerializeField] private int damageAmount = 10;
 
     [Space(10)]
     [Header("Shotgun Settings")]
-    [Tooltip("Number of pellets per shotgun blast.")]
     [SerializeField] private int shotgunPelletCount = 8;
-
-    [Tooltip("Spread angle of shotgun pellets.")]
     [SerializeField] private float shotgunSpreadAngle = 5f;
-
-    [Tooltip("Slide transform (pump action).")]
     [SerializeField] private Transform slideTransform;
-
-    [Tooltip("Local Z position when slide is fully forward.")]
     [SerializeField] private float slideForwardPosition = 0f;
-
-    [Tooltip("Distance slide must be pulled back to re-cock.")]
     [SerializeField] private float slidePullThreshold = 0.15f;
 
     [Space(10)]
     [Header("Gun Components")]
-    [Tooltip("Optional slide animation reference.")]
     [SerializeField] private Slider slide;
-
-    [Tooltip("Muzzle flash particle system.")]
     [SerializeField] private ParticleSystem muzzleFlash;
-
-    [Tooltip("Audio source for gun shot.")]
     [SerializeField] private AudioSource ShootSound;
 
     [Space(10)]
     [Header("Input")]
-    [Tooltip("Player input reference.")]
     public PlayerInput playerInput;
 
     [Space(10)]
     [Header("Magazine Settings")]
-    [Tooltip("Snap zone for magazine insertion.")]
     [SerializeField] private SnapZone magSnapZone;
-
-    [Tooltip("Current magazine.")]
     public Magazine magazine;
 
     [Space(10)]
     [Header("UI")]
-    [Tooltip("Text displaying ammo count.")]
     public TextMeshProUGUI AmmoText;
 
     [Space(10)]
     [Header("Layers")]
-    [Tooltip("Layer mask for enemies.")]
     [SerializeField] private LayerMask enemyLayerMask;
-
-    [Tooltip("Layer mask for walls.")]
     [SerializeField] private LayerMask wallsLayerMask;
 
     [Space(10)]
     [Header("Debug")]
-    [Tooltip("Prefab to show hit marker.")]
     [SerializeField] private GameObject hitMarkerPrefab;
 
     private InputAction fireAction;
+    private InputAction swapFireTypeAction; // NEW
     private bool previousTriggerPulled = false;
     private float lastFireTime;
     private bool isCocked = true;
+    private bool slidePulledBack = false;
     private Grabbable grabbable;
     private GameObject activeHitMarker;
 
     private void Awake()
     {
         fireAction = playerInput.actions["Fire"];
+        swapFireTypeAction = playerInput.actions["SwapFireType"];
+        swapFireTypeAction.performed += OnSwapFireType;
     }
 
     private void OnEnable()
     {
         fireAction.Enable();
+        swapFireTypeAction.Enable();
     }
 
     private void OnDisable()
     {
         fireAction.Disable();
+        swapFireTypeAction.Disable();
     }
 
     private void Start()
@@ -146,15 +120,20 @@ public class BaseGun : MonoBehaviour
         if (firingType == FiringType.Shotgun && slideTransform != null)
         {
             Vector3 localSlidePos = transform.InverseTransformPoint(slideTransform.position);
-            if (localSlidePos.z <= (slideForwardPosition - slidePullThreshold))
+
+            if (!slidePulledBack && localSlidePos.z <= (slideForwardPosition - slidePullThreshold))
+            {
+                slidePulledBack = true;
+            }
+            else if (slidePulledBack && localSlidePos.z >= (slideForwardPosition - (slidePullThreshold * 0.5f)))
             {
                 isCocked = true;
+                slidePulledBack = false;
             }
-            Debug.Log($"Local slide Z: {localSlidePos.z}");
+            
         }
-        
 
-        AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "No Mag";
+        AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "";
     }
 
     private void TryFire()
@@ -177,8 +156,6 @@ public class BaseGun : MonoBehaviour
         magazine.consumeAmmo();
         lastFireTime = Time.time;
         isCocked = false;
-
-        if (slide) slide.OnFired();
     }
 
     private void Fire()
@@ -254,6 +231,23 @@ public class BaseGun : MonoBehaviour
         if (activeHitMarker != null) Destroy(activeHitMarker);
 
         activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
+    }
+
+    private void OnSwapFireType(InputAction.CallbackContext context)
+    {
+        if (firingType == FiringType.Pistol)
+            return;
+
+        if (firingType == FiringType.Rifle)
+        {
+            firingType = FiringType.Shotgun;
+            Debug.Log("Swapped to Shotgun.");
+        }
+        else if (firingType == FiringType.Shotgun)
+        {
+            firingType = FiringType.Rifle;
+            Debug.Log("Swapped to Rifle.");
+        }
     }
 
     private void OnDrawGizmos()

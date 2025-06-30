@@ -17,10 +17,13 @@ public class MagPickUp : MonoBehaviour
 
     public InputActionReference gripRightAction;
     public InputActionReference gripLeftAction;
-
-    [SerializeField] private GameObject magPrefab;
+    
+    
     [SerializeField] private Transform leftSpawnPos;
     [SerializeField] private Transform rightSpawnPos;
+    
+    [SerializeField] private GameObject pistolMagPrefab;
+    [SerializeField] private GameObject rifleMagPrefab;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -85,7 +88,36 @@ public class MagPickUp : MonoBehaviour
         Grabber grabber = hand == "Right" ? rightGrabber : leftGrabber;
         Transform spawnPoint = hand == "Right" ? rightSpawnPos : leftSpawnPos;
 
-        GameObject magInstance = Instantiate(magPrefab, spawnPoint.position, spawnPoint.rotation);
+        // Default to rifleMagPrefab
+        GameObject selectedMagPrefab = rifleMagPrefab;
+
+        // Check if hand is holding a gun
+        if (grabber.HeldGrabbable != null)
+        {
+            BaseGun gun = grabber.HeldGrabbable.GetComponent<BaseGun>();
+            if (gun != null)
+            {
+                if (gun.firingType == FiringType.Pistol)
+                {
+                    selectedMagPrefab = pistolMagPrefab;
+                    Debug.Log("Held gun is a pistol, spawning pistol mag.");
+                }
+                else
+                {
+                    Debug.Log("Held gun is Rifle or Shotgun, spawning rifle mag.");
+                }
+            }
+            else
+            {
+                Debug.Log("Held object is not a gun.");
+            }
+        }
+        else
+        {
+            Debug.Log("Nothing held in this hand, using default mag.");
+        }
+
+        GameObject magInstance = Instantiate(selectedMagPrefab, spawnPoint.position, spawnPoint.rotation);
 
         Grabbable grabbable = magInstance.GetComponent<Grabbable>();
         if (grabbable == null)
