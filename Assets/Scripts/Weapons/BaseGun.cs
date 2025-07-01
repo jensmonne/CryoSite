@@ -36,7 +36,9 @@ public class BaseGun : MonoBehaviour
 
     [Space(10)]
     [Header("Input")]
-    public PlayerInput playerInput;
+    private PlayerInput playerInput;
+    private InputAction fireAction;
+    private InputAction swapFireTypeAction;
 
     [Space(10)]
     [Header("Magazine Settings")]
@@ -56,8 +58,6 @@ public class BaseGun : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private GameObject hitMarkerPrefab;
 
-    private InputAction fireAction;
-    private InputAction swapFireTypeAction; 
     private bool previousTriggerPulled = false;
     private float lastFireTime;
     private bool isCocked = true;
@@ -65,44 +65,58 @@ public class BaseGun : MonoBehaviour
     private Grabbable grabbable;
     private GameObject activeHitMarker;
 
-    private void Awake()
+    private void Start()
     {
+        // Find PlayerInput once (from root or scene)
+        playerInput = GetComponentInParent<PlayerInput>();
+
+        if (playerInput == null)
+        {
+            playerInput = FindObjectOfType<PlayerInput>();
+        }
+
+        if (playerInput == null)
+        {
+            Debug.LogError("PlayerInput not found on BaseGun or parents or scene!");
+            return;
+        }
+
         fireAction = playerInput.actions["Fire"];
         if (fireAction == null)
-            Debug.LogError("Fire action is null! Check your Input Actions asset and that the 'Fire' action exists.");
+            Debug.LogError("Fire action not found in PlayerInput!");
 
         swapFireTypeAction = playerInput.actions["SwapFireType"];
         if (swapFireTypeAction == null)
-            Debug.LogError("SwapFireType action is null! Check your Input Actions asset.");
+            Debug.LogError("SwapFireType action not found in PlayerInput!");
 
         swapFireTypeAction.performed += OnSwapFireType;
-    }
 
-    private void OnEnable()
-    {
         fireAction.Enable();
         swapFireTypeAction.Enable();
+
+        grabbable = GetComponent<Grabbable>();
+        if (magSnapZone != null)
+            magSnapZone.OnSnapEvent.AddListener(CheckMagazineSocket);
     }
 
     private void OnDisable()
     {
-        fireAction.Disable();
-        swapFireTypeAction.Disable();
-    }
+        if (fireAction != null)
+            fireAction.Disable();
 
-    private void Start()
-    {
-        grabbable = GetComponent<Grabbable>();
-        magSnapZone.OnSnapEvent.AddListener(CheckMagazineSocket);
+        if (swapFireTypeAction != null)
+            swapFireTypeAction.Disable();
     }
 
     private void Update()
     {
+        if (playerInput == null) return;
+
         if (grabbable && grabbable.BeingHeld)
         {
             float triggerValue = fireAction.ReadValue<float>();
             bool isTriggerPulled = triggerValue > 0.5f;
-            Debug.Log($"Trigger Pulled: {isTriggerPulled}");
+
             switch (firingType)
             {
                 case FiringType.Pistol:
@@ -137,9 +151,7 @@ public class BaseGun : MonoBehaviour
                 isCocked = true;
                 slidePulledBack = false;
             }
-            
         }
-        
 
         AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "";
     }
@@ -148,7 +160,6 @@ public class BaseGun : MonoBehaviour
     {
         if (!magazine || magazine.currentAmmo <= 0) return;
 
-        Debug.Log("Trying Fire");
         Fire();
         magazine.consumeAmmo();
         lastFireTime = Time.time;
@@ -169,10 +180,8 @@ public class BaseGun : MonoBehaviour
 
     private void Fire()
     {
-        Debug.Log("Fire() called");
-
-        muzzleFlash.Play();
-        ShootSound.Play();
+        muzzleFlash?.Play();
+        ShootSound?.Play();
 
         Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
         Vector3 endPoint = muzzleTransform.position + muzzleTransform.forward * range;
@@ -180,15 +189,15 @@ public class BaseGun : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
         {
             endPoint = hit.point;
-            Health health = hit.collider.GetComponent<Health>();
+            var health = hit.collider.GetComponent<Health>();
             if (health) health.TakeDamage(damageAmount);
 
-            BossHealth bossHealth = hit.collider.GetComponent<BossHealth>();
+            var bossHealth = hit.collider.GetComponent<BossHealth>();
             if (bossHealth) bossHealth.TakeDamage(damageAmount);
         }
-        else if (Physics.Raycast(ray, out RaycastHit hits, range, wallsLayerMask))
+        else if (Physics.Raycast(ray, out RaycastHit wallHit, range, wallsLayerMask))
         {
-            endPoint = hits.point;
+            endPoint = wallHit.point;
         }
 
         UpdateDebugRay(endPoint);
@@ -196,8 +205,8 @@ public class BaseGun : MonoBehaviour
 
     private void FireShotgun()
     {
-        muzzleFlash.Play();
-        ShotGunSound.Play();
+        muzzleFlash?.Play();
+        ShotGunSound?.Play();
 
         for (int i = 0; i < shotgunPelletCount; i++)
         {
@@ -208,15 +217,15 @@ public class BaseGun : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
             {
                 endPoint = hit.point;
-                Health health = hit.collider.GetComponent<Health>();
+                var health = hit.collider.GetComponent<Health>();
                 if (health) health.TakeDamage(damageAmount);
 
-                BossHealth bossHealth = hit.collider.GetComponent<BossHealth>();
+                var bossHealth = hit.collider.GetComponent<BossHealth>();
                 if (bossHealth) bossHealth.TakeDamage(damageAmount);
             }
-            else if (Physics.Raycast(ray, out RaycastHit hits, range, wallsLayerMask))
+            else if (Physics.Raycast(ray, out RaycastHit wallHit, range, wallsLayerMask))
             {
-                endPoint = hits.point;
+                endPoint = wallHit.point;
             }
 
             UpdateDebugRay(endPoint);
@@ -239,7 +248,9 @@ public class BaseGun : MonoBehaviour
     private void UpdateDebugRay(Vector3 end)
     {
         if (hitMarkerPrefab == null) return;
-        if (activeHitMarker != null) Destroy(activeHitMarker);
+
+        if (activeHitMarker != null)
+            Destroy(activeHitMarker);
 
         activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
     }
@@ -261,6 +272,12 @@ public class BaseGun : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (swapFireTypeAction != null)
+            swapFireTypeAction.performed -= OnSwapFireType;
+    }
+
     private void OnDrawGizmos()
     {
         if (muzzleTransform == null) return;
@@ -279,3 +296,4 @@ public class BaseGun : MonoBehaviour
         }
     }
 }
+

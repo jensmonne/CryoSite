@@ -9,6 +9,7 @@ TagManager:
   - PlayerHand
   - Bomb
   - Key
+  - PlayerInput
   layers:
   - Default
   - TransparentFX

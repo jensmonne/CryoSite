@@ -196,7 +196,8 @@ MonoBehaviour:
   MaxDropTime: 0.1
   LastSnapTime: 0
   LastUnsnapTime: 0
-  OnlyAllowNames: []
+  OnlyAllowNames:
+  - Mag Rifle_Shotgun
   ExcludeTransformNames: []
   SoundOnSnap: {fileID: 0}
   SoundOnUnsnap: {fileID: 0}
@@ -5693,10 +5694,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8088394790711244447}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3733037115323751456}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
         type: 3}
@@ -5714,6 +5711,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -6635646424414963679}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6281209151414049445}
     - targetCorrespondingSourceObject: {fileID: -7642001507996924950, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
         type: 3}
       insertIndex: -1
@@ -6019,7 +6020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bebf8604a3011b4cbb1a8e34dd173ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firingType: 2
+  firingType: 1
   muzzleTransform: {fileID: 3259909902899943015}
   fireRate: 0.2
   range: 50
@@ -6033,7 +6034,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5642715559944188038}
   ShootSound: {fileID: 4346663035830564574}
   ShotGunSound: {fileID: 5538657319790831294}
-  playerInput: {fileID: 8088394790711244447}
   magSnapZone: {fileID: 5741590953474070741}
   magazine: {fileID: 0}
   AmmoText: {fileID: 4780251720553559364}
@@ -6060,39 +6060,7 @@ MonoBehaviour:
   magSnapZone: {fileID: 5741590953474070741}
   ejectHand: 0
   gripThreshold: 0.9
-  playerInput: {fileID: 8088394790711244447}
   mag: {fileID: 0}
---- !u!114 &8088394790711244447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809348611581969128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e39f4b35a6db18348b41eb0262520e69,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: XR HMD
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!65 &3733037115323751456
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6254,6 +6222,27 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!65 &6281209151414049445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1809348611581969128}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.02, y: 1.3713622, z: 4.24}
+  m_Center: {x: 0, y: -0.4426173, z: 8.280528}
 --- !u!4 &1922617066846634730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8109871180430508717, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,

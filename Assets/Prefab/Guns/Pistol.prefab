@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086710572670048097}
   - component: {fileID: 7241859856952724120}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MagUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4943758692620462311}
   - component: {fileID: 7085449115061178234}
   - component: {fileID: 1423196255793235131}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ammo Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 9008838627230140417}
   - component: {fileID: 8579701019809223189}
   - component: {fileID: 2271860814841976942}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,7 +292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7902679765715995752}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3213290372248277598}
   - component: {fileID: 4564371720697644932}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: GunSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f2df9c3af26f72c4b92cd71332b0fa34, type: 3}
   m_Resource: {fileID: 8300000, guid: f2df9c3af26f72c4b92cd71332b0fa34, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -453,7 +453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5679229081343717953}
   - component: {fileID: 8639470810449317662}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Grabpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -519,7 +519,7 @@ GameObject:
   - component: {fileID: 5031693072069095893}
   - component: {fileID: 1027440643177070056}
   - component: {fileID: 2359634387658453346}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ammo logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 7937591648756713203}
   - component: {fileID: 7073779100775633277}
   - component: {fileID: 5245009418715374706}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5612,7 +5612,7 @@ GameObject:
   - component: {fileID: 4020752773045502729}
   - component: {fileID: 8484987128590718504}
   - component: {fileID: 9194474699879721410}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Snapzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5727,17 +5727,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 58.51395
+      value: 58.74099
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.43
+      value: 1.471
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 52.388504
+      value: 52.63404
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5779,10 +5779,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_Name
       value: Slider
+      objectReference: {fileID: 0}
+    - target: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -7146521406498821007, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5808,6 +5818,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Pistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4306643203051859313, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5902,10 +5917,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7210213311703300145}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4480201707885392988}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5927,6 +5938,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1450336978991426380}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2812454637030879436}
     - targetCorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
@@ -5970,7 +5985,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 7073779100775633277}
   ShootSound: {fileID: 4564371720697644932}
   ShotGunSound: {fileID: 1604569726970736797}
-  playerInput: {fileID: 7210213311703300145}
   magSnapZone: {fileID: 4020752773045502729}
   magazine: {fileID: 0}
   AmmoText: {fileID: 1423196255793235131}
@@ -6087,37 +6101,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.07, y: 0.04, z: 0.07}
   m_Center: {x: 0.16, y: -0.12, z: -0.04}
---- !u!114 &7210213311703300145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3167029896872874686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: e39f4b35a6db18348b41eb0262520e69,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: XR HMD
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!54 &4480201707885392988
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6160,7 +6143,6 @@ MonoBehaviour:
   magSnapZone: {fileID: 4020752773045502729}
   ejectHand: 0
   gripThreshold: 0.9
-  playerInput: {fileID: 7210213311703300145}
   mag: {fileID: 0}
 --- !u!114 &5416190760294436131
 MonoBehaviour:
@@ -6286,6 +6268,27 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!65 &2812454637030879436
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.4, y: 0.2, z: 1}
+  m_Center: {x: 0.17, y: -0.06, z: -0.06}
 --- !u!1 &3658520631851712397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
