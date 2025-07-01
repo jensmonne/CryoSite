@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 52fcefd712182d743a781fde12426775, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -368,7 +368,7 @@ PrefabInstance:
         type: 3}
       propertyPath: doorScript
       value: 
-      objectReference: {fileID: 407874617}
+      objectReference: {fileID: 0}
     - target: {fileID: 7795514994338519774, guid: 5f1e37c54e8a95c418f5c56b7511c1fc,
         type: 3}
       propertyPath: m_Name
@@ -645,18 +645,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313900846}
   m_CullTransparentMesh: 1
---- !u!114 &407874617 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 584061345962840798, guid: 5f1e37c54e8a95c418f5c56b7511c1fc,
-    type: 3}
-  m_PrefabInstance: {fileID: 214751599}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8795375d9bca5b74481fbfacfdb0c93d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &488419118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2502,6 +2490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
+  wristBandText: {fileID: 0}
   Magcount: 5
 --- !u!1 &1154166315
 GameObject:
