@@ -10,22 +10,23 @@ public class BigKaboomSnap : MonoBehaviour
 
     private float blastTimer = 0f;
     private static bool blastem;
+    private bool done = false;
 
     private void FixedUpdate()
     {
-        if (blastem)
-        {
-            blastTimer += Time.fixedDeltaTime;
-            float t = Mathf.Clamp01(blastTimer / blastDuration);
+        if (!blastem) return;
+        if (!done) sphereCollider.gameObject.SetActive(true); done = true;
+        
+        blastTimer += Time.fixedDeltaTime;
+        float t = Mathf.Clamp01(blastTimer / blastDuration);
             
-            float eased = 1f - Mathf.Pow(1f - t, 3f);
-            float scaleFactor = transform.lossyScale.x;
-            sphereCollider.radius = (eased * maxRadius) / scaleFactor;
+        float eased = 1f - Mathf.Pow(1f - t, 3f);
+        float scaleFactor = transform.lossyScale.x;
+        sphereCollider.radius = (eased * maxRadius) / scaleFactor;
 
-            if (t >= 1f)
-            {
-                blastem = false;
-            }
+        if (t >= 1f)
+        {
+            blastem = false;
         }
     }
     
