@@ -32,6 +32,7 @@ public class BaseGun : MonoBehaviour
     [SerializeField] private Slider slide;
     [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource ShootSound;
+    [SerializeField] private AudioSource ShotGunSound;
 
     [Space(10)]
     [Header("Input")]
@@ -67,7 +68,13 @@ public class BaseGun : MonoBehaviour
     private void Awake()
     {
         fireAction = playerInput.actions["Fire"];
+        if (fireAction == null)
+            Debug.LogError("Fire action is null! Check your Input Actions asset and that the 'Fire' action exists.");
+
         swapFireTypeAction = playerInput.actions["SwapFireType"];
+        if (swapFireTypeAction == null)
+            Debug.LogError("SwapFireType action is null! Check your Input Actions asset.");
+
         swapFireTypeAction.performed += OnSwapFireType;
     }
 
@@ -141,6 +148,7 @@ public class BaseGun : MonoBehaviour
     {
         if (!magazine || magazine.currentAmmo <= 0) return;
 
+        Debug.Log("Trying Fire");
         Fire();
         magazine.consumeAmmo();
         lastFireTime = Time.time;
@@ -161,6 +169,8 @@ public class BaseGun : MonoBehaviour
 
     private void Fire()
     {
+        Debug.Log("Fire() called");
+
         muzzleFlash.Play();
         ShootSound.Play();
 
@@ -187,7 +197,7 @@ public class BaseGun : MonoBehaviour
     private void FireShotgun()
     {
         muzzleFlash.Play();
-        ShootSound.Play();
+        ShotGunSound.Play();
 
         for (int i = 0; i < shotgunPelletCount; i++)
         {

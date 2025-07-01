@@ -34,12 +34,10 @@ public class MagPickUp : MonoBehaviour
         if (other.name.Contains("Left"))
         {
             LeftHandInZone = true;
-            Debug.Log("Left hand entered mag pickup zone.");
         }
         if (other.name.Contains("Right"))
         {
             RightHandInZone = true;
-            Debug.Log("Right hand entered mag pickup zone.");
         }
     }
 
@@ -48,12 +46,10 @@ public class MagPickUp : MonoBehaviour
         if (other.name.Contains("Left"))
         {
             LeftHandInZone = false;
-            Debug.Log("Left hand exited mag pickup zone.");
         }
         if (other.name.Contains("Right"))
         {
             RightHandInZone = false;
-            Debug.Log("Right hand exited mag pickup zone.");
         }
     }
 
@@ -69,13 +65,11 @@ public class MagPickUp : MonoBehaviour
 
         if (RightHandInZone && gripRightAction.action.WasPressedThisFrame())
         {
-            Debug.Log("Right hand grab pressed, spawning mag.");
             SpawnAndGrabMagazine("Right");
         }
 
         if (LeftHandInZone && gripLeftAction.action.WasPressedThisFrame())
         {
-            Debug.Log("Left hand grab pressed, spawning mag.");
             SpawnAndGrabMagazine("Left");
         }
     }
@@ -84,7 +78,6 @@ public class MagPickUp : MonoBehaviour
     {
         if (GM.Magcount <= 0)
         {
-            Debug.Log("No mags left to spawn.");
             return;
         }
 
@@ -96,16 +89,10 @@ public class MagPickUp : MonoBehaviour
         if (rightHandDetector.currentGun != null)
         {
             heldGun = rightHandDetector.currentGun;
-            Debug.Log("Right hand trigger is overlapping " + heldGun.name);
         }
         else if (leftHandDetector.currentGun != null)
         {
             heldGun = leftHandDetector.currentGun;
-            Debug.Log("Left hand trigger is overlapping " + heldGun.name);
-        }
-        else
-        {
-            Debug.Log("Neither hand is overlapping a gun. Defaulting to rifle mag.");
         }
 
         // Choose mag prefab
@@ -116,11 +103,6 @@ public class MagPickUp : MonoBehaviour
             if (heldGun.firingType == FiringType.Pistol)
             {
                 selectedMagPrefab = pistolMagPrefab;
-                Debug.Log("Held gun is a pistol, spawning pistol mag.");
-            }
-            else
-            {
-                Debug.Log("Held gun is rifle or shotgun, spawning rifle mag.");
             }
         }
 
@@ -129,7 +111,6 @@ public class MagPickUp : MonoBehaviour
         Grabbable grabbable = magInstance.GetComponent<Grabbable>();
         if (grabbable == null)
         {
-            Debug.LogError("Spawned mag is missing Grabbable component!");
             Destroy(magInstance);
             return;
         }

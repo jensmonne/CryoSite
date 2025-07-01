@@ -20,8 +20,6 @@ public class SawEnemy : EnemyBase
             health = FindObjectOfType<PlayerHealth>();
 
         }
-
-        Debug.Log(health);
     }
     
     protected void OnTriggerEnter(Collider other)

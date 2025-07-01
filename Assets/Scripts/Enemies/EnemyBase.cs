@@ -56,7 +56,6 @@ public abstract class EnemyBase : MonoBehaviour
     public void ChangeState(EnemyState newState)
     {
         currentState = newState;
-        Debug.Log($"State changed to {newState}");
     }
 
     protected virtual void SetState()
@@ -142,7 +141,6 @@ public abstract class EnemyBase : MonoBehaviour
                 agent.ResetPath();
                 destinationSet = false;
                 patrolTimer = 0f;
-                Debug.Log($"{gameObject.name} reset patrol path after 10s.");
             }
         }
     }
