@@ -125,8 +125,8 @@ MonoBehaviour:
   RemoteGrabMechanic: 0
   RemoteGrabDistance: 2
   CanDropMidGrab: 0
-  ThrowForceMultiplier: 1
-  ThrowForceMultiplierAngular: 1
+  ThrowForceMultiplier: 2
+  ThrowForceMultiplierAngular: 1.5
   BreakDistance: 0
   HideHandGraphics: 0
   ParentToHands: 0
@@ -150,8 +150,8 @@ MonoBehaviour:
   SecondHandLookSpeed: 40
   SecondaryGrabbable: {fileID: 0}
   OtherGrabbableMustBeGrabbed: {fileID: 0}
-  CollisionSpring: 3000
-  CollisionSlerp: 500
+  CollisionSpring: 5000
+  CollisionSlerp: 750
   CollisionLinearMotionX: 2
   CollisionLinearMotionY: 2
   CollisionLinearMotionZ: 2
@@ -159,8 +159,8 @@ MonoBehaviour:
   CollisionAngularMotionY: 2
   CollisionAngularMotionZ: 2
   ApplyCorrectiveForce: 1
-  MoveVelocityForce: 3000
-  MoveAngularVelocityForce: 90
+  MoveVelocityForce: 1000
+  MoveAngularVelocityForce: 30
   LastGrabTime: 0
   LastRemoteGrabTime: 0
   LastDropTime: 0
@@ -227,9 +227,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775164352085085075}
   serializedVersion: 4
-  m_Mass: 100
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 10
+  m_Drag: 0.7
+  m_AngularDrag: 0.08
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -245,7 +245,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!1 &3365984787541062611
 GameObject:
   m_ObjectHideFlags: 0
