@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -21,6 +22,8 @@ public class GameManager : MonoBehaviour
     public static bool IsBombActive { get; set; }
     
     [SerializeField] private float bombDuration = 10f;
+
+    [SerializeField] private TMP_Text wristBandText;
     
     public static float bombTimer { get; private set; }
 
@@ -49,14 +52,15 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (IsBombActive)
-        {
-            bombTimer += Time.deltaTime * 6;
-
-            if (bombTimer < bombDuration) return;
+        if (!IsBombActive) return;
+        
+        bombTimer += Time.deltaTime * 6;
             
-            BigKaboom();
-        }
+        if (wristBandText) wristBandText.text = RemainingTime.ToString("F2");
+
+        if (bombTimer < bombDuration) return;
+            
+        BigKaboom();
     }
 
     private void BigKaboom()
