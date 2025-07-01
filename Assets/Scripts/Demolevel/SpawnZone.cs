@@ -1,4 +1,4 @@
-using System;
+using Mirror;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -6,10 +6,11 @@ public class SpawnZone : MonoBehaviour
 { 
     public GameObject[] enemies;
 
-    [SerializeField]private int enemycount = 10;
-    public Vector3 SpawnArea;
+    [SerializeField] private bool isNetworked = false;
+    [SerializeField] private int enemycount = 10;
+    public Vector3 spawnArea;
 
-    void Start()
+    private void Start()
     {
         SpawnEnemies();
     }
@@ -19,18 +20,22 @@ public class SpawnZone : MonoBehaviour
         for (int i = 0; i < enemycount; i++)
         {
             Vector3 spawnpos = transform.position + new Vector3(
-                Random.Range(-SpawnArea.x, SpawnArea.x),
-                Random.Range(-SpawnArea.y, SpawnArea.y),
-                Random.Range(-SpawnArea.z, SpawnArea.z)
+                Random.Range(-spawnArea.x, spawnArea.x),
+                Random.Range(-spawnArea.y, spawnArea.y),
+                Random.Range(-spawnArea.z, spawnArea.z)
             );
             GameObject selectedEnemy = enemies[Random.Range(0, enemies.Length)];
-            GameObject enemy = Instantiate(selectedEnemy,spawnpos,Quaternion.identity);
+            if (isNetworked)
+            {
+                NetworkServer.Spawn(Instantiate(selectedEnemy, spawnpos, Quaternion.identity));
+            }
+            else Instantiate(selectedEnemy, spawnpos, Quaternion.identity);
         }
     }
     
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(transform.position, SpawnArea);
+        Gizmos.DrawWireCube(transform.position, spawnArea);
     }
 }
