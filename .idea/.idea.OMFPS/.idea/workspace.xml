@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="" />
+    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Input/VRIF Default Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Input/VRIF Default Input Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Scenes/Personal/Daan.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,7 +149,7 @@
       <workItem from="1751020648524" duration="9655000" />
       <workItem from="1751268287631" duration="301000" />
       <workItem from="1751272899911" duration="7557000" />
-      <workItem from="1751359210037" duration="6542000" />
+      <workItem from="1751359210037" duration="7179000" />
     </task>
     <servers />
   </component>

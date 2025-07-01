@@ -88,7 +88,7 @@
                 {
                     "name": "",
                     "id": "5cef9339-1426-4815-a20f-d70cce6b28cc",
-                    "path": "*/{SecondaryButton}",
+                    "path": "*/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

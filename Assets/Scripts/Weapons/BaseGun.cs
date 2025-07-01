@@ -263,11 +263,13 @@ public class BaseGun : MonoBehaviour
         if (firingType == FiringType.Rifle)
         {
             firingType = FiringType.Shotgun;
+            damageAmount = 35;
             Debug.Log("Swapped to Shotgun.");
         }
         else if (firingType == FiringType.Shotgun)
         {
             firingType = FiringType.Rifle;
+            damageAmount = 10;
             Debug.Log("Swapped to Rifle.");
         }
     }

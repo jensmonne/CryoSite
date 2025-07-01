@@ -420,7 +420,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 12
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1450336978991426380, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
+    - {fileID: 8783491683292292408, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
+    - {fileID: 5416190760294436131, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1437,6 +1440,16 @@ PrefabInstance:
         type: 3}
       propertyPath: firingType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077810701388239427, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+        type: 3}
+      propertyPath: damageAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5077810701388239427, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+        type: 3}
+      propertyPath: shotgunSpreadAngle
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5741590953474070741, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
         type: 3}
