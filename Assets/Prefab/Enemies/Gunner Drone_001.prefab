@@ -378,11 +378,56 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: -6584529220984605152, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: -2749970322201994316, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: -2130894740178077560, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
     - target: {fileID: 919132149155446097, guid: 355fe77db3fbb4043879381451d016b1,
         type: 3}
       propertyPath: m_Name
       value: Gunner Drone_001
       objectReference: {fileID: 0}
+    - target: {fileID: 2553474653722382941, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: 3179062202844793410, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: 6610503076815370262, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: 7371470456181305965, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
+    - target: {fileID: 8086920382137934628, guid: 355fe77db3fbb4043879381451d016b1,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1569a99cec04f1a4facdff0304e5f130, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
