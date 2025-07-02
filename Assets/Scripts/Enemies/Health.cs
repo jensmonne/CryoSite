@@ -5,6 +5,7 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] ParticleSystem hit;
+    [SerializeField] ParticleSystem death;
     [SerializeField] private EnemyBase Enemyscirpt;
     
     private void Start()
@@ -20,11 +21,11 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0) Death();
 
     }
-
-    // ReSharper disable Unity.PerformanceAnalysis
+    
     private void Death()
     {
         Debug.Log("You killed him why did you do that");
+        death.Play();
         Enemyscirpt.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

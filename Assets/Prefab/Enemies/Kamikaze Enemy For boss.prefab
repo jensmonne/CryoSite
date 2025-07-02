@@ -733,7 +733,9 @@ MonoBehaviour:
   AttackDistance: 1.5
   AttackRate: 1
   agent: {fileID: 5985351015711056986}
-  Pickups: []
+  Pickups:
+  - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
+  - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
   explosionRange: 2
   explosionDamage: 50
   explosion: {fileID: 1082627811063030614}
@@ -751,6 +753,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 50
   hit: {fileID: 4297897185716899219}
+  death: {fileID: 0}
   Enemyscirpt: {fileID: 923782823255187129}
 --- !u!198 &4297897185716899219
 ParticleSystem:

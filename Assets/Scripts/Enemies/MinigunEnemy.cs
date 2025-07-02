@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MinigunEnemy : EnemyBase
@@ -7,7 +8,7 @@ public class MinigunEnemy : EnemyBase
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamount;
     [SerializeField] private AudioSource Shoot;
-
+    
     protected override void UpdateAttack()
     {
      

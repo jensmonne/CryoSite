@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 5320751839200388998, guid: 9840a036c64077d458e13dcbc78ed8f3, type: 3}
-  - {fileID: 969128218072405740, guid: 9c1709600fccd7c419548856c7668e91, type: 3}
+  - {fileID: 1206166774323063036, guid: 1f534b34d09d5bb4d8ae98ac35e93a13, type: 3}
   - {fileID: 5268241899856274486, guid: ce2ba925f531cc0489a1e92168e4c4b2, type: 3}
   isNetworked: 0
   enemycount: 5
