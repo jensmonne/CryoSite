@@ -1252,6 +1252,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1008500675}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1464041207 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7073779100775633277, guid: ebe59707fd08e8e47a7c77b3bccc7865,
+    type: 3}
+  m_PrefabInstance: {fileID: 170929139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1640572676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2028,11 +2034,46 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 589072234202829077, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 589072234202829077, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 589072234202829077, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922715377524273105, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 922715377524273105, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 922715377524273105, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 969128218072405740, guid: 9c1709600fccd7c419548856c7668e91,
         type: 3}
       propertyPath: m_Name
       value: Gunner Drone_001
       objectReference: {fileID: 0}
+    - target: {fileID: 6633567831295469564, guid: 9c1709600fccd7c419548856c7668e91,
+        type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 1464041207}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
