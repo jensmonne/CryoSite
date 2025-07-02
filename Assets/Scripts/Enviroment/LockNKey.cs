@@ -21,6 +21,7 @@ public class LockNKey : MonoBehaviour
     [SerializeField] private MonoBehaviour doorScript;
     [SerializeField] private GameObject light;
     [SerializeField] private Material material;
+    [SerializeField] private OnBossTriggerEnter obte;
 
     private IUnlockableDoor door;
 
@@ -34,6 +35,7 @@ public class LockNKey : MonoBehaviour
         if (!other.CompareTag("Key")) return;
         
         door?.Unlock();
+        obte.SpawnBoss();
         
         var renderer = light.GetComponent<Renderer>();
         if (renderer != null)

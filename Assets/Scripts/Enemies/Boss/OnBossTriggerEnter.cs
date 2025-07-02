@@ -11,21 +11,17 @@ public class OnBossTriggerEnter : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (!other.CompareTag("Player") && !_bossHasSpawned) return;
-        
-        if (isNetworked) NetworkedBossSpawn();
-        else BossSpawn();
+        if (!other.CompareTag("Player")) return;
+
+        SpawnBoss();
     }
 
-    private void BossSpawn()
+    public void SpawnBoss()
     {
-        Instantiate(boss, spawnPoint.position, spawnPoint.rotation);
-        _bossHasSpawned = true;
-    }
-    
-    private void NetworkedBossSpawn()
-    {
-        NetworkServer.Spawn(Instantiate(boss, spawnPoint.position, spawnPoint.rotation));
+        if (_bossHasSpawned) return;
+        if (isNetworked) NetworkServer.Spawn(Instantiate(boss, spawnPoint.position, spawnPoint.rotation));
+            else Instantiate(boss, spawnPoint.position, spawnPoint.rotation);
+        
         _bossHasSpawned = true;
     }
 }

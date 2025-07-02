@@ -1698,6 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
+  wristBandText: {fileID: 0}
   Magcount: 0
 --- !u!4 &1405603805
 Transform:
