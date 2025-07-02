@@ -78,7 +78,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4156012420919279649, guid: a79f74f8b6eaadc4caa0e82df6e5386f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -151,6 +152,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_closet2 (13) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454629773093033137, guid: f19ee215b0f04e5458e77616fd3bec3b,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 38.940907
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454629773093033137, guid: f19ee215b0f04e5458e77616fd3bec3b,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 101.547165
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454629773093033137, guid: f19ee215b0f04e5458e77616fd3bec3b,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 24.615734
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454629773093033137, guid: f19ee215b0f04e5458e77616fd3bec3b,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 78.491905
+      objectReference: {fileID: 0}
+    - target: {fileID: 4454629773093033137, guid: f19ee215b0f04e5458e77616fd3bec3b,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -26.198313
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

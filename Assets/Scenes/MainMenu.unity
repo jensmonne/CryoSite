@@ -746,9 +746,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289547700}
-        m_TargetAssemblyTypeName: CanvasSwitcher, Assembly-CSharp
-        m_MethodName: StartConnect
+      - m_Target: {fileID: 289547699}
+        m_TargetAssemblyTypeName: ButtonStuff, Assembly-CSharp
+        m_MethodName: SceneChange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1698,6 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombDuration: 10
+  wristBandText: {fileID: 0}
   Magcount: 0
 --- !u!4 &1405603805
 Transform:

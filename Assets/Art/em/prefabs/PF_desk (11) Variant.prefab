@@ -78,7 +78,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7524967715487607818, guid: f0284d0ba95e4394db55da877e8f9047, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -101,6 +102,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PF_desk (11) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524967715487607818, guid: f0284d0ba95e4394db55da877e8f9047,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 7524967715487607818, guid: f0284d0ba95e4394db55da877e8f9047,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.61
       objectReference: {fileID: 0}
     - target: {fileID: 7595200500988723835, guid: f0284d0ba95e4394db55da877e8f9047,
         type: 3}
@@ -249,7 +260,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7635149689820347161, guid: 5ad869993ef486e459f59f804f95e2d1,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635149689820347161, guid: 5ad869993ef486e459f59f804f95e2d1,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.35
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3834722472211576172, guid: 5ad869993ef486e459f59f804f95e2d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
