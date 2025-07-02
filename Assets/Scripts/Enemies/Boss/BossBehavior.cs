@@ -6,15 +6,15 @@ public class BossBehavior : MonoBehaviour
     public enum BossState
     {
         Idle,
-        Attacking, 
-        Recharging, 
-        StageSwap, 
+        Attacking,
+        Recharging,
+        StageSwap,
         Death
     }
-    public enum BossStage 
-    { 
-        Stage1, 
-        Stage2 
+    public enum BossStage
+    {
+        Stage1,
+        Stage2
     }
 
     public BossState currentState = BossState.Idle;
@@ -22,31 +22,30 @@ public class BossBehavior : MonoBehaviour
 
     [SerializeField] private float stageTwoThreshold = 50f;
     [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] private float rotationUpdateInterval = 0.3f;
     [SerializeField] private Transform playerTransform;
 
     private float attackTimer;
-    private BossHealth bossHealth; 
-    
+    private BossHealth bossHealth;
+
     private bool isAttacking = false;
-    
+
     [Header("Drone Spawn")]
-    // Attack 1 (Drone Spawn)
     [SerializeField] private GameObject KamikazeDrones;
     [SerializeField] private GameObject SpawnpointDrone;
     [SerializeField] private float Timebetweenspawns;
     [SerializeField] private int droneCount = 5;
-    
+
     [Header("Gun")]
-    // Attack 2 (Gun)
     [SerializeField] private Transform[] shootpoints;
     [SerializeField] private int RangeGun;
     [SerializeField] private float FireRateGun;
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamountGun;
     [SerializeField] private float rayThickness = 0.25f;
+    [SerializeField] private AudioSource Gun;
 
     [Header("Lazer")]
-    // Attack 3 (Lazer)
     [SerializeField] private Transform LazerRotator;
     [SerializeField] private float rotationSpeed = 45f;
     [SerializeField] private int RangeLazer;
@@ -55,16 +54,32 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private int DamageAmountLazer;
     private bool isFiringLazer = false;
     [SerializeField] private LineRenderer lineRendererLazer;
-    [SerializeField] private float FireRateLazer = 0.2f; 
+    [SerializeField] private float FireRateLazer = 0.2f;
     private float elapsed = 0f;
     private float LazerFireRateTimer = 0f;
-    
+    [SerializeField] private AudioSource LazerAudio;
+
     private int nextAttackIndex = 0;
+    
+    private Quaternion delayedTargetRotation;
+    private float rotationUpdateTimer = 0f;
+ 
 
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
         ChangeState(BossState.Idle);
+
+        // Initialize delayed rotation
+        if (playerTransform != null)
+        {
+            Vector3 direction = playerTransform.position - transform.position;
+            direction.y = 0f;
+            if (direction != Vector3.zero)
+                delayedTargetRotation = Quaternion.LookRotation(direction);
+            else
+                delayedTargetRotation = transform.rotation;
+        }
     }
 
     private void Update()
@@ -73,34 +88,43 @@ public class BossBehavior : MonoBehaviour
         {
             bossHealth = GetComponent<BossHealth>();
         }
-        
+
         if (playerTransform != null && currentState != BossState.Death)
         {
-            Vector3 direction = playerTransform.position - transform.position;
-            direction.y = 0f; 
-            if (direction != Vector3.zero)
+            rotationUpdateTimer -= Time.deltaTime;
+            if (rotationUpdateTimer <= 0f)
             {
-                Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 3f); // 3f = rotation speed
+                Vector3 direction = playerTransform.position - transform.position;
+                direction.y = 0f;
+                if (direction != Vector3.zero)
+                {
+                    delayedTargetRotation = Quaternion.LookRotation(direction);
+                }
+                rotationUpdateTimer = rotationUpdateInterval;
             }
+
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                delayedTargetRotation,
+                Time.deltaTime * 3f 
+            );
         }
-        
+
         elapsed += Time.deltaTime;
         SetState();
         HandleState();
     }
-    
+
     public void ChangeState(BossState newState)
     {
         currentState = newState;
         Debug.Log($"Boss state changed to: {newState}");
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void SetState()
     {
         if (currentState == BossState.Death) return;
-        
+
         if (bossHealth.currentHealth <= stageTwoThreshold && currentStage == BossStage.Stage1)
         {
             ChangeState(BossState.StageSwap);
@@ -114,7 +138,6 @@ public class BossBehavior : MonoBehaviour
         }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void HandleState()
     {
         switch (currentState)
@@ -126,7 +149,6 @@ public class BossBehavior : MonoBehaviour
                     attackTimer = 0f;
                     ChangeState(BossState.Attacking);
                 }
-
                 break;
 
             case BossState.Attacking:
@@ -134,7 +156,7 @@ public class BossBehavior : MonoBehaviour
                     StartCoroutine(AttackSequence());
                 break;
 
-            case BossState.Recharging: 
+            case BossState.Recharging:
                 elapsed = 0f;
                 Invoke(nameof(ResetToIdle), 1f);
                 break;
@@ -144,15 +166,14 @@ public class BossBehavior : MonoBehaviour
                 currentStage = BossStage.Stage2;
                 Stageswap();
                 break;
-            
+
             case BossState.Death:
                 Debug.Log("Boss died");
                 Death();
                 break;
         }
     }
-    
-    // ReSharper disable Unity.PerformanceAnalysis
+
     private IEnumerator AttackSequence()
     {
         isAttacking = true;
@@ -164,7 +185,6 @@ public class BossBehavior : MonoBehaviour
                 {
                     case 0:
                         Debug.Log("Attack 1: DroneSpawn");
-                        // Simulate drone attack
                         yield return StartCoroutine(DroneAttackRoutine());
                         break;
                     case 1:
@@ -199,23 +219,20 @@ public class BossBehavior : MonoBehaviour
         ChangeState(BossState.Recharging);
         isAttacking = false;
     }
-    
-    //Attack 1 (Drone)
+
     private IEnumerator DroneAttackRoutine()
     {
         for (int i = 0; i < droneCount; i++)
         {
             Instantiate(KamikazeDrones, SpawnpointDrone.transform.position, SpawnpointDrone.transform.rotation);
-            
-            yield return new WaitForSeconds(Timebetweenspawns); 
+            yield return new WaitForSeconds(Timebetweenspawns);
         }
-
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(1f);
     }
-    
-    //Attack2 (Gun)
+
     private IEnumerator GunAttackRoutine(float speedMultiplier)
     {
+        Gun.Play();
         float attackDuration = 1.5f / speedMultiplier;
         float elapsedGun = 0f;
         float[] fireTimer = new float[shootpoints.Length];
@@ -243,30 +260,32 @@ public class BossBehavior : MonoBehaviour
                         }
                     }
                 }
-                fireTimer[i] -= Time.deltaTime;
             }
 
             elapsedGun += Time.deltaTime;
             yield return null;
         }
+        Gun.Stop();
     }
 
-    //Attack3 (Lazer)
     private IEnumerator LazerShoot()
     {
         isFiringLazer = true;
+        LazerAudio.Play();
 
         LineRenderer[] lasers = new LineRenderer[firePoints.Length];
         float[] tickTimers = new float[firePoints.Length];
-        
+
         for (int i = 0; i < firePoints.Length; i++)
         {
             lasers[i] = Instantiate(lineRendererLazer, transform);
             lasers[i].enabled = true;
             tickTimers[i] = 0f;
         }
-        
-        while (elapsed < Duration)
+
+        float lazerElapsed = 0f;
+
+        while (lazerElapsed < Duration)
         {
             for (int i = 0; i < firePoints.Length; i++)
             {
@@ -298,10 +317,11 @@ public class BossBehavior : MonoBehaviour
             }
 
             LazerRotator.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-            
+
+            lazerElapsed += Time.deltaTime;
             yield return null;
         }
-        
+
         for (int i = 0; i < lasers.Length; i++)
         {
             if (lasers[i] != null)
@@ -309,18 +329,15 @@ public class BossBehavior : MonoBehaviour
                 lasers[i].enabled = false;
             }
         }
-
+        LazerAudio.Stop();
         isFiringLazer = false;
     }
 
-    // stage 2 attacks
-    
-    // attack 1 
     private IEnumerator Stage2ComboAttackRoutine()
     {
         Coroutine lazerCoroutine = StartCoroutine(LazerShoot());
         Coroutine droneCoroutine = StartCoroutine(DroneAttackRoutine());
-        
+
         yield return lazerCoroutine;
         yield return droneCoroutine;
     }
@@ -336,15 +353,14 @@ public class BossBehavior : MonoBehaviour
         StartCoroutine(StageSwapcor());
     }
 
-
     private IEnumerator StageSwapcor()
-    { 
+    {
         bossHealth.enabled = false;
-            
+
         yield return new WaitForSeconds(2f);
-        
+
         bossHealth.enabled = true;
-            
+
         currentStage = BossStage.Stage2;
         ChangeState(BossState.Idle);
     }
@@ -356,7 +372,7 @@ public class BossBehavior : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        int shootpointSegments = 15;  
+        int shootpointSegments = 15;
         if (shootpoints != null)
         {
             for (int i = 0; i < shootpoints.Length; i++)
@@ -367,10 +383,9 @@ public class BossBehavior : MonoBehaviour
                 Vector3 direction = shootpoints[i].forward.normalized;
                 float length = RangeGun;
 
-                // Main ray
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawRay(origin, direction * length);
-                
+
                 for (int j = 0; j < shootpointSegments; j++)
                 {
                     float angle = (360f / shootpointSegments) * j;

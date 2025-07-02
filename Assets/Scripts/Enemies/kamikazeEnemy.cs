@@ -7,6 +7,7 @@ public class kamikazeEnemy : EnemyBase
     [SerializeField] private float explosionRange = 5f;
     [SerializeField] private int explosionDamage = 50;
     private bool Exploded = false;
+    [SerializeField] private AudioSource explosion;
 
     protected override void Start()
     {
@@ -25,14 +26,14 @@ public class kamikazeEnemy : EnemyBase
     
     private IEnumerator ExplodeAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f); // small delay gives NavMeshAgent time to settle
+        yield return new WaitForSeconds(0.1f); 
         ChangeState(EnemyState.Dead);
     }
 
     protected override void UpdateDead()
     {
         base.UpdateDead();
-        
+        explosion.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)

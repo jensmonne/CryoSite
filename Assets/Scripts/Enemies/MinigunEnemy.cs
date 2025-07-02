@@ -6,6 +6,7 @@ public class MinigunEnemy : EnemyBase
     [SerializeField] private int Range;
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamount;
+    [SerializeField] private AudioSource Shoot;
 
     protected override void UpdateAttack()
     {
@@ -14,7 +15,7 @@ public class MinigunEnemy : EnemyBase
             return;
 
         lastAttackTime = Time.time;
-
+        Shoot.Play();
         
         for (int i = 0; i < shootpoints.Length; i++)
         {

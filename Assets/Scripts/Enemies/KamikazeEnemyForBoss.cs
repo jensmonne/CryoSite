@@ -6,6 +6,7 @@ public class KamikazeEnemyForBoss : EnemyBase
     [SerializeField] private float explosionRange = 5f;
     [SerializeField] private int explosionDamage = 50;
     private bool exploded = false;
+    [SerializeField] private AudioSource explosion;
 
     protected override void Start()
     {
@@ -50,7 +51,7 @@ public class KamikazeEnemyForBoss : EnemyBase
     protected override void UpdateDead()
     {
         base.UpdateDead();
-
+        explosion.Play();
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)
