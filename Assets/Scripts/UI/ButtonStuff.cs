@@ -21,7 +21,7 @@ public class ButtonStuff : MonoBehaviour
 
     public void SceneChange()
     {
-        SceneManager.LoadScene("Level1Offline");
+        SceneManager.LoadScene("Map");
     }
     
     public void Quit()
