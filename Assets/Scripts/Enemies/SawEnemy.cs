@@ -14,7 +14,7 @@ public class SawEnemy : EnemyBase
 
     protected override void Update()
     {
-        
+        base.Update();
         if (health == null)
         {
             health = FindObjectOfType<PlayerHealth>();
@@ -24,13 +24,19 @@ public class SawEnemy : EnemyBase
     
     protected void OnTriggerEnter(Collider other)
     {
-        Dealdamage = true;
+        if (CompareTag("Player"))
+        {
+            Dealdamage = true;
+        }
 
     }
 
     protected void OnTriggerExit(Collider other)
     {
-        Dealdamage = false;
+        if (CompareTag("Player"))
+        {
+            Dealdamage = false;
+        }
     }
 
     protected override void UpdateAttack()
