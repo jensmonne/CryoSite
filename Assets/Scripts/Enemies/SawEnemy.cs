@@ -39,6 +39,7 @@ public class SawEnemy : EnemyBase
 
     protected override void UpdateAttack()
     {
+        UpdateChase();
         if (Dealdamage == false) return;
 
         attacktimer += Time.deltaTime;

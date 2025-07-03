@@ -250,37 +250,7 @@ PrefabInstance:
     - target: {fileID: 1423196255793235131, guid: ebe59707fd08e8e47a7c77b3bccc7865,
         type: 3}
       propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423196255793235131, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.4629922
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423196255793235131, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1423196255793235131, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294931968
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086710572670048097, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086710572670048097, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2086710572670048097, guid: ebe59707fd08e8e47a7c77b3bccc7865,
-        type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2357735859682674692, guid: ebe59707fd08e8e47a7c77b3bccc7865,
         type: 3}
@@ -340,12 +310,12 @@ PrefabInstance:
     - target: {fileID: 4943758692620462311, guid: ebe59707fd08e8e47a7c77b3bccc7865,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.2799
+      value: -0.2796
       objectReference: {fileID: 0}
     - target: {fileID: 4943758692620462311, guid: ebe59707fd08e8e47a7c77b3bccc7865,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0491
+      value: 0.0497
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1430,46 +1400,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: rifle v2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5077810701388239427, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: AmmoText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.076
-      objectReference: {fileID: 0}
-    - target: {fileID: 7231886936752377124, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -0.039
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

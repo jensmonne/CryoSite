@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magazineType: 0
-  MaxAmmo: 20
+  MaxAmmo: 16
   currentAmmo: 0
   basegun: {fileID: 0}
   mageject: {fileID: 0}
