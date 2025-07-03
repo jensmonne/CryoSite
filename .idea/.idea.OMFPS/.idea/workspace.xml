@@ -6,19 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway_Straight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway_Straight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway_Straight_Top.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Jim/Meshes/Modular Asset Kit/Proto 2/Prefabs/PF_Doorway_Straight_Top.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Art/em/prefabs/testtube.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/em/prefabs/testtube.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Rifle_Shotgun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Rifle_Shotgun.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Main Fabs/XR Rig Networked Full Body Game.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Main Fabs/XR Rig Networked Full Body Game.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/DarkBox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/DarkBox.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossBehavior.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SlidingDoors.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enviroment/SlidingDoors.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pick-ups/AmmoPickup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pick-ups/AmmoPickup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pick-ups/MedKit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pick-ups/MedKit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Testing/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Testing/PlayerHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/MagazineEject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/MagazineEject.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +160,7 @@
       <workItem from="1751440969429" duration="2543000" />
       <workItem from="1751480648723" duration="5223000" />
       <workItem from="1751527218813" duration="4655000" />
-      <workItem from="1751545135463" duration="9243000" />
+      <workItem from="1751545135463" duration="14130000" />
     </task>
     <servers />
   </component>

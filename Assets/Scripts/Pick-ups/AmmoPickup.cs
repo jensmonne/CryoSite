@@ -3,6 +3,7 @@ using UnityEngine;
 public class AmmoPickup : MonoBehaviour
 {
     private GameManager GM;
+    [SerializeField] private AudioSource audioSource;
     
     void Update()
     {
@@ -17,6 +18,7 @@ public class AmmoPickup : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GM.AddMag();
+            audioSource.Play();
             Destroy(gameObject);
         }
 

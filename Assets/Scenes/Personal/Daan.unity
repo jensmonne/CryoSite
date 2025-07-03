@@ -239,6 +239,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2056599389}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &232571844 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3784961816290961663, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1844711190}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &291014695
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1162,6 +1168,11 @@ PrefabInstance:
       propertyPath: GrabMechanic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9050767786769088750, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+        type: 3}
+      propertyPath: EjectSound
+      value: 
+      objectReference: {fileID: 232571844}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

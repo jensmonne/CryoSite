@@ -8,8 +8,9 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private float playerHealth;
 
-    // Assign these in the inspector in order (0 = first bar, 9 = last bar)
+
     [SerializeField] private GameObject[] healthSegments;
+    [SerializeField] private AudioSource hitsound;
 
     private ReworkedScreenFader fader;
 
@@ -24,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float amount)
     {
         playerHealth = Mathf.Clamp(playerHealth - amount, 0, maxPlayerHealth);
-
+        hitsound.Play();
         UpdateHealthUI();
 
         if (playerHealth <= 0) Death();

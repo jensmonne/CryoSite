@@ -11,6 +11,8 @@ public class MagazineEject : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction ejectMagAction;
     public Magazine mag;
+    
+    [SerializeField] private AudioSource EjectSound;
 
     private bool gripWasPressed = false;
 
@@ -98,6 +100,7 @@ public class MagazineEject : MonoBehaviour
         if (grabbedMag != null)
         {
             magSnapZone.ReleaseAll();
+            EjectSound.Play();
 
             Rigidbody rb = grabbedMag.GetComponent<Rigidbody>();
             if (rb != null)

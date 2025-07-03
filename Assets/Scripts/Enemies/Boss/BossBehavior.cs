@@ -45,6 +45,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private int damageamountGun;
     [SerializeField] private float rayThickness = 0.25f;
     [SerializeField] private AudioSource Gun;
+    [SerializeField] private ParticleSystem[] gunParticles;
 
     [Header("Lazer")]
     [SerializeField] private Transform LazerRotator;
@@ -259,6 +260,11 @@ public class BossBehavior : MonoBehaviour
                             playerHealth.TakeDamage(damageamountGun);
                             fireTimer[i] = FireRateGun;
                         }
+                    }
+
+                    for (int j = 0; j < gunParticles.Length; j++)
+                    {
+                        gunParticles[j].Play();
                     }
                 }
             }

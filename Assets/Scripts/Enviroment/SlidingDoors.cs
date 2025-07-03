@@ -6,6 +6,7 @@ public class SlidingDoors : MonoBehaviour, IUnlockableDoor
     [SerializeField] public bool canAutoOpen;
     [SerializeField] private Transform leftDoor;
     [SerializeField] private Transform rightDoor;
+    [SerializeField] private AudioSource doorSound;
     private float slideDistance = 0.013f;
     private float slideSpeed = 0.01f;
     
@@ -34,6 +35,7 @@ public class SlidingDoors : MonoBehaviour, IUnlockableDoor
         if (!canAutoOpen) return;
         if (moveCoroutine != null) StopCoroutine(moveCoroutine);
         moveCoroutine = StartCoroutine(MoveDoors(leftOpenPos, rightOpenPos));
+        doorSound.Play();
     }
 
     private void OnTriggerExit(Collider other)
