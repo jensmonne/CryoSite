@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/GLOCK VOOR DAAN.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/GLOCK VOOR DAAN.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/rifle v2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map/NavMesh-NavMesh Surface.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map/NavMesh-NavMesh Surface.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/SawEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/SawEnemy.cs" afterDir="false" />
-    </list>
+    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -162,7 +147,7 @@
       <workItem from="1751359210037" duration="7179000" />
       <workItem from="1751440969429" duration="2543000" />
       <workItem from="1751480648723" duration="5223000" />
-      <workItem from="1751527218813" duration="3950000" />
+      <workItem from="1751527218813" duration="4655000" />
     </task>
     <servers />
   </component>
