@@ -11,7 +11,7 @@ public class MinigunEnemy : EnemyBase
     
     protected override void UpdateAttack()
     {
-     
+        UpdateChase();
         if (Time.time - lastAttackTime < AttackRate)
             return;
 
