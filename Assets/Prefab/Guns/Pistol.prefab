@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2086710572670048097}
   - component: {fileID: 7241859856952724120}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: MagUi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4943758692620462311}
   - component: {fileID: 7085449115061178234}
   - component: {fileID: 1423196255793235131}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Ammo Amount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 8036348071010848513}
   - component: {fileID: 2523697284656397812}
   - component: {fileID: 8462262222107517004}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: MagCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 9008838627230140417}
   - component: {fileID: 8579701019809223189}
   - component: {fileID: 2271860814841976942}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7902679765715995752}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: MuzzlePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3213290372248277598}
   - component: {fileID: 4564371720697644932}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: GunSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5679229081343717953}
   - component: {fileID: 8639470810449317662}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Grabpoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4983578417819851866}
   - component: {fileID: 1604569726970736797}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: ShotGun sound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 7937591648756713203}
   - component: {fileID: 7073779100775633277}
   - component: {fileID: 5245009418715374706}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Particle System
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5690,7 +5690,7 @@ GameObject:
   - component: {fileID: 4020752773045502729}
   - component: {fileID: 8484987128590718504}
   - component: {fileID: 9194474699879721410}
-  m_Layer: 12
+  m_Layer: 15
   m_Name: Snapzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5860,7 +5860,7 @@ PrefabInstance:
     - target: {fileID: -8391222552659086748, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5870,7 +5870,7 @@ PrefabInstance:
     - target: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: -7146521406498821007, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -5900,7 +5900,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4306643203051859313, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
@@ -6226,10 +6226,10 @@ MonoBehaviour:
   GrabPhysics: 4
   GrabMechanic: 0
   GrabSpeed: 15
-  RemoteGrabbable: 0
+  RemoteGrabbable: 1
   RemoteGrabMechanic: 0
   RemoteGrabDistance: 2
-  CanDropMidGrab: 0
+  CanDropMidGrab: 1
   ThrowForceMultiplier: 2
   ThrowForceMultiplierAngular: 1.5
   BreakDistance: 0

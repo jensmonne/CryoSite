@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8213430862648238591}
   - component: {fileID: 8519807079343055396}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,8 @@ GameObject:
   - component: {fileID: 7811876846766858309}
   - component: {fileID: 145355000461935362}
   - component: {fileID: 8572399647387025308}
-  m_Layer: 0
+  - component: {fileID: 4392641079947239829}
+  m_Layer: 15
   m_Name: bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,6 +247,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &4392641079947239829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 775164352085085075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e515ab09f0e4157418a0edeab8561db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineLayerName: OutlineObjects
+  noHitPlayerLayerName: Nohitplayer
 --- !u!1 &3365984787541062611
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +272,7 @@ GameObject:
   - component: {fileID: 5781328295112520176}
   - component: {fileID: 4411777651052440185}
   - component: {fileID: 3312161224489536106}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +358,7 @@ GameObject:
   - component: {fileID: 7983116349607750511}
   - component: {fileID: 5846684853792261620}
   - component: {fileID: 2038795303506424243}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

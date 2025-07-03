@@ -16,8 +16,11 @@ public class MinigunEnemy : EnemyBase
             return;
 
         lastAttackTime = Time.time;
-        Shoot.Play();
-        
+        if (!Shoot.isPlaying)
+        {
+            Shoot.Play();
+        }
+
         for (int i = 0; i < shootpoints.Length; i++)
         {
             Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);

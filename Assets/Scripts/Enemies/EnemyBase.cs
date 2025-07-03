@@ -156,7 +156,7 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void UpdateDead()
     {
-        if (Pickups.Length > 0 && Random.value <= 0.4f)
+        if (Pickups.Length > 0 && Random.value <= 0.25f)
         {
             int index = Random.Range(0, Pickups.Length);
             Instantiate(Pickups[index], transform.position, Quaternion.identity);
