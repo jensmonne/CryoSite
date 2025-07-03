@@ -26,7 +26,6 @@ public class ButtonStuff : MonoBehaviour
     
     public void Quit()
     {
-        Debug.Log("Quit");
         Application.Quit();
     }
 }

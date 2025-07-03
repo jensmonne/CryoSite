@@ -9922,17 +9922,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.986584
+      value: 74.57356
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.53
+      value: 1.14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.901165
+      value: 75.1414
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 86d08ed9405a79449828177a7beb7394,
         type: 3}
@@ -10215,7 +10215,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5268241899856274486}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1
+  m_Radius: 0.45
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -10225,6 +10225,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 0.5
+  m_BaseOffset: 0.59
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 1

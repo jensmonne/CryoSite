@@ -53,11 +53,7 @@ public class BaseGun : MonoBehaviour
     [Header("Layers")]
     [SerializeField] private LayerMask enemyLayerMask;
     [SerializeField] private LayerMask wallsLayerMask;
-
-    [Space(10)]
-    [Header("Debug")]
-    [SerializeField] private GameObject hitMarkerPrefab;
-
+    
     private bool previousTriggerPulled = false;
     private float lastFireTime;
     private bool isCocked = true;
@@ -195,12 +191,6 @@ public class BaseGun : MonoBehaviour
             var bossHealth = hit.collider.GetComponent<BossHealth>();
             if (bossHealth) bossHealth.TakeDamage(damageAmount);
         }
-        else if (Physics.Raycast(ray, out RaycastHit wallHit, range, wallsLayerMask))
-        {
-            endPoint = wallHit.point;
-        }
-
-        UpdateDebugRay(endPoint);
     }
 
     private void FireShotgun()
@@ -216,19 +206,12 @@ public class BaseGun : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
             {
-                endPoint = hit.point;
                 var health = hit.collider.GetComponent<Health>();
                 if (health) health.TakeDamage(damageAmount);
 
                 var bossHealth = hit.collider.GetComponent<BossHealth>();
                 if (bossHealth) bossHealth.TakeDamage(damageAmount);
             }
-            else if (Physics.Raycast(ray, out RaycastHit wallHit, range, wallsLayerMask))
-            {
-                endPoint = wallHit.point;
-            }
-
-            UpdateDebugRay(endPoint);
         }
     }
 
@@ -244,16 +227,7 @@ public class BaseGun : MonoBehaviour
         if (magSnapZone != null)
             magazine = mag.GetComponent<Magazine>();
     }
-
-    private void UpdateDebugRay(Vector3 end)
-    {
-        if (hitMarkerPrefab == null) return;
-
-        if (activeHitMarker != null)
-            Destroy(activeHitMarker);
-
-        activeHitMarker = Instantiate(hitMarkerPrefab, end, Quaternion.identity);
-    }
+    
 
     private void OnSwapFireType(InputAction.CallbackContext context)
     {

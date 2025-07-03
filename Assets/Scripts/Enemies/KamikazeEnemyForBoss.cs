@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.AI;
+
 
 public class KamikazeEnemyForBoss : EnemyBase
 {
     [SerializeField] private float explosionRange = 5f;
     [SerializeField] private int explosionDamage = 50;
-    private bool exploded = false;
+    private bool exploded;
     [SerializeField] private AudioSource explosion;
 
     protected override void Start()

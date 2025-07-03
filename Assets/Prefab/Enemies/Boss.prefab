@@ -5769,10 +5769,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3236475559889128542}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8180670478996080750}
   m_SourcePrefab: {fileID: 100100000, guid: ed57ee7bec48020429314a613535b1b3, type: 3}
 --- !u!4 &3652879769400062671 stripped
 Transform:
@@ -5808,6 +5804,7 @@ MonoBehaviour:
   currentStage: 0
   stageTwoThreshold: 50
   attackCooldown: 2
+  rotationUpdateInterval: 0.3
   playerTransform: {fileID: 0}
   KamikazeDrones: {fileID: 5320751839200388998, guid: 638305308e7bdee45b1bb33836c62590,
     type: 3}
@@ -5836,7 +5833,6 @@ MonoBehaviour:
   lineRendererLazer: {fileID: 3382143136713889494}
   FireRateLazer: 0.2
   LazerAudio: {fileID: 7499173431013155230}
-  rotationUpdateInterval: 0.3
 --- !u!114 &9013717848528112349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6044,20 +6040,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7, y: 0.17, z: 0.68}
   m_Center: {x: 0.71, y: 1.1, z: -0.44}
---- !u!114 &8180670478996080750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9197183518898947446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 1245083333
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0

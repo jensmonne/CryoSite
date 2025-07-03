@@ -5418,17 +5418,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 66.37
+      value: 63.02078
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 0.87
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.37
+      value: 60.63996
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
         type: 3}
@@ -5631,7 +5631,7 @@ MonoBehaviour:
   Pickups:
   - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
   - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
-  explosionRange: 5
+  explosionRange: 2
   explosionDamage: 25
   explosion: {fileID: 130652856725265065}
 --- !u!114 &3490838865486999108
@@ -10636,4 +10636,4 @@ NavMeshAgent:
   m_Height: 0.5
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 1

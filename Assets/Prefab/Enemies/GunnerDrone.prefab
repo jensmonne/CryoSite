@@ -268,7 +268,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1206166774323063036}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.7
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -277,10 +277,10 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0.44
+  m_Height: 1.23
+  m_BaseOffset: 0.23
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &8328966043590522967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +297,7 @@ MonoBehaviour:
   FollowDistance: 7
   patrolZone: {fileID: 0}
   waitTimeAtDestination: 0.5
-  AttackDistance: 4
+  AttackDistance: 3
   AttackRate: 0.2
   agent: {fileID: 345529609250273652}
   Pickups:
@@ -306,7 +306,7 @@ MonoBehaviour:
   shootpoints:
   - {fileID: 1791415853343552170}
   - {fileID: 6666701300436008617}
-  Range: 4
+  Range: 3
   playerlayer:
     serializedVersion: 2
     m_Bits: 512
@@ -347,8 +347,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.79, y: 0.73, z: 0.9}
-  m_Center: {x: 0, y: 1.06, z: -0.05}
+  m_Size: {x: 0.41, y: 0.39, z: 0.5}
+  m_Center: {x: 0, y: 0.86, z: -0.05}
 --- !u!65 &3483573458111900869
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -368,8 +368,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.61}
-  m_Center: {x: 0.76, y: 0.72, z: -0.18}
+  m_Size: {x: 0.25, y: 0.25, z: 0.31}
+  m_Center: {x: 0.36, y: 0.68, z: -0.1}
 --- !u!65 &1898890954723565899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -389,8 +389,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.5, y: 0.5, z: 0.61}
-  m_Center: {x: -0.76, y: 0.72, z: -0.18}
+  m_Size: {x: 0.25, y: 0.25, z: 0.31}
+  m_Center: {x: -0.36, y: 0.68, z: -0.1}
 --- !u!1 &1318569526293950267
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,9 +755,9 @@ Transform:
   m_GameObject: {fileID: 6005559454429114271}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 1.11, z: 0}
-  m_LocalScale: {x: 100, y: 100, z: 100}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 0.881, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 7464681291706659063}
   m_Father: {fileID: 2535622561217977298}

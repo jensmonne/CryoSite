@@ -33,6 +33,12 @@ public class MinigunEnemy : EnemyBase
         }
     }
 
+    protected override void UpdateDead()
+    {
+        base.UpdateDead();
+        Shoot.Stop();
+    }
+
     private void OnDrawGizmosSelected()
     {
         for (int i = 0; i < shootpoints.Length; i++)

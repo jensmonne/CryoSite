@@ -6,22 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/yoeri/bullet hologram.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/yoeri/bullet hologram.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/yoeri/health hologram.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/yoeri/health hologram.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Extra for Enemies/SpawnZone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Extra for Enemies/SpawnZone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Gunner Drone_001.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Gunner Drone_001.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/AmmoPickup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/AmmoPickup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Pistol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Rifle_Shotgun.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Guns/Mag Rifle_Shotgun.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/EnemyBase.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/KamikazeEnemyForBoss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/KamikazeEnemyForBoss.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/SawEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/SawEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonStuff.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/ButtonStuff.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +88,9 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\jeans\Unity-Projects\OMFPS" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -94,6 +99,9 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\jeans\Unity-Projects\OMFPS" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="ENV_FILE_PATHS" value="" />
+      <option name="REDIRECT_INPUT_PATH" value="" />
+      <option name="PTY_MODE" value="Auto" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -101,9 +109,13 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -111,9 +123,13 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
+      <option name="runtimes">
+        <list />
+      </option>
       <option name="selectedOptions">
         <list />
       </option>
+      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
   </component>
@@ -150,6 +166,7 @@
       <workItem from="1751359210037" duration="7179000" />
       <workItem from="1751440969429" duration="2543000" />
       <workItem from="1751480648723" duration="5223000" />
+      <workItem from="1751527218813" duration="1330000" />
     </task>
     <servers />
   </component>

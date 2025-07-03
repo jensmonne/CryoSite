@@ -155,7 +155,7 @@ MonoBehaviour:
   GrabSpeed: 15
   RemoteGrabbable: 1
   RemoteGrabMechanic: 0
-  RemoteGrabDistance: 2
+  RemoteGrabDistance: 0.1
   CanDropMidGrab: 1
   ThrowForceMultiplier: 2
   ThrowForceMultiplierAngular: 1.5
