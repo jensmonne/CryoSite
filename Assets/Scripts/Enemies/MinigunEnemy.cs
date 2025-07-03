@@ -35,8 +35,8 @@ public class MinigunEnemy : EnemyBase
 
     protected override void UpdateDead()
     {
-        base.UpdateDead();
         Shoot.Stop();
+        base.UpdateDead();
     }
 
     private void OnDrawGizmosSelected()
