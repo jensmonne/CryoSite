@@ -7,7 +7,7 @@ public class SlidingDoors : MonoBehaviour, IUnlockableDoor
     [SerializeField] private Transform leftDoor;
     [SerializeField] private Transform rightDoor;
     private float slideDistance = 0.013f;
-    private float slideSpeed = 0.008f;
+    private float slideSpeed = 0.01f;
     
     private Vector3 leftClosedPos;
     private Vector3 rightClosedPos;
