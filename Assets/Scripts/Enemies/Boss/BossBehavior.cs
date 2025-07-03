@@ -24,6 +24,7 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private float rotationUpdateInterval = 0.3f;
     [SerializeField] private Transform playerTransform;
+    [SerializeField] private Animator animator;
 
     private float attackTimer;
     private BossHealth bossHealth;
@@ -351,14 +352,17 @@ public class BossBehavior : MonoBehaviour
     private void Stageswap()
     {
         StartCoroutine(StageSwapcor());
+        
     }
 
     private IEnumerator StageSwapcor()
     {
         bossHealth.enabled = false;
+        animator.SetBool("StageSwap", true);
 
         yield return new WaitForSeconds(2f);
 
+        animator.SetBool("StageSwap", false);
         bossHealth.enabled = true;
 
         currentStage = BossStage.Stage2;

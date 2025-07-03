@@ -4,6 +4,7 @@ using UnityEngine;
 public class MinigunEnemy : EnemyBase
 {
     [SerializeField] private Transform[] shootpoints;
+    [SerializeField] private ParticleSystem[] particle;
     [SerializeField] private int Range;
     [SerializeField] private LayerMask playerlayer;
     [SerializeField] private int damageamount;
@@ -19,6 +20,11 @@ public class MinigunEnemy : EnemyBase
         if (!Shoot.isPlaying)
         {
             Shoot.Play();
+        }
+
+        for (int j = 0; j < particle.Length; j++)
+        {
+            particle[j].Play();
         }
 
         for (int i = 0; i < shootpoints.Length; i++)

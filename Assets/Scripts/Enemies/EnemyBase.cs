@@ -161,9 +161,7 @@ public abstract class EnemyBase : MonoBehaviour
             int index = Random.Range(0, Pickups.Length);
             Instantiate(Pickups[index], transform.position, Quaternion.identity);
         }
-
-        Destroy(gameObject, 0.25f);
-        enabled = false;
+        Destroy(gameObject);
     }
     
     protected BoxCollider FindNearestPatrolZone()

@@ -5,8 +5,9 @@ public class Health : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int currentHealth;
     [SerializeField] ParticleSystem hit;
-    [SerializeField] ParticleSystem death;
+    [SerializeField] GameObject explosion;
     [SerializeField] private EnemyBase Enemyscirpt;
+    [SerializeField] private AudioSource ExplodeSound;
     
     private void Start()
     {
@@ -25,7 +26,8 @@ public class Health : MonoBehaviour
     private void Death()
     {
         Debug.Log("You killed him why did you do that");
-        death.Play();
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        ExplodeSound.Play();
         Enemyscirpt.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }
