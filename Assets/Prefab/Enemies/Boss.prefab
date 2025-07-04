@@ -15293,17 +15293,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.8528514
+      value: 59.209206
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.83
+      value: -0.0000019073486
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 31.326649
+      value: 64.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
@@ -15573,10 +15573,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f32a1b8a9b81194cbe249161c5e8a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 500
+  MaxHealth: 1000
   currentHealth: 0
   hit: {fileID: 7537608374455109291}
   boss: {fileID: 6757761712601119313}
+  healthSegments:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!65 &4001918075449767684
 BoxCollider:
   m_ObjectHideFlags: 0

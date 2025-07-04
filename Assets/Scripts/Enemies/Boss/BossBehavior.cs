@@ -360,20 +360,30 @@ public class BossBehavior : MonoBehaviour
         StartCoroutine(StageSwapcor());
         
     }
-
     private IEnumerator StageSwapcor()
     {
-        bossHealth.enabled = false;
+        Collider[] colliders = GetComponents<Collider>();
+        foreach (Collider col in colliders)
+        {
+            col.enabled = false;
+        }
+        
         animator.SetBool("StageSwap", true);
-
+        
         yield return new WaitForSeconds(2f);
 
+        foreach (Collider col in colliders)
+        {
+            col.enabled = true;
+        }
+        
         animator.SetBool("StageSwap", false);
         bossHealth.enabled = true;
-
+        
         currentStage = BossStage.Stage2;
         ChangeState(BossState.Idle);
     }
+
 
     private void Death()
     {
