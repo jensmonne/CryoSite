@@ -910,7 +910,7 @@ PrefabInstance:
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
       propertyPath: enemycount
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
@@ -1386,7 +1386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombDuration: 10
   wristBandText: {fileID: 0}
-  Magcount: 10
+  Magcount: 20
 --- !u!4 &166861350
 Transform:
   m_ObjectHideFlags: 0
@@ -2613,7 +2613,12 @@ PrefabInstance:
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
       propertyPath: enemycount
-      value: 7
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
+        type: 3}
+      propertyPath: isNetworked
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
@@ -9963,7 +9968,7 @@ PrefabInstance:
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
       propertyPath: enemycount
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
@@ -10492,7 +10497,7 @@ PrefabInstance:
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
       propertyPath: enemycount
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
@@ -10665,7 +10670,7 @@ PrefabInstance:
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
       propertyPath: enemycount
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5402547953945451564, guid: c13efde2b315eed45ac119d67e9b2552,
         type: 3}
@@ -15256,6 +15261,11 @@ PrefabInstance:
       propertyPath: hitsound
       value: 
       objectReference: {fileID: 470584427}
+    - target: {fileID: 7105146987520605363, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: maxPlayerHealth
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 7403187424999465311, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
       propertyPath: m_Name
@@ -19221,6 +19231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -2.1779938
+      objectReference: {fileID: 0}
+    - target: {fileID: 1869301293379756395, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
+        type: 3}
+      propertyPath: canAutoOpen
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2128749222701493091, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
         type: 3}

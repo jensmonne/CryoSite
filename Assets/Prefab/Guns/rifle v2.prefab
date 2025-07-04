@@ -6418,7 +6418,7 @@ MonoBehaviour:
   ShotGunSound: {fileID: 5538657319790831294}
   magSnapZone: {fileID: 5741590953474070741}
   magazine: {fileID: 0}
-  AmmoText: {fileID: 0}
+  AmmoText: {fileID: 7929313227358757703}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 2048
