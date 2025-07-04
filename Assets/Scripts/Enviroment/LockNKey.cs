@@ -18,31 +18,41 @@ public interface IUnlockableDoor
 
 public class LockNKey : MonoBehaviour
 {
+    [Header("Door Setup")]
     [SerializeField] private MonoBehaviour doorScript;
-    [SerializeField] private GameObject light;
-    [SerializeField] private Material material;
-    [SerializeField] private OnBossTriggerEnter obte;
-    [SerializeField] private GameObject arena;
+    
+    [Header("Visual Feedback")]
+    [SerializeField] private GameObject light; // Shows that the door is unlocked
+    [SerializeField] private Material material; // The material to apply to the light when unlocked
+    
+    [Header("Boss & Arena")]
+    [SerializeField] private OnBossTriggerEnter obte; // Script that handles boss spawning
+    [SerializeField] private GameObject arena; // Arena GameObject that becomes active on unlocking
 
-    private IUnlockableDoor door;
+    private IUnlockableDoor _door;
 
     private void Start()
     {
-        door = doorScript as IUnlockableDoor;
+        // Lets us call Unlock().
+        _door = doorScript as IUnlockableDoor;
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Key")) return;
         
-        door?.Unlock();
+        // Unlock the door
+        _door?.Unlock();
+        // Turn on the boss arena
         arena?.SetActive(true);
+        // Spawn the boss
         obte.SpawnBoss();
         
-        var renderer = light.GetComponent<Renderer>();
-        if (renderer != null)
+        // Change the material of the light so the player knows the door is unlocked.
+        var component = light.GetComponent<Renderer>();
+        if (component != null)
         {
-            renderer.material = material;
+            component.material = material;
         }
     }
 }
