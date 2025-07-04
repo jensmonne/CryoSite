@@ -8,9 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.05
     backfaceThreshold: 100
-  m_SceneGUID: ad5e7407fa11fa14aba288425731752c
-  m_OcclusionCullingData: {fileID: 36300000, guid: 4d67b1716fff962449e1f565fe29f5e4,
-    type: 2}
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -1209,7 +1208,6 @@ GameObject:
   m_Component:
   - component: {fileID: 121764996}
   - component: {fileID: 121764995}
-  - component: {fileID: 121764994}
   m_Layer: 0
   m_Name: Terrain (1)
   m_TagString: Untagged
@@ -1217,26 +1215,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!154 &121764994
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121764993}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 0ef402c11fd0860469cc865d9d56ae6f, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!218 &121764995
 Terrain:
   m_ObjectHideFlags: 0
@@ -4134,7 +4112,6 @@ GameObject:
   m_Component:
   - component: {fileID: 336473497}
   - component: {fileID: 336473496}
-  - component: {fileID: 336473495}
   m_Layer: 0
   m_Name: Terrain
   m_TagString: Untagged
@@ -4142,26 +4119,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!154 &336473495
-TerrainCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 336473494}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_TerrainData: {fileID: 15600000, guid: 503e8e3b7784c5e43ad2abd3c1688737, type: 2}
-  m_EnableTreeColliders: 1
 --- !u!218 &336473496
 Terrain:
   m_ObjectHideFlags: 0
@@ -8135,7 +8092,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5770950694409626472, guid: 710fdf08cb55f864696bd5d5049029b5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1149816603}
   m_SourcePrefab: {fileID: 100100000, guid: 710fdf08cb55f864696bd5d5049029b5, type: 3}
 --- !u!4 &748733144 stripped
 Transform:
@@ -11643,6 +11604,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1658473842}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1149816600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5770950694409626472, guid: 710fdf08cb55f864696bd5d5049029b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 748733143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1149816603
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149816600}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.10904967, y: 0.0853924, z: 0.0011297954}
+  m_Center: {x: -0.00010275459, y: 0.020048046, z: 9.159348e-16}
 --- !u!4 &1151861454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5496580280854113776, guid: d28627154a065b34e8e3d7d4b54bd8cf,
@@ -15933,7 +15921,7 @@ PrefabInstance:
     - target: {fileID: 6381075640337857054, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.18
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 6381075640337857054, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
@@ -19943,7 +19931,7 @@ PrefabInstance:
     - target: {fileID: 418388058576594858, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 487861162018086020, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
         type: 3}
