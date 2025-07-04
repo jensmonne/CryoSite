@@ -8,6 +8,8 @@ public class OnBossTriggerEnter : MonoBehaviour
     [Tooltip("If it's the networked scene check this, if not uncheck this otherwise it will ehh err")]
     [SerializeField] private bool isNetworked = false;
     private bool _bossHasSpawned = false;
+    [SerializeField] private GameObject slot;
+    [SerializeField] private SlidingDoors slidingDoors;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -23,5 +25,11 @@ public class OnBossTriggerEnter : MonoBehaviour
             else Instantiate(boss, spawnPoint.position, spawnPoint.rotation);
         
         _bossHasSpawned = true;
+    }
+
+    public void BossDied()
+    {
+        slot.SetActive(true);
+        slidingDoors.canAutoOpen = true;
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
@@ -7,10 +6,12 @@ public class BossHealth : MonoBehaviour
     public int currentHealth;
     [SerializeField] private ParticleSystem hit;
     [SerializeField] private BossBehavior boss;
+    private OnBossTriggerEnter onBossTriggerEnter;
 
     private void Start()
     {
         currentHealth = MaxHealth;
+        onBossTriggerEnter = FindObjectOfType<OnBossTriggerEnter>();
     }
 
     public void TakeDamage(int damage)
@@ -22,8 +23,8 @@ public class BossHealth : MonoBehaviour
 
     private void Death()
     {
+        onBossTriggerEnter.BossDied();
         Debug.Log("Killed Boss");
         boss.ChangeState(BossBehavior.BossState.Death);
-        
     }
 }
