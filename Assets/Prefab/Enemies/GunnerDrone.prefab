@@ -316,6 +316,7 @@ MonoBehaviour:
     m_Bits: 512
   damageamount: 2
   Shoot: {fileID: 117707969848451639}
+  distanceToPlayer: 2
 --- !u!114 &4510914158594802809
 MonoBehaviour:
   m_ObjectHideFlags: 0

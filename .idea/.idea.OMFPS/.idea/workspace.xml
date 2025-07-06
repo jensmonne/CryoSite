@@ -5,15 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/GunnerDrone.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy For boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Kamikaze Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossHealth.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Ammo.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Pickups/Medkit 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Map.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Map.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/MinigunEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Boss.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Boss.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Textures/FlashShader.shadergraph" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Textures/FlashShader.shadergraph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/GlowMatWorm.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/GlowMatWorm.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/GunnerEnemy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/GunnerEnemy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/HollowGram.shadergraph" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/HollowGram.shadergraph.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Kamikaze Enemy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Kamikaze Enemy.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Outline.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Outline.mat.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Saw Enemy.mat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Textures/Saw Enemy.mat.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +160,7 @@
       <workItem from="1751545135463" duration="14130000" />
       <workItem from="1751624741663" duration="1000" />
       <workItem from="1751626011614" duration="4350000" />
+      <workItem from="1751800189939" duration="845000" />
     </task>
     <servers />
   </component>
