@@ -12109,7 +12109,6 @@ GameObject:
   - component: {fileID: 577430886981913449}
   - component: {fileID: 600083168818153510}
   - component: {fileID: 7105146987520605363}
-  - component: {fileID: 4846204275370538836}
   m_Layer: 9
   m_Name: PlayerController
   m_TagString: Player
@@ -12579,7 +12578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae7513ff3a87d3148995961132669a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayerHealth: 100
+  maxPlayerHealth: 400
   playerHealth: 0
   healthSegments:
   - {fileID: 1398903395812057113}
@@ -12593,14 +12592,6 @@ MonoBehaviour:
   - {fileID: 2431003217891659392}
   - {fileID: 2064044466634749366}
   hitsound: {fileID: 3717957847575416526}
---- !u!81 &4846204275370538836
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6515227600888288937}
-  m_Enabled: 1
 --- !u!1 &6530507062710909921
 GameObject:
   m_ObjectHideFlags: 0

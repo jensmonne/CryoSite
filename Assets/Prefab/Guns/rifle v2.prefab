@@ -6406,7 +6406,7 @@ MonoBehaviour:
   muzzleTransform: {fileID: 3259909902899943015}
   fireRate: 0.2
   range: 50
-  damageAmount: 10
+  damageAmount: 15
   shotgunPelletCount: 8
   shotgunSpreadAngle: 10
   slideTransform: {fileID: 1922617066846634730}
