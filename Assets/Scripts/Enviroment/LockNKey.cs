@@ -42,9 +42,9 @@ public class LockNKey : MonoBehaviour
         if (!other.CompareTag("Key")) return;
         
         // Unlock the door
-        _door?.Unlock();
+        _door.Unlock();
         // Turn on the boss arena
-        arena?.SetActive(true);
+        arena.SetActive(true);
         // Spawn the boss
         obte.SpawnBoss();
         

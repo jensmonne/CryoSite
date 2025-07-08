@@ -147,7 +147,7 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
         }
         
 #if UNITY_EDITOR
-        protected override void OnValidate()
+        private void OnValidate()
         {
             if (sceneToLoad != null)
             {
