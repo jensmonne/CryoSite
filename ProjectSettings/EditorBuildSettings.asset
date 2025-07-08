@@ -14,33 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DarkBox.unity
     guid: fb1c28dbce23f6149ba569b608e20dae
-  - enabled: 0
-    path: Assets/Scenes/Level1.unity
-    guid: f5d5e77fba1747d45bf2ed468dfceb75
-  - enabled: 0
-    path: Assets/Scenes/Level1Offline.unity
-    guid: fed480f6d1fe3234181c7f788c099fd1
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Weapons.unity
-    guid: 2626939ed08e1ec41bee0433a7f068d9
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/XR Demo.unity
-    guid: a1360534006d3f845bc79b46b93cfec5
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Scene Transitioning.unity
-    guid: 9d7c9629abf9c99449e358b0938b47d0
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Physics Hands.unity
-    guid: 34a4579517c578e4080d0a6ef2c96294
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Rigidbody Player.unity
-    guid: 57fc97c5771a777449aa8bd02514df22
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Vehicle Example.unity
-    guid: d96233ee44d985d4fb8dc23a907c06eb
-  - enabled: 0
-    path: Assets/Imported Assets/BNG Framework/Scenes/Quest Demo.unity
-    guid: 20abffae0ea5004438fe0e95b6627841
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: d936e9c3cb4da2040b5e9c72cee91d4d,
       type: 2}
