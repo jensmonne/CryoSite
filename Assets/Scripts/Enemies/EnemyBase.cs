@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
-using Mirror;
 
-public abstract class EnemyBase : NetworkBehaviour
+public abstract class EnemyBase : MonoBehaviour
 {
     public enum EnemyState
     {

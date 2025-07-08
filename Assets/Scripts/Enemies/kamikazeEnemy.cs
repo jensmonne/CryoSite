@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Mirror;
 
 public class kamikazeEnemy : EnemyBase
 {
@@ -16,51 +15,52 @@ public class kamikazeEnemy : EnemyBase
 
     protected override void UpdateAttack()
     {
-        if (!isServer || Exploded) return; // Server handles attack
-
-        Exploded = true;
-        StartCoroutine(ExplodeAfterDelay());
+        if (!Exploded)
+        {
+            Exploded = true;
+            StartCoroutine(ExplodeAfterDelay());
+        }
     }
-
+    
     private IEnumerator ExplodeAfterDelay()
     {
-        yield return new WaitForSeconds(0.1f);
-        ChangeState(EnemyState.Dead); // This will trigger UpdateDead
+        yield return new WaitForSeconds(0.1f); 
+        ChangeState(EnemyState.Dead);
     }
 
     protected override void UpdateDead()
     {
-        if (!isServer) return; // Only run explosion damage on the server
-
         base.UpdateDead();
-
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)
         {
-            // Try to damage normal Health
-            if (collider.TryGetComponent(out Health health))
+
+            var health = collider.GetComponent<Health>();
+            if (health != null)
             {
-                health.CmdTakeDamage(explosionDamage); // Must be network-safe
+                health.TakeDamage(explosionDamage);
                 continue;
             }
-
-            // Try to damage player health
-            if (collider.TryGetComponent(out PlayerHealth playerHealth))
+            
+            var playerHealth = collider.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
             {
-                playerHealth.TakeDamage(explosionDamage); // Same as above
+                playerHealth.TakeDamage(explosionDamage);
             }
         }
+        
     }
 
     public override void Die()
     {
-        if (!isServer || Exploded) return;
-
-        Exploded = true;
-        ChangeState(EnemyState.Dead); // Trigger explosion
+        if (!Exploded)
+        {
+            Exploded = true;
+            ChangeState(EnemyState.Dead);
+        }
     }
-
+    
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

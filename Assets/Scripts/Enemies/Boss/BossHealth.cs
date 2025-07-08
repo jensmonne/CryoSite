@@ -37,7 +37,7 @@ public class BossHealth : MonoBehaviour
         healthBar.UpdateHealthUI();
     }
 
-    public void CmdTakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         currentHealth -= damage;
         hit.Play();

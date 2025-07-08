@@ -6097,10 +6097,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5620546233195847006}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 394596718123788670}
     - targetCorrespondingSourceObject: {fileID: -7642001507996924950, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,
         type: 3}
       insertIndex: -1
@@ -6406,9 +6402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bebf8604a3011b4cbb1a8e34dd173ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
   firingType: 1
   muzzleTransform: {fileID: 3259909902899943015}
   fireRate: 0.2
@@ -6423,7 +6416,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 5642715559944188038}
   ShootSound: {fileID: 4346663035830564574}
   ShotGunSound: {fileID: 5538657319790831294}
-  playerInput: {fileID: 0}
   magSnapZone: {fileID: 5741590953474070741}
   magazine: {fileID: 0}
   AmmoText: {fileID: 7929313227358757703}
@@ -6648,23 +6640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineLayerName: OutlineObjects
   noHitPlayerLayerName: Nohitplayer
---- !u!114 &394596718123788670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1809348611581969128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 3956097882
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!4 &1922617066846634730 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8109871180430508717, guid: 3c8fdb67ccbfa3848a3b23ec5e9125d3,

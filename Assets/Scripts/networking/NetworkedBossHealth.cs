@@ -16,9 +16,8 @@ public class NetworkedBossHealth : NetworkBehaviour
     }
 
     [Server]
-    public void CmdTakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        if (!isServer) return;
         currentHealth -= damage;
         RpcPlayHitEffect();
         if (currentHealth <= 0) Death();
@@ -35,5 +34,11 @@ public class NetworkedBossHealth : NetworkBehaviour
     {
         Debug.Log("Killed Boss");
         //boss.ChangeState(NetworkedBossBehavior.BossState.Death);
+    }
+    
+    [Command]
+    public void CmdRequestDamage(int amount)
+    {
+        TakeDamage(amount);
     }
 }

@@ -5748,10 +5748,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5985351015711056986}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -8155951892436716825}
   m_SourcePrefab: {fileID: 100100000, guid: 2944967aa4f91d1428b4e8d5e2031b6a, type: 3}
 --- !u!23 &2987846130783954585 stripped
 MeshRenderer:
@@ -5789,9 +5785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b4ec0de6a8a124ba7e08fe1a72ae76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
   currentState: 0
   FollowDistance: 100
   patrolZone: {fileID: 0}
@@ -5804,6 +5797,7 @@ MonoBehaviour:
   - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
   explosionRange: 2
   explosionDamage: 10
+  explosion: {fileID: 1082627811063030614}
 --- !u!114 &3490838865486999108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5816,13 +5810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12dc79d8f30599d4e96913b64880ec59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
   maxHealth: 25
   hit: {fileID: 1788284646810352410}
   explosion: {fileID: 760057906122806203, guid: 7da5e2993f9e77243b1aa1324acf92e3,
     type: 3}
+  enemyScript: {fileID: 923782823255187129}
   explodeSound: {fileID: 1082627811063030614}
   renderers:
   - {fileID: 3847782947300146721}
@@ -5834,7 +5826,6 @@ MonoBehaviour:
   - {fileID: 6195832547792144073}
   - {fileID: 5673411518033298670}
   flashDuration: 0.2
-  enemyScript: {fileID: 923782823255187129}
 --- !u!136 &4924890471436418210
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5964,23 +5955,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
---- !u!114 &-8155951892436716825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320751839200388998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 368137766
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!23 &5608122042783037328 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 631206546442317127, guid: 2944967aa4f91d1428b4e8d5e2031b6a,

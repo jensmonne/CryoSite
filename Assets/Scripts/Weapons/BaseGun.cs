@@ -1,5 +1,5 @@
+using BNG;
 using UnityEngine;
-using Mirror;
 using UnityEngine.InputSystem;
 using TMPro;
 
@@ -10,7 +10,7 @@ public enum FiringType
     Shotgun
 }
 
-public class BaseGun : NetworkBehaviour
+public class BaseGun : MonoBehaviour
 {
     [Header("General Settings")]
     public FiringType firingType = FiringType.Pistol;
@@ -19,66 +19,80 @@ public class BaseGun : NetworkBehaviour
     [SerializeField] private int range = 50;
     [SerializeField] private int damageAmount = 10;
 
+    [Space(10)]
     [Header("Shotgun Settings")]
     [SerializeField] private int shotgunPelletCount = 8;
     [SerializeField] private float shotgunSpreadAngle = 5f;
+    [SerializeField] private Transform slideTransform;
+    [SerializeField] private float slideForwardPosition = 0f;
+    [SerializeField] private float slidePullThreshold = 0.15f;
 
+    [Space(10)]
     [Header("Gun Components")]
+    [SerializeField] private Slider slide;
     [SerializeField] private ParticleSystem muzzleFlash;
-    [SerializeField] private AudioSource shootSound;
-    [SerializeField] private AudioSource shotgunSound;
+    [SerializeField] private AudioSource ShootSound;
+    [SerializeField] private AudioSource ShotGunSound;
 
-    [Header("Magazine Settings")]
-    public Magazine magazine;
-
-    [Header("UI")]
-    public TextMeshProUGUI ammoText;
-
-    [Header("Layers")]
-    [SerializeField] private LayerMask enemyLayerMask;
-
+    [Space(10)]
+    [Header("Input")]
     private PlayerInput playerInput;
     private InputAction fireAction;
     private InputAction swapFireTypeAction;
 
+    [Space(10)]
+    [Header("Magazine Settings")]
+    [SerializeField] private SnapZone magSnapZone;
+    public Magazine magazine;
+
+    [Space(10)]
+    [Header("UI")]
+    public TextMeshProUGUI AmmoText;
+
+    [Space(10)]
+    [Header("Layers")]
+    [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private LayerMask wallsLayerMask;
+    
     private bool previousTriggerPulled = false;
-    private float lastFireTime = 0f;
+    private float lastFireTime;
     private bool isCocked = true;
+    private bool slidePulledBack = false;
+    private Grabbable grabbable;
+    private GameObject activeHitMarker;
 
     private void Start()
     {
-        Debug.Log($"BaseGun Start. isOwned={isOwned}, netId={netId}");
-
-        if (!isOwned)
-        {
-            Debug.Log("BaseGun not owned on Start. Disabling script.");
-            enabled = false;
-            return;
-        }
-
+        // Find PlayerInput once (from root or scene)
         playerInput = GetComponentInParent<PlayerInput>();
+
         if (playerInput == null)
         {
-            Debug.LogError("PlayerInput not found on owner.");
-            enabled = false;
+            playerInput = FindObjectOfType<PlayerInput>();
+        }
+
+        if (playerInput == null)
+        {
+            Debug.LogError("PlayerInput not found on BaseGun or parents or scene!");
             return;
         }
 
         fireAction = playerInput.actions["Fire"];
         if (fireAction == null)
-        {
-            Debug.LogError("Fire action not found.");
-            enabled = false;
-            return;
-        }
+            Debug.LogError("Fire action not found in PlayerInput!");
 
         swapFireTypeAction = playerInput.actions["SwapFireType"];
-        if (swapFireTypeAction != null)
-            swapFireTypeAction.performed += OnSwapFireType;
+        if (swapFireTypeAction == null)
+            Debug.LogError("SwapFireType action not found in PlayerInput!");
+
+        swapFireTypeAction.performed += OnSwapFireType;
 
         fireAction.Enable();
-        if (swapFireTypeAction != null)
-            swapFireTypeAction.Enable();
+        swapFireTypeAction.Enable();
+
+        grabbable = GetComponent<Grabbable>();
+        if (magSnapZone != null)
+            magSnapZone.OnSnapEvent.AddListener(CheckMagazineSocket);
     }
 
     private void OnDisable()
@@ -87,96 +101,118 @@ public class BaseGun : NetworkBehaviour
             fireAction.Disable();
 
         if (swapFireTypeAction != null)
-        {
             swapFireTypeAction.Disable();
-            swapFireTypeAction.performed -= OnSwapFireType;
-        }
     }
 
     private void Update()
     {
-        if (!isOwned) return;
+        if (playerInput == null) return;
 
-        float triggerValue = fireAction.ReadValue<float>();
-        bool isTriggerPulled = triggerValue > 0.5f;
-
-        switch (firingType)
+        if (grabbable && grabbable.BeingHeld)
         {
-            case FiringType.Pistol:
-                if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate)
-                    TryFire();
-                break;
+            float triggerValue = fireAction.ReadValue<float>();
+            bool isTriggerPulled = triggerValue > 0.5f;
 
-            case FiringType.Rifle:
-                if (isTriggerPulled && Time.time - lastFireTime > fireRate)
-                    TryFire();
-                break;
+            switch (firingType)
+            {
+                case FiringType.Pistol:
+                    if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate)
+                        TryFire();
+                    break;
 
-            case FiringType.Shotgun:
-                if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate && isCocked)
-                    TryShotgunFire();
-                break;
+                case FiringType.Rifle:
+                    if (isTriggerPulled && Time.time - lastFireTime > fireRate)
+                        TryFire();
+                    break;
+
+                case FiringType.Shotgun:
+                    if (isTriggerPulled && !previousTriggerPulled && Time.time - lastFireTime > fireRate)
+                        TryShotgunFire();
+                    break;
+            }
+
+            previousTriggerPulled = isTriggerPulled;
         }
 
-        previousTriggerPulled = isTriggerPulled;
+        if (firingType == FiringType.Shotgun && slideTransform != null)
+        {
+            Vector3 localSlidePos = transform.InverseTransformPoint(slideTransform.position);
 
-        if (magazine != null && ammoText != null)
-            ammoText.text = magazine.currentAmmo.ToString();
+            if (!slidePulledBack && localSlidePos.z <= (slideForwardPosition - slidePullThreshold))
+            {
+                slidePulledBack = true;
+            }
+            else if (slidePulledBack && localSlidePos.z >= (slideForwardPosition - (slidePullThreshold * 0.5f)))
+            {
+                isCocked = true;
+                slidePulledBack = false;
+            }
+        }
+
+        AmmoText.text = magazine ? magazine.currentAmmo.ToString() : "";
     }
 
     private void TryFire()
     {
-        if (magazine == null || magazine.currentAmmo <= 0)
-        {
-            Debug.Log("Cannot fire: No ammo.");
-            return;
-        }
+        if (!magazine || magazine.currentAmmo <= 0) return;
 
-        muzzleFlash?.Play();
-        shootSound?.Play();
-
-        Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
-        {
-            Debug.Log($"Hit enemy: {hit.collider.gameObject.name}");
-            CmdShootEnemy(hit.collider.gameObject.GetInstanceID(), damageAmount);
-        }
-        else
-        {
-            Debug.Log("Shot missed.");
-        }
-
+        Fire();
         magazine.consumeAmmo();
         lastFireTime = Time.time;
+
+        if (slide) slide.OnFired();
     }
 
     private void TryShotgunFire()
     {
-        if (magazine == null || magazine.currentAmmo <= 0)
-        {
-            Debug.Log("Cannot fire shotgun: No ammo.");
-            return;
-        }
+        if (!magazine || magazine.currentAmmo <= 0) return;
+        if (!isCocked) return;
 
+        FireShotgun();
+        magazine.consumeAmmo();
+        lastFireTime = Time.time;
+        isCocked = false;
+    }
+
+    private void Fire()
+    {
         muzzleFlash?.Play();
-        shotgunSound?.Play();
+        ShootSound?.Play();
+
+        Ray ray = new Ray(muzzleTransform.position, muzzleTransform.forward);
+        Vector3 endPoint = muzzleTransform.position + muzzleTransform.forward * range;
+
+        if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
+        {
+            endPoint = hit.point;
+            var health = hit.collider.GetComponent<Health>();
+            if (health) health.TakeDamage(damageAmount);
+
+            var bossHealth = hit.collider.GetComponent<BossHealth>();
+            if (bossHealth) bossHealth.TakeDamage(damageAmount);
+        }
+    }
+
+    private void FireShotgun()
+    {
+        muzzleFlash?.Play();
+        ShotGunSound?.Play();
 
         for (int i = 0; i < shotgunPelletCount; i++)
         {
             Vector3 dir = GetShotgunPelletDirection();
             Ray ray = new Ray(muzzleTransform.position, dir);
+            Vector3 endPoint = muzzleTransform.position + dir * range;
 
             if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
             {
-                Debug.Log($"Shotgun pellet hit: {hit.collider.gameObject.name}");
-                CmdShootEnemy(hit.collider.gameObject.GetInstanceID(), damageAmount);
+                var health = hit.collider.GetComponent<Health>();
+                if (health) health.TakeDamage(damageAmount);
+
+                var bossHealth = hit.collider.GetComponent<BossHealth>();
+                if (bossHealth) bossHealth.TakeDamage(damageAmount);
             }
         }
-
-        magazine.consumeAmmo();
-        lastFireTime = Time.time;
-        isCocked = false;
     }
 
     private Vector3 GetShotgunPelletDirection()
@@ -186,51 +222,54 @@ public class BaseGun : NetworkBehaviour
         return Quaternion.Euler(pitch, yaw, 0) * muzzleTransform.forward;
     }
 
+    private void CheckMagazineSocket(Grabbable mag)
+    {
+        if (magSnapZone != null)
+            magazine = mag.GetComponent<Magazine>();
+    }
+    
+
     private void OnSwapFireType(InputAction.CallbackContext context)
     {
-        if (firingType == FiringType.Pistol) return;
+        if (firingType == FiringType.Pistol)
+            return;
 
         if (firingType == FiringType.Rifle)
         {
             firingType = FiringType.Shotgun;
             damageAmount = 35;
-            Debug.Log("Swapped to Shotgun");
+            Debug.Log("Swapped to Shotgun.");
         }
         else if (firingType == FiringType.Shotgun)
         {
             firingType = FiringType.Rifle;
             damageAmount = 15;
-            Debug.Log("Swapped to Rifle");
+            Debug.Log("Swapped to Rifle.");
         }
     }
 
-    [Command]
-    private void CmdShootEnemy(int enemyInstanceID, int damage)
+    private void OnDestroy()
     {
-        Debug.Log($"CmdShootEnemy called for instanceID {enemyInstanceID} with damage {damage}");
-
-        GameObject enemy = FindObjectByInstanceID(enemyInstanceID);
-        if (enemy == null)
-        {
-            Debug.LogWarning("Enemy not found on server.");
-            return;
-        }
-
-        Health health = enemy.GetComponent<Health>();
-        if (health != null)
-        {
-            health.CmdTakeDamage(damage);
-        }
+        if (swapFireTypeAction != null)
+            swapFireTypeAction.performed -= OnSwapFireType;
     }
 
-    private GameObject FindObjectByInstanceID(int instanceID)
+    private void OnDrawGizmos()
     {
-        Health[] allHealth = FindObjectsOfType<Health>();
-        foreach (var h in allHealth)
+        if (muzzleTransform == null) return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(muzzleTransform.position, muzzleTransform.forward * range);
+
+        if (firingType == FiringType.Shotgun)
         {
-            if (h.gameObject.GetInstanceID() == instanceID)
-                return h.gameObject;
+            Gizmos.color = Color.yellow;
+            for (int i = 0; i < shotgunPelletCount; i++)
+            {
+                Vector3 dir = GetShotgunPelletDirection();
+                Gizmos.DrawRay(muzzleTransform.position, dir * range);
+            }
         }
-        return null;
     }
 }
+
