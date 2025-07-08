@@ -1,6 +1,6 @@
 using Mirror;
 
-namespace VRIF_Mirror_Package.Scripts.UI
+namespace VRIF_Mirror_Package.Scripts.UI.Utils
 {
     public class QuitGameUI : NetworkBehaviour
     {
