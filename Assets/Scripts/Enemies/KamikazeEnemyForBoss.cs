@@ -1,78 +1,64 @@
+using System.Collections;
 using UnityEngine;
+using Mirror;
 
-
-public class KamikazeEnemyForBoss : EnemyBase
+public class kamikazeEnemyBoss : EnemyBase
 {
-    [SerializeField] private float explosionRange = 5f;
-    [SerializeField] private int explosionDamage = 50;
-    private bool exploded;
-    [SerializeField] private AudioSource explosion;
+    [SerializeField] private float explosionRange = 1f;
+    [SerializeField] private int explosionDamage = 25;
+    private bool Exploded = false;
 
     protected override void Start()
     {
         base.Start();
-        exploded = false;
-    }
-
-    protected override void SetState()
-    {
-        if (currentState == EnemyState.Dead) return;
-        if (Player == null) return;
-
-        float distance = Vector3.Distance(transform.position, Player.position);
-
-        if (distance < AttackDistance)
-        {
-            ChangeState(EnemyState.Attack);
-        }
-        else if (distance < FollowDistance)
-        {
-            ChangeState(EnemyState.Chase);
-        }
-        else
-        {
-            ChangeState(EnemyState.Idle);
-        }
-    }
-
-    protected override void UpdatePatrol()
-    {
+        Exploded = false;
     }
 
     protected override void UpdateAttack()
     {
-        if (!exploded)
-        {
-            ChangeState(EnemyState.Dead);
-            exploded = true;
-        }
+        if (!isServer || Exploded) return; // Server handles attack
+
+        Exploded = true;
+        StartCoroutine(ExplodeAfterDelay());
+    }
+
+    private IEnumerator ExplodeAfterDelay()
+    {
+        yield return new WaitForSeconds(0.1f);
+        ChangeState(EnemyState.Dead); // This will trigger UpdateDead
     }
 
     protected override void UpdateDead()
     {
+        if (!isServer) return; // Only run explosion damage on the server
+
         base.UpdateDead();
-        explosion.Play();
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)
         {
-            var health = collider.GetComponent<Health>();
-            if (health != null)
+            // Try to damage normal Health
+            if (collider.TryGetComponent(out Health health))
             {
-                health.TakeDamage(explosionDamage);
+                health.CmdTakeDamage(explosionDamage); // Must be network-safe
                 continue;
             }
 
-            var playerHealth = collider.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
+            // Try to damage player health
+            if (collider.TryGetComponent(out PlayerHealth playerHealth))
             {
-                playerHealth.TakeDamage(explosionDamage);
+                playerHealth.TakeDamage(explosionDamage); // Same as above
             }
         }
     }
 
     public override void Die()
     {
+        if (!isServer || Exploded) return;
+
+        Exploded = true;
+        ChangeState(EnemyState.Dead); // Trigger explosion
     }
 
     private void OnDrawGizmosSelected()

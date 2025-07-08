@@ -619,7 +619,7 @@ Transform:
   m_GameObject: {fileID: 6465660432639229942}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.175, y: -0.065, z: -0.217}
+  m_LocalPosition: {x: 0.175, y: -0.089, z: -0.217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handPoseType: 1
-  SelectedHandPose: {fileID: 11400000, guid: 697c3bbc52266b949a810c5b611d3860, type: 2}
+  SelectedHandPose: {fileID: 0}
   HandPose: 0
   LeftHandIsValid: 1
   RightHandIsValid: 1
@@ -6141,6 +6141,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2812454637030879436}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 918de3f19348e324bae6e2b688e96c75,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3442323583009677031}
     - targetCorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,
         type: 3}
       insertIndex: -1
@@ -6170,6 +6174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bebf8604a3011b4cbb1a8e34dd173ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   firingType: 0
   muzzleTransform: {fileID: 7902679765715995752}
   fireRate: 0.5
@@ -6435,6 +6442,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.4, y: 0.2, z: 1}
   m_Center: {x: 0.17, y: -0.06, z: -0.06}
+--- !u!114 &-3442323583009677031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3167029896872874686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3574520521
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1 &3658520631851712397 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7640558969779515294, guid: 918de3f19348e324bae6e2b688e96c75,

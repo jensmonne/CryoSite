@@ -1,22 +1,57 @@
 using UnityEngine;
 using System.Collections;
+using Mirror;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
-    [SerializeField] private int maxHealth;
-    private int currentHealth;
+    [Header("Health Settings")]
+    [SerializeField] private int maxHealth = 100;
+    [SyncVar] private int currentHealth;
+
+    [Header("FX References")]
     [SerializeField] private ParticleSystem hit;
     [SerializeField] private GameObject explosion;
-    [SerializeField] private EnemyBase enemyScript;
     [SerializeField] private AudioSource explodeSound;
+
+    [Header("Flash Material Settings")]
     [SerializeField] private Renderer[] renderers;
     [SerializeField] private float flashDuration = 0.2f;
 
+    [Header("Optional: Enemy Script")]
+    [SerializeField] private EnemyBase enemyScript;
+
     private Material[][] materials;
 
-    private void Start()
+    public override void OnStartServer()
     {
         currentHealth = maxHealth;
+    }
+
+    public override void OnStartClient()
+    {
+        SetupMaterials();
+    }
+
+#if UNITY_EDITOR
+    void Update()
+    {
+        // Testing damage locally in editor on Server
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (isServer)
+            {
+                CmdTakeDamage(10);
+            }
+            else
+            {
+                SimulateDamageOffline(10);
+            }
+        }
+    }
+#endif
+
+    private void SetupMaterials()
+    {
         materials = new Material[renderers.Length][];
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -30,14 +65,17 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    private void SetFlashAmount(float amount)
     {
-        currentHealth -= damage;
-        if (hit != null)
-            hit.Play();
-        StartCoroutine(FlashRoutine());
-        if (currentHealth <= 0)
-            Death();
+        if (materials == null) return;
+
+        for (int i = 0; i < materials.Length; i++)
+        {
+            for (int j = 0; j < materials[i].Length; j++)
+            {
+                materials[i][j].SetFloat("_FlashAmount", amount);
+            }
+        }
     }
 
     private IEnumerator FlashRoutine()
@@ -54,24 +92,77 @@ public class Health : MonoBehaviour
         SetFlashAmount(0f);
     }
 
-    private void SetFlashAmount(float amount)
+    [Command]
+    public void CmdTakeDamage(int damage)
     {
-        for (int i = 0; i < materials.Length; i++)
+        if (currentHealth <= 0) return;
+
+        currentHealth -= damage;
+        RpcPlayHitEffects();
+
+        if (currentHealth <= 0)
         {
-            for (int j = 0; j < materials[i].Length; j++)
-            {
-                materials[i][j].SetFloat("_FlashAmount", amount);
-            }
+            HandleDeath();
         }
     }
 
-    private void Death()
+    [ClientRpc]
+    private void RpcPlayHitEffects()
     {
-        if (explosion != null)
-            Instantiate(explosion, transform.position, Quaternion.identity);
+        if (hit != null)
+            hit.Play();
+
+        if (materials == null)
+            SetupMaterials();
+
+        StartCoroutine(FlashRoutine());
+    }
+
+    [Server]
+    private void HandleDeath()
+    {
+        RpcHandleDeathEffects();
+
+        if (enemyScript != null)
+        {
+            enemyScript.ChangeState(EnemyBase.EnemyState.Dead);
+        }
+
+        // Optionally destroy on server:
+        // NetworkServer.Destroy(gameObject);
+    }
+
+    [ClientRpc]
+    private void RpcHandleDeathEffects()
+    {
         if (explodeSound != null)
             explodeSound.Play();
-        if (enemyScript != null)
-            enemyScript.ChangeState(EnemyBase.EnemyState.Dead);
+
+        if (explosion != null)
+            Instantiate(explosion, transform.position, Quaternion.identity);
+    }
+
+    private void SimulateDamageOffline(int damage)
+    {
+        currentHealth -= damage;
+        if (hit != null)
+            hit.Play();
+
+        if (materials == null)
+            SetupMaterials();
+
+        StartCoroutine(FlashRoutine());
+
+        if (currentHealth <= 0)
+        {
+            if (explodeSound != null)
+                explodeSound.Play();
+
+            if (explosion != null)
+                Instantiate(explosion, transform.position, Quaternion.identity);
+
+            if (enemyScript != null)
+                enemyScript.ChangeState(EnemyBase.EnemyState.Dead);
+        }
     }
 }
