@@ -12,8 +12,19 @@ public class SpawnZone : MonoBehaviour
 
     private void Start()
     {
-        SpawnEnemies();
+        if (isNetworked)
+        {
+            if (NetworkServer.active)
+            {
+                SpawnEnemies();
+            }
+        }
+        else
+        {
+            SpawnEnemies();
+        }
     }
+
 
     public void SpawnEnemies()
     {

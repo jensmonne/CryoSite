@@ -746,9 +746,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289547699}
-        m_TargetAssemblyTypeName: ButtonStuff, Assembly-CSharp
-        m_MethodName: SceneChange
+      - m_Target: {fileID: 289547700}
+        m_TargetAssemblyTypeName: CanvasSwitcher, Assembly-CSharp
+        m_MethodName: StartConnect
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1699,7 +1699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombDuration: 10
   wristBandText: {fileID: 0}
-  Magcount: 0
+  Magcount: 10
 --- !u!4 &1405603805
 Transform:
   m_ObjectHideFlags: 0
@@ -26668,8 +26668,8 @@ MonoBehaviour:
   headlessStartMode: 0
   editorAutoStart: 0
   sendRate: 60
-  offlineScene: 
-  onlineScene: 
+  offlineScene: Assets/Scenes/Map.unity
+  onlineScene: Assets/Scenes/Level1.unity
   offlineSceneLoadDelay: 0
   transport: {fileID: 7243766554818975710}
   networkAddress: localhost
@@ -26683,6 +26683,10 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 9197183518898947446, guid: 6aaba387db0db1c4688bc6ef27859f7e, type: 3}
+  - {fileID: 1206166774323063036, guid: 1f534b34d09d5bb4d8ae98ac35e93a13, type: 3}
+  - {fileID: 5320751839200388998, guid: 9840a036c64077d458e13dcbc78ed8f3, type: 3}
+  - {fileID: 5320751839200388998, guid: 638305308e7bdee45b1bb33836c62590, type: 3}
+  - {fileID: 5268241899856274486, guid: ce2ba925f531cc0489a1e92168e4c4b2, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2

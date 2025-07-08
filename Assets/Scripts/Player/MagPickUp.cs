@@ -57,7 +57,7 @@ public class MagPickUp : MonoBehaviour
     {
         if (GM == null)
         {
-            FindFirstObjectByType<GameManager>();
+            GM = FindFirstObjectByType<GameManager>();
         }
         
         if (GM.Magcount <= 0)

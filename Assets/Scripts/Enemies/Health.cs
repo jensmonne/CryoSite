@@ -1,43 +1,60 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using Mirror;
+using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : NetworkBehaviour
 {
-    [SerializeField] private int maxHealth;
-    private int currentHealth;
-    [SerializeField] private ParticleSystem hit;
-    [SerializeField] private GameObject explosion;
-    [SerializeField] private EnemyBase enemyScript;
-    [SerializeField] private AudioSource explodeSound;
+    [SyncVar]
+    public int currentHealth;
+
+    public AudioSource hit;
     [SerializeField] private Renderer[] renderers;
-    [SerializeField] private float flashDuration = 0.2f;
-
+    public int maxHealth = 100;
+    private Coroutine flashCoroutine;
     private Material[][] materials;
+    [SerializeField] private float flashDuration = 0.2f;
+    [SerializeField] private GameObject DeathParticles;
 
-    private void Start()
+    public override void OnStartServer()
     {
         currentHealth = maxHealth;
-        materials = new Material[renderers.Length][];
-        for (int i = 0; i < renderers.Length; i++)
+    }
+
+
+    [Command(requiresAuthority = false)]
+    public void CmdDealDamage(int damage)
+    {
+        Debug.Log($"[SERVER] CmdDealDamage received. Damage: {damage}");
+
+        if (currentHealth <= 0) return;
+
+        currentHealth -= damage;
+        RpcOnHit();
+
+        if (currentHealth <= 0)
         {
-            Material[] mats = renderers[i].materials;
-            for (int j = 0; j < mats.Length; j++)
-            {
-                mats[j] = Instantiate(mats[j]);
-            }
-            renderers[i].materials = mats;
-            materials[i] = mats;
+            RpcDeath();
         }
     }
 
-    public void TakeDamage(int damage)
+    [ClientRpc]
+    void RpcOnHit()
     {
-        currentHealth -= damage;
-        if (hit != null)
-            hit.Play();
-        StartCoroutine(FlashRoutine());
-        if (currentHealth <= 0)
-            Death();
+        if (hit != null) hit.Play();
+
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+
+        flashCoroutine = StartCoroutine(FlashRoutine());
+    }
+
+    [ClientRpc]
+    void RpcDeath()
+    {
+        Debug.Log("Enemy died.");
+        Instantiate(DeathParticles, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     private IEnumerator FlashRoutine()
@@ -53,7 +70,7 @@ public class Health : MonoBehaviour
         }
         SetFlashAmount(0f);
     }
-
+    
     private void SetFlashAmount(float amount)
     {
         for (int i = 0; i < materials.Length; i++)
@@ -63,15 +80,5 @@ public class Health : MonoBehaviour
                 materials[i][j].SetFloat("_FlashAmount", amount);
             }
         }
-    }
-
-    private void Death()
-    {
-        if (explosion != null)
-            Instantiate(explosion, transform.position, Quaternion.identity);
-        if (explodeSound != null)
-            explodeSound.Play();
-        if (enemyScript != null)
-            enemyScript.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

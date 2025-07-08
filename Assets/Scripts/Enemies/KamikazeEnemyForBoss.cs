@@ -59,7 +59,7 @@ public class KamikazeEnemyForBoss : EnemyBase
             var health = collider.GetComponent<Health>();
             if (health != null)
             {
-                health.TakeDamage(explosionDamage);
+                health.CmdDealDamage(explosionDamage);
                 continue;
             }
 

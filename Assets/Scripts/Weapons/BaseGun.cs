@@ -184,13 +184,18 @@ public class BaseGun : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
         {
-            endPoint = hit.point;
+            Debug.LogWarning("Hit object: " + hit.collider.gameObject.name);
             var health = hit.collider.GetComponent<Health>();
-            if (health) health.TakeDamage(damageAmount);
+            if (health != null)
+            {
+                Debug.Log($"[CLIENT] Calling CmdDealDamage on: {health.name}");
+                health.CmdDealDamage(damageAmount);
+            }
 
             var bossHealth = hit.collider.GetComponent<BossHealth>();
             if (bossHealth) bossHealth.TakeDamage(damageAmount);
         }
+        
     }
 
     private void FireShotgun()
@@ -207,7 +212,7 @@ public class BaseGun : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
             {
                 var health = hit.collider.GetComponent<Health>();
-                if (health) health.TakeDamage(damageAmount);
+                if (health) health.CmdDealDamage(damageAmount);
 
                 var bossHealth = hit.collider.GetComponent<BossHealth>();
                 if (bossHealth) bossHealth.TakeDamage(damageAmount);
