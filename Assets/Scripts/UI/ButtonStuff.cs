@@ -16,7 +16,7 @@ public class ButtonStuff : MonoBehaviour
     [Server]
     public void ChangeScene()
     {
-        NetworkManager.singleton.ServerChangeScene("Level1");
+        NetworkManager.singleton.ServerChangeScene("MapOnline");
     }
 
     public void SceneChange()
