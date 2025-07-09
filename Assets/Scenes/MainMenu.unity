@@ -21811,8 +21811,8 @@ MonoBehaviour:
   screenFader: {fileID: 2014185154}
   tabSwitcher: {fileID: 2287166340648536066}
   lobbyNetworkUI: {fileID: 4967278159187128624}
-  sceneToLoad: {fileID: 102900000, guid: fed480f6d1fe3234181c7f788c099fd1, type: 3}
-  sceneName: Level1Offline
+  sceneToLoad: {fileID: 102900000, guid: ad5e7407fa11fa14aba288425731752c, type: 3}
+  sceneName: Map
 --- !u!222 &4007619518357003527
 CanvasRenderer:
   m_ObjectHideFlags: 0
