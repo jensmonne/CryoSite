@@ -5748,10 +5748,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5985351015711056986}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2944967aa4f91d1428b4e8d5e2031b6a,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: -6301215890638206440}
   m_SourcePrefab: {fileID: 100100000, guid: 2944967aa4f91d1428b4e8d5e2031b6a, type: 3}
 --- !u!23 &2987846130783954585 stripped
 MeshRenderer:
@@ -5814,11 +5810,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12dc79d8f30599d4e96913b64880ec59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
-  syncMode: 0
-  syncInterval: 0
-  currentHealth: 0
+  maxHealth: 25
   hit: {fileID: 1788284646810352410}
+  explosion: {fileID: 0}
+  enemyScript: {fileID: 0}
+  explodeSound: {fileID: 0}
   renderers:
   - {fileID: 3847782947300146721}
   - {fileID: 6527366459612446884}
@@ -5829,11 +5825,7 @@ MonoBehaviour:
   - {fileID: 4476956404341911975}
   - {fileID: 6195832547792144073}
   - {fileID: 5673411518033298670}
-  maxHealth: 25
   flashDuration: 0.2
-  DeathParticles: {fileID: 7525177517032146086, guid: b1a15f77f088911429fc2ba729b20781,
-    type: 3}
-  enemybase: {fileID: 0}
 --- !u!136 &4924890471436418210
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5963,23 +5955,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
---- !u!114 &-6301215890638206440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5320751839200388998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  _assetId: 368137766
-  serverOnly: 0
-  visibility: 0
-  hasSpawned: 0
 --- !u!23 &5608122042783037328 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 631206546442317127, guid: 2944967aa4f91d1428b4e8d5e2031b6a,

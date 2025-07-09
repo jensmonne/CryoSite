@@ -2,30 +2,26 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
-public class NetworkedBossHealth : NetworkBehaviour
+public class NetworkedHealthEnemy : NetworkBehaviour
 {
     [SyncVar]
     public int currentHealth;
-    
-    public int MaxHealth;
-    [SerializeField] private ParticleSystem hit;
-    [SerializeField] private BossBehavior boss;
-    [SerializeField] private BossHealthBar healthBar;
-    private OnBossTriggerEnter onBossTriggerEnter;
+
+    public AudioSource hit;
     [SerializeField] private Renderer[] renderers;
-    [SerializeField] private float flashDuration = 0.2f;
-    private Material[][] materials;
+    public int maxHealth = 100;
     private Coroutine flashCoroutine;
+    private Material[][] materials;
+    [SerializeField] private float flashDuration = 0.2f;
     [SerializeField] private GameObject DeathParticles;
 
     public override void OnStartServer()
     {
-        currentHealth = MaxHealth;
+        currentHealth = maxHealth;
     }
-    
+
     private void Start()
     {
-        onBossTriggerEnter = FindObjectOfType<OnBossTriggerEnter>();
         materials = new Material[renderers.Length][];
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -37,13 +33,8 @@ public class NetworkedBossHealth : NetworkBehaviour
             renderers[i].materials = mats;
             materials[i] = mats;
         }
-        
     }
 
-    private void Update()
-    {
-        healthBar.UpdateHealthUI();
-    }
 
     [Command(requiresAuthority = false)]
     public void CmdDealDamage(int damage)
@@ -60,7 +51,8 @@ public class NetworkedBossHealth : NetworkBehaviour
             RpcDeath();
         }
     }
-    
+
+    [ClientRpc]
     void RpcOnHit()
     {
         if (hit != null) hit.Play();
@@ -70,16 +62,15 @@ public class NetworkedBossHealth : NetworkBehaviour
 
         flashCoroutine = StartCoroutine(FlashRoutine());
     }
-    
+
     [ClientRpc]
     void RpcDeath()
     {
         Debug.Log("Enemy died.");
-        onBossTriggerEnter.BossDied();
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
-        boss.ChangeState(BossBehavior.BossState.Death);
+        Destroy(gameObject);
     }
-    
+
     private IEnumerator FlashRoutine()
     {
         SetFlashAmount(1f);
@@ -93,7 +84,7 @@ public class NetworkedBossHealth : NetworkBehaviour
         }
         SetFlashAmount(0f);
     }
-
+    
     private void SetFlashAmount(float amount)
     {
         for (int i = 0; i < materials.Length; i++)

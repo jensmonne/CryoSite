@@ -55,11 +55,18 @@ public class KamikazeEnemyForBoss : EnemyBase
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRange);
 
         foreach (Collider collider in hitColliders)
-        {
+        {            
             var health = collider.GetComponent<Health>();
             if (health != null)
             {
-                health.CmdDealDamage(explosionDamage);
+                health.TakeDamage(explosionDamage);
+                continue;
+            }
+            
+            var networkhealth = collider.GetComponent<NetworkedHealthEnemy>();
+            if (networkhealth != null)
+            {
+                networkhealth.CmdDealDamage(explosionDamage);
                 continue;
             }
 

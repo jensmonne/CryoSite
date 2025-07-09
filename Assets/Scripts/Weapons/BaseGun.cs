@@ -189,13 +189,27 @@ public class BaseGun : MonoBehaviour
             if (health != null)
             {
                 Debug.Log($"[CLIENT] Calling CmdDealDamage on: {health.name}");
-                health.CmdDealDamage(damageAmount);
+                health.TakeDamage(damageAmount);
+            }
+            
+            var networkedHealth = hit.collider.GetComponent<NetworkedHealthEnemy>();
+            if (networkedHealth != null)
+            {
+                networkedHealth.CmdDealDamage(damageAmount);
             }
 
             var bossHealth = hit.collider.GetComponent<BossHealth>();
-            if (bossHealth) bossHealth.CmdDealDamage(damageAmount);
+            if (bossHealth != null)
+            {
+                bossHealth.TakeDamage(damageAmount);
+            }
+                
+            var networkedBosshealth = hit.collider.GetComponent<NetworkedBossHealth>();
+            if (networkedBosshealth != null)
+            {
+                networkedBosshealth.CmdDealDamage(damageAmount);
+            }
         }
-        
     }
 
     private void FireShotgun()
@@ -212,10 +226,29 @@ public class BaseGun : MonoBehaviour
             if (Physics.Raycast(ray, out RaycastHit hit, range, enemyLayerMask))
             {
                 var health = hit.collider.GetComponent<Health>();
-                if (health) health.CmdDealDamage(damageAmount);
+                if (health != null)
+                {
+                    Debug.Log($"[CLIENT] Calling CmdDealDamage on: {health.name}");
+                    health.TakeDamage(damageAmount);
+                }
+            
+                var networkedHealth = hit.collider.GetComponent<NetworkedHealthEnemy>();
+                if (networkedHealth != null)
+                {
+                    networkedHealth.CmdDealDamage(damageAmount);
+                }
 
                 var bossHealth = hit.collider.GetComponent<BossHealth>();
-                if (bossHealth) bossHealth.CmdDealDamage(damageAmount);
+                if (bossHealth != null)
+                {
+                    bossHealth.TakeDamage(damageAmount);
+                }
+                
+                var networkedBosshealth = hit.collider.GetComponent<NetworkedBossHealth>();
+                if (networkedBosshealth != null)
+                {
+                    networkedBosshealth.CmdDealDamage(damageAmount);
+                }
             }
         }
     }

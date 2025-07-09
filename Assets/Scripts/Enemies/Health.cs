@@ -1,28 +1,22 @@
-using System;
-using System.Collections;
-using Mirror;
 using UnityEngine;
+using System.Collections;
 
-public class Health : NetworkBehaviour
+public class Health : MonoBehaviour
 {
-    [SyncVar]
-    public int currentHealth;
-
-    public AudioSource hit;
+    [SerializeField] private int maxHealth;
+    private int currentHealth;
+    [SerializeField] private ParticleSystem hit;
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private EnemyBase enemyScript;
+    [SerializeField] private AudioSource explodeSound;
     [SerializeField] private Renderer[] renderers;
-    public int maxHealth = 100;
-    private Coroutine flashCoroutine;
-    private Material[][] materials;
     [SerializeField] private float flashDuration = 0.2f;
-    [SerializeField] private GameObject DeathParticles;
 
-    public override void OnStartServer()
-    {
-        currentHealth = maxHealth;
-    }
+    private Material[][] materials;
 
     private void Start()
     {
+        currentHealth = maxHealth;
         materials = new Material[renderers.Length][];
         for (int i = 0; i < renderers.Length; i++)
         {
@@ -36,40 +30,14 @@ public class Health : NetworkBehaviour
         }
     }
 
-
-    [Command(requiresAuthority = false)]
-    public void CmdDealDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        Debug.Log($"[SERVER] CmdDealDamage received. Damage: {damage}");
-
-        if (currentHealth <= 0) return;
-
         currentHealth -= damage;
-        RpcOnHit();
-
+        if (hit != null)
+            hit.Play();
+        StartCoroutine(FlashRoutine());
         if (currentHealth <= 0)
-        {
-            RpcDeath();
-        }
-    }
-
-    [ClientRpc]
-    void RpcOnHit()
-    {
-        if (hit != null) hit.Play();
-
-        if (flashCoroutine != null)
-            StopCoroutine(flashCoroutine);
-
-        flashCoroutine = StartCoroutine(FlashRoutine());
-    }
-
-    [ClientRpc]
-    void RpcDeath()
-    {
-        Debug.Log("Enemy died.");
-        Instantiate(DeathParticles, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+            Death();
     }
 
     private IEnumerator FlashRoutine()
@@ -85,7 +53,7 @@ public class Health : NetworkBehaviour
         }
         SetFlashAmount(0f);
     }
-    
+
     private void SetFlashAmount(float amount)
     {
         for (int i = 0; i < materials.Length; i++)
@@ -95,5 +63,15 @@ public class Health : NetworkBehaviour
                 materials[i][j].SetFloat("_FlashAmount", amount);
             }
         }
+    }
+
+    private void Death()
+    {
+        if (explosion != null)
+            Instantiate(explosion, transform.position, Quaternion.identity);
+        if (explodeSound != null)
+            explodeSound.Play();
+        if (enemyScript != null)
+            enemyScript.ChangeState(EnemyBase.EnemyState.Dead);
     }
 }

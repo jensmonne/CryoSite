@@ -39,7 +39,14 @@ public class kamikazeEnemy : EnemyBase
             var health = collider.GetComponent<Health>();
             if (health != null)
             {
-                health.CmdDealDamage(explosionDamage);
+                health.TakeDamage(explosionDamage);
+                continue;
+            }
+            
+            var networkhealth = collider.GetComponent<NetworkedHealthEnemy>();
+            if (networkhealth != null)
+            {
+                networkhealth.CmdDealDamage(explosionDamage);
                 continue;
             }
             

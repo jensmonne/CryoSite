@@ -6,12 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Boss.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Boss/BossHealth.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/Health.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/KamikazeEnemyForBoss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/KamikazeEnemyForBoss.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemies/kamikazeEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/BaseGun.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossHealth.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +174,8 @@
       <workItem from="1751624741663" duration="1000" />
       <workItem from="1751626011614" duration="4350000" />
       <workItem from="1751800189939" duration="845000" />
-      <workItem from="1752043579361" duration="739000" />
+      <workItem from="1752043579361" duration="2274000" />
+      <workItem from="1752050960996" duration="987000" />
     </task>
     <servers />
   </component>
