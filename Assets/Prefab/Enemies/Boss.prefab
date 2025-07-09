@@ -15493,16 +15493,50 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2892275396638943139}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6815472186796284050}
   m_SourcePrefab: {fileID: 100100000, guid: ed57ee7bec48020429314a613535b1b3, type: 3}
+--- !u!23 &3599983049337419823 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4798068623424782344, guid: ed57ee7bec48020429314a613535b1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8314661408042235943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3652879769400062671 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4742922302542088936, guid: ed57ee7bec48020429314a613535b1b3,
     type: 3}
   m_PrefabInstance: {fileID: 8314661408042235943}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4122979192610803051 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5356011153508365644, guid: ed57ee7bec48020429314a613535b1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8314661408042235943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6126351158431288684 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6456271169210796725, guid: ed57ee7bec48020429314a613535b1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8314661408042235943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6527135912249772094 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3023771294661767193, guid: ed57ee7bec48020429314a613535b1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8314661408042235943}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8424305268908416972 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 8314661408042235943}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8957202212998751417 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8129626746520363874, guid: ed57ee7bec48020429314a613535b1b3,
     type: 3}
   m_PrefabInstance: {fileID: 8314661408042235943}
   m_PrefabAsset: {fileID: 0}
@@ -15573,21 +15607,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f32a1b8a9b81194cbe249161c5e8a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
   currentHealth: 0
+  MaxHealth: 1000
   hit: {fileID: 7537608374455109291}
   boss: {fileID: 6757761712601119313}
-  healthSegments:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  healthBar: {fileID: 0}
+  renderers:
+  - {fileID: 6527135912249772094}
+  - {fileID: 3599983049337419823}
+  - {fileID: 4122979192610803051}
+  - {fileID: 8957202212998751417}
+  - {fileID: 6126351158431288684}
+  flashDuration: 0.2
+  DeathParticles: {fileID: 7525177517032146086, guid: b1a15f77f088911429fc2ba729b20781,
+    type: 3}
 --- !u!65 &4001918075449767684
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15801,3 +15837,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-6815472186796284050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9197183518898947446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 1245083333
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0

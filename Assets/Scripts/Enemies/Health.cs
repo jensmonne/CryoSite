@@ -21,6 +21,21 @@ public class Health : NetworkBehaviour
         currentHealth = maxHealth;
     }
 
+    private void Start()
+    {
+        materials = new Material[renderers.Length][];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            Material[] mats = renderers[i].materials;
+            for (int j = 0; j < mats.Length; j++)
+            {
+                mats[j] = Instantiate(mats[j]);
+            }
+            renderers[i].materials = mats;
+            materials[i] = mats;
+        }
+    }
+
 
     [Command(requiresAuthority = false)]
     public void CmdDealDamage(int damage)

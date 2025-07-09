@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1342712875089550245}
   - component: {fileID: 8707287321957799576}
   - component: {fileID: -7590684633940393110}
+  - component: {fileID: -5018991910641656715}
   m_Layer: 15
   m_Name: KeyCard
   m_TagString: Key
@@ -223,3 +224,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineLayerName: OutlineObjects
   noHitPlayerLayerName: Nohitplayer
+--- !u!114 &-5018991910641656715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060337875657960565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 1912401606
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0

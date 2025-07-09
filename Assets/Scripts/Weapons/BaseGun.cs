@@ -193,7 +193,7 @@ public class BaseGun : MonoBehaviour
             }
 
             var bossHealth = hit.collider.GetComponent<BossHealth>();
-            if (bossHealth) bossHealth.TakeDamage(damageAmount);
+            if (bossHealth) bossHealth.CmdDealDamage(damageAmount);
         }
         
     }
@@ -215,7 +215,7 @@ public class BaseGun : MonoBehaviour
                 if (health) health.CmdDealDamage(damageAmount);
 
                 var bossHealth = hit.collider.GetComponent<BossHealth>();
-                if (bossHealth) bossHealth.TakeDamage(damageAmount);
+                if (bossHealth) bossHealth.CmdDealDamage(damageAmount);
             }
         }
     }

@@ -95,14 +95,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3593260959898452126}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8574106479260787135}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4932735466505961152}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
@@ -143,56 +135,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 6312712772434442774}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3593260959898452126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582621101099812679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a777017aab95d4982aed99b6a92bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  currentStage: 0
-  stageTwoThreshold: 50
-  attackCooldown: 2
-  playerTransform: {fileID: 0}
-  KamikazeDrones: {fileID: 0}
-  SpawnpointDrone: {fileID: 0}
-  Timebetweenspawns: 0
-  shootpoints: []
-  RangeGun: 0
-  playerlayer:
-    serializedVersion: 2
-    m_Bits: 0
-  damageamountGun: 0
-  LazerRotator: {fileID: 0}
-  rotationSpeed: 45
-  RangeLazer: 0
-  firePoints: []
-  Duration: 0
-  DamageAmountLazer: 0
-  lineRendererLazer: {fileID: 0}
-  FireRateLazer: 0.2
---- !u!114 &8574106479260787135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582621101099812679}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f32a1b8a9b81194cbe249161c5e8a0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 0
-  currentHealth: 0
-  hit: {fileID: 0}
-  boss: {fileID: 0}
 --- !u!65 &4932735466505961152
 BoxCollider:
   m_ObjectHideFlags: 0

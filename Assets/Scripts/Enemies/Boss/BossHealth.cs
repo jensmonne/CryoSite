@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
+using Mirror;
 using UnityEngine;
 
-public class BossHealth : MonoBehaviour
+public class BossHealth : NetworkBehaviour
 {
-    public int MaxHealth;
+    [SyncVar]
     public int currentHealth;
+    
+    public int MaxHealth;
     [SerializeField] private ParticleSystem hit;
     [SerializeField] private BossBehavior boss;
     [SerializeField] private BossHealthBar healthBar;
@@ -13,10 +16,16 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private Renderer[] renderers;
     [SerializeField] private float flashDuration = 0.2f;
     private Material[][] materials;
+    private Coroutine flashCoroutine;
+    [SerializeField] private GameObject DeathParticles;
 
-    private void Start()
+    public override void OnStartServer()
     {
         currentHealth = MaxHealth;
+    }
+    
+    private void Start()
+    {
         onBossTriggerEnter = FindObjectOfType<OnBossTriggerEnter>();
         materials = new Material[renderers.Length][];
         for (int i = 0; i < renderers.Length; i++)
@@ -37,12 +46,39 @@ public class BossHealth : MonoBehaviour
         healthBar.UpdateHealthUI();
     }
 
-    public void TakeDamage(int damage)
+    [Command(requiresAuthority = false)]
+    public void CmdDealDamage(int damage)
     {
+        Debug.Log($"[SERVER] CmdDealDamage received. Damage: {damage}");
+
+        if (currentHealth <= 0) return;
+
         currentHealth -= damage;
-        hit.Play();
-        StartCoroutine(FlashRoutine());
-        if (currentHealth <= 0) Death();
+        RpcOnHit();
+
+        if (currentHealth <= 0)
+        {
+            RpcDeath();
+        }
+    }
+    
+    void RpcOnHit()
+    {
+        if (hit != null) hit.Play();
+
+        if (flashCoroutine != null)
+            StopCoroutine(flashCoroutine);
+
+        flashCoroutine = StartCoroutine(FlashRoutine());
+    }
+    
+    [ClientRpc]
+    void RpcDeath()
+    {
+        Debug.Log("Enemy died.");
+        onBossTriggerEnter.BossDied();
+        Instantiate(DeathParticles, transform.position, Quaternion.identity);
+        boss.ChangeState(BossBehavior.BossState.Death);
     }
     
     private IEnumerator FlashRoutine()
@@ -68,12 +104,5 @@ public class BossHealth : MonoBehaviour
                 materials[i][j].SetFloat("_FlashAmount", amount);
             }
         }
-    }
-    
-    private void Death()
-    {
-        onBossTriggerEnter.BossDied();
-        Debug.Log("Killed Boss");
-        boss.ChangeState(BossBehavior.BossState.Death);
     }
 }
