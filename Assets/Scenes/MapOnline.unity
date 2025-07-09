@@ -3694,11 +3694,11 @@ MonoBehaviour:
   showGizmos: 0
   showOverlay: 0
   overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
-  onlySyncOnChangeCorrectionMultiplier: 2
+  onlySyncOnChangeCorrectionMultiplier: 1
   useFixedUpdate: 0
   rotationSensitivity: 0.01
-  positionPrecision: 0.01
-  scalePrecision: 0.01
+  positionPrecision: 0.0001
+  scalePrecision: 0.0001
 --- !u!1001 &291553921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8082,7 +8082,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  canAutoOpen: 1
+  canAutoOpen: 0
   leftDoor: {fileID: 291043881}
   rightDoor: {fileID: 291043880}
   doorSound: {fileID: 291043883}
@@ -10477,7 +10477,7 @@ MonoBehaviour:
   interpolatePosition: 1
   interpolateRotation: 1
   interpolateScale: 1
-  coordinateSpace: 0
+  coordinateSpace: 1
   timelineOffset: 1
   showGizmos: 0
   showOverlay: 0
@@ -10485,7 +10485,7 @@ MonoBehaviour:
   onlySyncOnChangeCorrectionMultiplier: 2
   useFixedUpdate: 0
   rotationSensitivity: 0.01
-  positionPrecision: 0.01
+  positionPrecision: 0.0001
   scalePrecision: 0.01
 --- !u!1001 &912701126
 PrefabInstance:
@@ -17143,7 +17143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1624991327
 Transform:
   m_ObjectHideFlags: 0
@@ -17269,7 +17269,7 @@ MonoBehaviour:
   interpolatePosition: 1
   interpolateRotation: 1
   interpolateScale: 1
-  coordinateSpace: 0
+  coordinateSpace: 1
   timelineOffset: 1
   showGizmos: 0
   showOverlay: 0
@@ -17277,7 +17277,7 @@ MonoBehaviour:
   onlySyncOnChangeCorrectionMultiplier: 2
   useFixedUpdate: 0
   rotationSensitivity: 0.01
-  positionPrecision: 0.01
+  positionPrecision: 0.0001
   scalePrecision: 0.01
 --- !u!1001 &1656440225
 PrefabInstance:
@@ -31393,6 +31393,11 @@ PrefabInstance:
     - target: {fileID: 8005093273798670991, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8005093273798670991, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
+        type: 3}
+      propertyPath: canAutoOpen
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8019751882744876813, guid: 2f6b0eae00113c3419cca5660a3b5c0c,

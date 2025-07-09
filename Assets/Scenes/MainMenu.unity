@@ -1108,6 +1108,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907711495}
   m_CullTransparentMesh: 1
+--- !u!1 &929923164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2555666899941010258, guid: 16611e621d86b26448ca939f4c4f1d49,
+    type: 3}
+  m_PrefabInstance: {fileID: 2014185152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &959272134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,6 +2470,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7272553685564827787, guid: 16611e621d86b26448ca939f4c4f1d49,
+        type: 3}
+      propertyPath: Cursor
+      value: 
+      objectReference: {fileID: 929923164}
     - target: {fileID: 7550344387755106103, guid: 16611e621d86b26448ca939f4c4f1d49,
         type: 3}
       propertyPath: m_IsActive
@@ -27340,7 +27351,6 @@ MonoBehaviour:
   - {fileID: 7920466840278818460, guid: 84a8d3afed2d2ce4ebccb9bdbd73326b, type: 3}
   - {fileID: 8750573807600263486, guid: efae98b778f500149a01df502af02ffc, type: 3}
   - {fileID: 2060337875657960565, guid: 5ad8571b0662863448137417f7ac64ba, type: 3}
-  - {fileID: 6748570664686025311, guid: 86c3bc9a229531c43bf3b59106478bc2, type: 3}
   - {fileID: 3167029896872874686, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
   - {fileID: 1809348611581969128, guid: c95ae56ab53711b4e94f30d2ee5c13e1, type: 3}
   - {fileID: 8508465643061114100, guid: 63ce3df44b9ddc54daaaa6ecf2f46c78, type: 3}
@@ -30845,6 +30855,7 @@ GameObject:
   - component: {fileID: 4559325839615401336}
   - component: {fileID: 6066784015166880727}
   - component: {fileID: 7095326105649168709}
+  - component: {fileID: 7095326105649168710}
   m_Layer: 5
   m_Name: VR Keyboard Canvas
   m_TagString: Untagged
@@ -37261,6 +37272,27 @@ MonoBehaviour:
   CanvasObjects:
   - {fileID: 1140533388651273699}
   - {fileID: 5198937072584827230}
+--- !u!65 &7095326105649168710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5734405634626509769}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 740, y: 260, z: 0.001}
+  m_Center: {x: 0, y: 0, z: 0.001}
 --- !u!4 &7104819969828364765
 Transform:
   m_ObjectHideFlags: 0
@@ -42050,6 +42082,7 @@ GameObject:
   - component: {fileID: 3297179139636680765}
   - component: {fileID: 9207491462377468323}
   - component: {fileID: 7393476048218365499}
+  - component: {fileID: 9207491462377468324}
   m_Layer: 5
   m_Name: VR Keyboard Canvas
   m_TagString: Untagged
@@ -47018,6 +47051,27 @@ MonoBehaviour:
   AttachedInputField: {fileID: 3801580392472819012}
   UseShift: 1
   KeyPressSound: {fileID: 8300000, guid: f2dc589f7839f104cb317f751adf6757, type: 3}
+--- !u!65 &9207491462377468324
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8115262458692029773}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 740, y: 260, z: 0.001}
+  m_Center: {x: 0, y: 0, z: 0.001}
 --- !u!224 &9210836798191424022
 RectTransform:
   m_ObjectHideFlags: 0

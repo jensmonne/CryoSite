@@ -26,8 +26,8 @@ public class SlidingDoors : MonoBehaviour, IUnlockableDoor
         leftClosedPos = leftDoor.localPosition;
         rightClosedPos = rightDoor.localPosition;
         
-        leftOpenPos = leftClosedPos + Vector3.up * slideDistance;
-        rightOpenPos = rightClosedPos - Vector3.up * slideDistance;
+        leftOpenPos = leftClosedPos + leftDoor.forward * slideDistance;
+        rightOpenPos = rightClosedPos - leftDoor.forward * slideDistance;
     }
 
     private void OnTriggerEnter(Collider other)

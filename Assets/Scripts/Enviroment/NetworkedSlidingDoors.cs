@@ -24,20 +24,20 @@ public class NetworkedSlidingDoors : NetworkBehaviour, IUnlockableDoor
         leftClosedPos = leftDoor.localPosition;
         rightClosedPos = rightDoor.localPosition;
         
-        leftOpenPos = leftClosedPos + Vector3.up * slideDistance;
-        rightOpenPos = rightClosedPos - Vector3.up * slideDistance;
+        leftOpenPos = leftClosedPos - leftDoor.forward * slideDistance;
+        rightOpenPos = rightClosedPos + leftDoor.forward * slideDistance;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (!canAutoOpen) return;
         
-        if (!isServer && authority)
+        if (!isServer)
         {
             // Client with authority triggers request
             CmdRequestOpen();
         }
-        else if (isServer)
+        else
         {
             // Server opens directly (host or authoritative server)
             OpenDoor();
@@ -46,25 +46,25 @@ public class NetworkedSlidingDoors : NetworkBehaviour, IUnlockableDoor
 
     private void OnTriggerExit(Collider other)
     {
-        if (!isServer && authority)
+        if (!isServer)
         {
             // Client with authority triggers request
             CmdRequestClose();
         }
-        else if (isServer)
+        else
         {
             // Server opens directly (host or authoritative server)
             CloseDoor();
         }
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     private void CmdRequestOpen()
     {
         OpenDoor(); // Server executes
     }
     
-    [Command]
+    [Command(requiresAuthority = false)]
     private void CmdRequestClose()
     {
         CloseDoor(); // Server executes
