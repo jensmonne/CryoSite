@@ -10,21 +10,20 @@ public class SpawnZone : MonoBehaviour
     [SerializeField] private int enemycount = 10;
     public Vector3 spawnArea;
 
-    private void Start()
-    {
-        if (isNetworked)
-        {
-            if (NetworkServer.active)
-            {
-                SpawnEnemies();
-            }
-        }
-        else
-        {
-            SpawnEnemies();
-        }
-    }
-
+    // private void Start()
+    // {
+    //     if (isNetworked)
+    //     {
+    //         if (NetworkServer.active)
+    //         {
+    //             SpawnEnemies();
+    //         }
+    //     }
+    //     else
+    //     {
+    //         SpawnEnemies();
+    //     }
+    // }
 
     public void SpawnEnemies()
     {
