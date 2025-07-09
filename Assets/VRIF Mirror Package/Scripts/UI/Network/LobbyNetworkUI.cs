@@ -205,9 +205,10 @@ namespace VRIF_Mirror_Package.Scripts.UI.Network
             UpdateReadyCounts(); // Recalculate
         }
 
+        [Server]
         public void OnStartGame()
         {
-            
+            NetworkManager.singleton.ServerChangeScene("MapOnline");
         }
 
         private void DisplayLobbyInfo()
