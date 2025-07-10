@@ -15453,10 +15453,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7417725237976102365}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3080888224982033050}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
         type: 3}
@@ -15506,6 +15502,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6706446888277405920}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: ed57ee7bec48020429314a613535b1b3,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1757001938529835414}
   m_SourcePrefab: {fileID: 100100000, guid: ed57ee7bec48020429314a613535b1b3, type: 3}
 --- !u!23 &344261789382719648 stripped
 MeshRenderer:
@@ -15537,55 +15537,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5661956577507200492}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7417725237976102365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4778924295404253373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a777017aab95d4982aed99b6a92bb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  currentStage: 0
-  stageTwoThreshold: 50
-  attackCooldown: 2
-  rotationUpdateInterval: 0.3
-  playerTransform: {fileID: 0}
-  animator: {fileID: 3656045666174206640}
-  KamikazeDrones: {fileID: 5320751839200388998, guid: 638305308e7bdee45b1bb33836c62590,
-    type: 3}
-  SpawnpointDrone: {fileID: 5248671780647019856}
-  Timebetweenspawns: 2
-  droneCount: 5
-  shootpoints:
-  - {fileID: 814373211834146316}
-  - {fileID: 888614382910826922}
-  RangeGun: 8
-  FireRateGun: 0.2
-  playerlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  damageamountGun: 5
-  rayThickness: 0.25
-  Gun: {fileID: 755726708032002249}
-  gunParticles:
-  - {fileID: 5254191845445221060}
-  - {fileID: 4763003700381791682}
-  LazerRotator: {fileID: 1099284264157726468}
-  rotationSpeed: 25
-  RangeLazer: 8
-  firePoints:
-  - {fileID: 8065279175536890835}
-  - {fileID: 6179169969504237305}
-  Duration: 5
-  DamageAmountLazer: 5
-  lineRendererLazer: {fileID: 7431203134509246483}
-  FireRateLazer: 0.2
-  LazerAudio: {fileID: 8384056262573969195}
 --- !u!65 &3080888224982033050
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15817,7 +15768,7 @@ MonoBehaviour:
   currentHealth: 0
   MaxHealth: 3000
   hit: {fileID: 3621028202091562934}
-  boss: {fileID: 7417725237976102365}
+  boss: {fileID: 0}
   healthBar: {fileID: 0}
   renderers:
   - {fileID: 7450599179272240629}
@@ -15841,7 +15792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 1245083333
+  _assetId: 3151825709
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -15879,6 +15830,51 @@ MonoBehaviour:
   positionSensitivity: 0.01
   rotationSensitivity: 0.01
   scaleSensitivity: 0.01
+--- !u!114 &1757001938529835414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4778924295404253373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbe41d8a4d28bbe419b65d98371c9f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
+  currentState: 0
+  currentStage: 0
+  stageTwoThreshold: 50
+  attackCooldown: 2
+  playerTransform: {fileID: 0}
+  KamikazeDrones: {fileID: 7920466840278818460, guid: 84a8d3afed2d2ce4ebccb9bdbd73326b,
+    type: 3}
+  SpawnpointDrone: {fileID: 5248671780647019856}
+  Timebetweenspawns: 1
+  droneCount: 5
+  shootpoints:
+  - {fileID: 814373211834146316}
+  - {fileID: 888614382910826922}
+  RangeGun: 0
+  FireRateGun: 0
+  playerlayer:
+    serializedVersion: 2
+    m_Bits: 512
+  damageamountGun: 0
+  rayThickness: 0.25
+  LazerRotator: {fileID: 1099284264157726468}
+  rotationSpeed: 45
+  RangeLazer: 8
+  firePoints:
+  - {fileID: 8065279175536890835}
+  - {fileID: 6179169969504237305}
+  Duration: 0
+  DamageAmountLazer: 0
+  lineRendererLazer: {fileID: 7431203134509246483}
+  FireRateLazer: 0.2
 --- !u!4 &5267512815181998599 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ed57ee7bec48020429314a613535b1b3,

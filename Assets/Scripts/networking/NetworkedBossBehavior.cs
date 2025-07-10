@@ -4,41 +4,27 @@ using UnityEngine;
 
 public class NetworkedBossBehavior : NetworkBehaviour
 {
-    public enum BossState
-    {
-        Idle,
-        Attacking, 
-        Recharging, 
-        StageSwap, 
-        Death
-    }
-    public enum BossStage 
-    { 
-        Stage1, 
-        Stage2 
-    }
-    
-    public BossState currentState = BossState.Idle;
-    public BossStage currentStage = BossStage.Stage1;
+    public enum BossState { Idle, Attacking, Recharging, StageSwap, Death }
+    public enum BossStage { Stage1, Stage2 }
+
+    [SyncVar(hook = nameof(OnStateChanged))] public BossState currentState = BossState.Idle;
+    [SyncVar(hook = nameof(OnStageChanged))] public BossStage currentStage = BossStage.Stage1;
 
     [SerializeField] private float stageTwoThreshold = 50f;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] private Transform playerTransform;
 
     private float attackTimer;
-    private BossHealth bossHealth; 
-    
+    private BossHealth bossHealth;
     private bool isAttacking = false;
-    
+
     [Header("Drone Spawn")]
-    // Attack 1 (Drone Spawn)
     [SerializeField] private GameObject KamikazeDrones;
     [SerializeField] private GameObject SpawnpointDrone;
     [SerializeField] private float Timebetweenspawns;
     [SerializeField] private int droneCount = 5;
-    
+
     [Header("Gun")]
-    // Attack 2 (Gun)
     [SerializeField] private Transform[] shootpoints;
     [SerializeField] private int RangeGun;
     [SerializeField] private float FireRateGun;
@@ -47,77 +33,85 @@ public class NetworkedBossBehavior : NetworkBehaviour
     [SerializeField] private float rayThickness = 0.25f;
 
     [Header("Lazer")]
-    // Attack 3 (Lazer)
     [SerializeField] private Transform LazerRotator;
     [SerializeField] private float rotationSpeed = 45f;
     [SerializeField] private int RangeLazer;
     [SerializeField] private Transform[] firePoints;
     [SerializeField] private float Duration;
     [SerializeField] private int DamageAmountLazer;
-    private bool isFiringLazer = false;
     [SerializeField] private LineRenderer lineRendererLazer;
-    [SerializeField] private float FireRateLazer = 0.2f; 
-    private float elapsed = 0f;
-    private float LazerFireRateTimer = 0f;
-    
+    [SerializeField] private float FireRateLazer = 0.2f;
+
+    private float attackElapsed = 0f;
     private int nextAttackIndex = 0;
 
     private void Start()
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
-        ChangeState(BossState.Idle);
+        if (isServer)
+        {
+            playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
+            ChangeState(BossState.Idle);
+        }
     }
 
     private void Update()
     {
         if (!isServer) return;
-        
+
         if (bossHealth == null)
         {
             bossHealth = GetComponent<BossHealth>();
         }
-        
+
         if (playerTransform != null && currentState != BossState.Death)
         {
             Vector3 direction = playerTransform.position - transform.position;
-            direction.y = 0f; 
+            direction.y = 0f;
             if (direction != Vector3.zero)
             {
                 Quaternion targetRotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 3f); // 3f = rotation speed
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 3f);
             }
         }
-        
-        elapsed += Time.deltaTime;
+
+        attackElapsed += Time.deltaTime;
         SetState();
         HandleState();
     }
-    
+
     public void ChangeState(BossState newState)
     {
         currentState = newState;
-        Debug.Log($"Boss state changed to: {newState}");
+        Debug.Log($"[Server] Boss state changed to: {newState}");
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
+    private void OnStateChanged(BossState oldState, BossState newState)
+    {
+        Debug.Log($"[Client] Boss state changed to: {newState}");
+    }
+
+    private void OnStageChanged(BossStage oldStage, BossStage newStage)
+    {
+        Debug.Log($"[Client] Boss stage changed to: {newStage}");
+    }
+
     private void SetState()
     {
         if (currentState == BossState.Death) return;
-        
-        if (bossHealth.currentHealth <= stageTwoThreshold && currentStage == BossStage.Stage1)
-        {
-            ChangeState(BossState.StageSwap);
-            return;
-        }
 
         if (bossHealth.currentHealth <= 0)
         {
             ChangeState(BossState.Death);
             return;
         }
+
+        if (bossHealth.currentHealth <= stageTwoThreshold && currentStage == BossStage.Stage1)
+        {
+            ChangeState(BossState.StageSwap);
+            return;
+        }
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
     private void HandleState()
     {
         switch (currentState)
@@ -129,7 +123,6 @@ public class NetworkedBossBehavior : NetworkBehaviour
                     attackTimer = 0f;
                     ChangeState(BossState.Attacking);
                 }
-
                 break;
 
             case BossState.Attacking:
@@ -137,25 +130,22 @@ public class NetworkedBossBehavior : NetworkBehaviour
                     StartCoroutine(AttackSequence());
                 break;
 
-            case BossState.Recharging: 
-                elapsed = 0f;
+            case BossState.Recharging:
+                attackElapsed = 0f;
                 Invoke(nameof(ResetToIdle), 1f);
                 break;
 
             case BossState.StageSwap:
-                Debug.Log("Boss is evolving to Stage 2!");
                 currentStage = BossStage.Stage2;
-                Stageswap();
+                StartCoroutine(StageSwapcor());
                 break;
-            
+
             case BossState.Death:
-                Debug.Log("Boss died");
                 Death();
                 break;
         }
     }
-    
-    // ReSharper disable Unity.PerformanceAnalysis
+
     private IEnumerator AttackSequence()
     {
         isAttacking = true;
@@ -166,33 +156,26 @@ public class NetworkedBossBehavior : NetworkBehaviour
                 switch (nextAttackIndex)
                 {
                     case 0:
-                        Debug.Log("Attack 1: DroneSpawn");
-                        // Simulate drone attack
-                        yield return StartCoroutine(DroneAttackRoutine());
+                        yield return DroneAttackRoutine();
                         break;
                     case 1:
-                        Debug.Log("Attack 2: Gun");
-                        yield return StartCoroutine(GunAttackRoutine(1f));
+                        yield return GunAttackRoutine(1f);
                         break;
                     case 2:
-                        Debug.Log("Attack 3: Lazer");
-                        yield return StartCoroutine(LazerShoot());
+                        yield return LazerShoot();
                         break;
                 }
                 nextAttackIndex = (nextAttackIndex + 1) % 3;
                 break;
 
             case BossStage.Stage2:
-                Debug.Log("Stage 2 bonus: More aggressive attack!");
                 switch (nextAttackIndex)
                 {
                     case 0:
-                        Debug.Log("Attack: Lazer + Drones spawn");
-                        yield return StartCoroutine(Stage2ComboAttackRoutine());
+                        yield return Stage2ComboAttackRoutine();
                         break;
                     case 1:
-                        Debug.Log("Attack: Gun 2x speed!");
-                        yield return StartCoroutine(GunAttackRoutine(2f));
+                        yield return GunAttackRoutine(2f);
                         break;
                 }
                 nextAttackIndex = (nextAttackIndex + 1) % 2;
@@ -202,30 +185,26 @@ public class NetworkedBossBehavior : NetworkBehaviour
         ChangeState(BossState.Recharging);
         isAttacking = false;
     }
-    
-    //Attack 1 (Drone)
+
     private IEnumerator DroneAttackRoutine()
     {
         for (int i = 0; i < droneCount; i++)
         {
             GameObject drone = Instantiate(KamikazeDrones, SpawnpointDrone.transform.position, SpawnpointDrone.transform.rotation);
             NetworkServer.Spawn(drone);
-            
-            yield return new WaitForSeconds(Timebetweenspawns); 
+            yield return new WaitForSeconds(Timebetweenspawns);
         }
 
-        yield return new WaitForSeconds(1f); 
+        yield return new WaitForSeconds(1f);
     }
-    
-    //Attack2 (Gun)
+
     private IEnumerator GunAttackRoutine(float speedMultiplier)
     {
         float attackDuration = 1.5f / speedMultiplier;
         float elapsedGun = 0f;
         float[] fireTimer = new float[shootpoints.Length];
 
-        for (int i = 0; i < fireTimer.Length; i++)
-            fireTimer[i] = 0f;
+        RpcPlayGunAttack();
 
         while (elapsedGun < attackDuration)
         {
@@ -236,18 +215,16 @@ public class NetworkedBossBehavior : NetworkBehaviour
                 if (fireTimer[i] <= 0f)
                 {
                     Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);
-                    Debug.DrawRay(ray.origin, ray.direction * RangeGun, Color.red, 0.1f);
                     if (Physics.SphereCast(ray, rayThickness, out RaycastHit hit, RangeGun, playerlayer))
                     {
                         PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
                         if (playerHealth != null)
                         {
                             playerHealth.TakeDamage(damageamountGun);
-                            fireTimer[i] = FireRateGun;
                         }
                     }
+                    fireTimer[i] = FireRateGun;
                 }
-                fireTimer[i] -= Time.deltaTime;
             }
 
             elapsedGun += Time.deltaTime;
@@ -255,21 +232,12 @@ public class NetworkedBossBehavior : NetworkBehaviour
         }
     }
 
-    //Attack3 (Lazer)
     private IEnumerator LazerShoot()
     {
-        isFiringLazer = true;
-
-        LineRenderer[] lasers = new LineRenderer[firePoints.Length];
+        RpcStartLazerVisuals();
+        float elapsed = 0f;
         float[] tickTimers = new float[firePoints.Length];
-        
-        for (int i = 0; i < firePoints.Length; i++)
-        {
-            lasers[i] = Instantiate(lineRendererLazer, transform);
-            lasers[i].enabled = true;
-            tickTimers[i] = 0f;
-        }
-        
+
         while (elapsed < Duration)
         {
             for (int i = 0; i < firePoints.Length; i++)
@@ -277,12 +245,8 @@ public class NetworkedBossBehavior : NetworkBehaviour
                 Vector3 start = firePoints[i].position;
                 Vector3 direction = firePoints[i].forward;
 
-                lasers[i].SetPosition(0, start);
-
                 if (Physics.Raycast(start, direction, out RaycastHit hit, RangeLazer, playerlayer))
                 {
-                    lasers[i].SetPosition(1, hit.point);
-
                     if (tickTimers[i] <= 0f)
                     {
                         PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
@@ -293,38 +257,65 @@ public class NetworkedBossBehavior : NetworkBehaviour
                         }
                     }
                 }
-                else
-                {
-                    lasers[i].SetPosition(1, start + direction * RangeLazer);
-                }
 
                 tickTimers[i] -= Time.deltaTime;
             }
 
             LazerRotator.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
-            
+            elapsed += Time.deltaTime;
             yield return null;
         }
-        
-        for (int i = 0; i < lasers.Length; i++)
-        {
-            if (lasers[i] != null)
-            {
-                lasers[i].enabled = false;
-            }
-        }
-
-        isFiringLazer = false;
     }
 
-    // stage 2 attacks
-    
-    // attack 1 
+    private IEnumerator HandleLazerVisuals()
+    {
+        LineRenderer[] lasers = new LineRenderer[firePoints.Length];
+
+        for (int i = 0; i < firePoints.Length; i++)
+        {
+            lasers[i] = Instantiate(lineRendererLazer, transform);
+            lasers[i].enabled = true;
+        }
+
+        float elapsed = 0f;
+        while (elapsed < Duration)
+        {
+            for (int i = 0; i < firePoints.Length; i++)
+            {
+                Vector3 start = firePoints[i].position;
+                Vector3 direction = firePoints[i].forward;
+
+                lasers[i].SetPosition(0, start);
+                lasers[i].SetPosition(1, start + direction * RangeLazer);
+            }
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        foreach (var laser in lasers)
+        {
+            if (laser != null) laser.enabled = false;
+        }
+    }
+
+    [ClientRpc]
+    private void RpcStartLazerVisuals()
+    {
+        StartCoroutine(HandleLazerVisuals());
+    }
+
+    [ClientRpc]
+    private void RpcPlayGunAttack()
+    {
+        // Add muzzle flash or sound here if needed
+    }
+
     private IEnumerator Stage2ComboAttackRoutine()
     {
         Coroutine lazerCoroutine = StartCoroutine(LazerShoot());
         Coroutine droneCoroutine = StartCoroutine(DroneAttackRoutine());
-        
+
         yield return lazerCoroutine;
         yield return droneCoroutine;
     }
@@ -335,21 +326,13 @@ public class NetworkedBossBehavior : NetworkBehaviour
             ChangeState(BossState.Idle);
     }
 
-    private void Stageswap()
-    {
-        StartCoroutine(StageSwapcor());
-    }
-
-
     private IEnumerator StageSwapcor()
-    { 
+    {
         bossHealth.enabled = false;
-            
+
         yield return new WaitForSeconds(2f);
-        
+
         bossHealth.enabled = true;
-            
-        currentStage = BossStage.Stage2;
         ChangeState(BossState.Idle);
     }
 
@@ -360,7 +343,7 @@ public class NetworkedBossBehavior : NetworkBehaviour
 
     private void OnDrawGizmos()
     {
-        int shootpointSegments = 15;  
+        int shootpointSegments = 15;
         if (shootpoints != null)
         {
             for (int i = 0; i < shootpoints.Length; i++)
@@ -371,10 +354,9 @@ public class NetworkedBossBehavior : NetworkBehaviour
                 Vector3 direction = shootpoints[i].forward.normalized;
                 float length = RangeGun;
 
-                // Main ray
                 Gizmos.color = Color.yellow;
                 Gizmos.DrawRay(origin, direction * length);
-                
+
                 for (int j = 0; j < shootpointSegments; j++)
                 {
                     float angle = (360f / shootpointSegments) * j;
@@ -384,6 +366,7 @@ public class NetworkedBossBehavior : NetworkBehaviour
                 }
             }
         }
+
         for (int i = 0; i < firePoints.Length; i++)
         {
             Gizmos.color = Color.red;
