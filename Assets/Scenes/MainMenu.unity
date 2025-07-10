@@ -27337,7 +27337,7 @@ MonoBehaviour:
   sendRate: 60
   offlineScene: Assets/Scenes/Map.unity
   onlineScene: 
-  offlineSceneLoadDelay: 0
+  offlineSceneLoadDelay: 3
   transport: {fileID: 7243766554818975710}
   networkAddress: localhost
   maxConnections: 100
