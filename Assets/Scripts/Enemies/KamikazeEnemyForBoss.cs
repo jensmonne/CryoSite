@@ -14,27 +14,6 @@ public class KamikazeEnemyForBoss : EnemyBase
         exploded = false;
     }
 
-    protected override void SetState()
-    {
-        if (currentState == EnemyState.Dead) return;
-        if (Player == null) return;
-
-        float distance = Vector3.Distance(transform.position, Player.position);
-
-        if (distance < AttackDistance)
-        {
-            ChangeState(EnemyState.Attack);
-        }
-        else if (distance < FollowDistance)
-        {
-            ChangeState(EnemyState.Chase);
-        }
-        else
-        {
-            ChangeState(EnemyState.Idle);
-        }
-    }
-
     protected override void UpdatePatrol()
     {
     }

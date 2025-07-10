@@ -1,4 +1,4 @@
-using Mirror;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,36 +12,38 @@ public abstract class EnemyBase : MonoBehaviour
         Attack,
         Dead
     }
-    
+
     public EnemyState currentState;
     [SerializeField] protected int FollowDistance;
-    
-    public BoxCollider patrolZone;
-    [SerializeField] private float waitTimeAtDestination;
-    private float patrolTimer = 0f;
-
     [SerializeField] protected float AttackDistance;
     [SerializeField] protected float AttackRate;
+
+    public BoxCollider patrolZone;
+    [SerializeField] private float waitTimeAtDestination;
+    [SerializeField] private GameObject[] Pickups;
+
     protected float lastAttackTime;
-    
-    protected Transform Player;
+    protected Transform targetPlayer;
+    protected List<Transform> players = new List<Transform>();
+
     public NavMeshAgent agent;
 
     private float waitTimer;
     private bool destinationSet;
-
-    [SerializeField] private GameObject[] Pickups;
-
+    private float patrolTimer = 0f;
     private bool isDead = false;
 
     protected virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-    
         ChangeState(EnemyState.Idle);
-        GameObject playerObj = GameObject.FindWithTag("Player");
-        if (playerObj != null)
-            Player = playerObj.transform;
+
+        // Collect all players with the "Player" tag
+        GameObject[] playerObjs = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject playerObj in playerObjs)
+        {
+            players.Add(playerObj.transform);
+        }
 
         if (patrolZone == null)
             patrolZone = FindNearestPatrolZone();
@@ -61,18 +63,39 @@ public abstract class EnemyBase : MonoBehaviour
     protected virtual void SetState()
     {
         if (currentState == EnemyState.Dead) return;
-        float distance = Vector3.Distance(transform.position, Player.position);
-        
-        if (distance < AttackDistance)
+
+        float closestDistance = Mathf.Infinity;
+        Transform closestPlayer = null;
+
+        foreach (Transform player in players)
+        {
+            if (player == null) continue;
+
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestPlayer = player;
+            }
+        }
+
+        targetPlayer = closestPlayer;
+
+        if (targetPlayer == null)
+        {
+            ChangeState(EnemyState.Wandering);
+            return;
+        }
+
+        if (closestDistance < AttackDistance)
         {
             ChangeState(EnemyState.Attack);
         }
-        
-        if (distance < FollowDistance && currentState != EnemyState.Attack)
+        else if (closestDistance < FollowDistance)
         {
             ChangeState(EnemyState.Chase);
-        } 
-        else if (distance > FollowDistance)
+        }
+        else
         {
             ChangeState(EnemyState.Wandering);
         }
@@ -123,7 +146,7 @@ public abstract class EnemyBase : MonoBehaviour
                 {
                     agent.SetDestination(hit.position);
                     destinationSet = true;
-                    patrolTimer = 0f; 
+                    patrolTimer = 0f;
                 }
 
                 waitTimer = 0f;
@@ -144,28 +167,34 @@ public abstract class EnemyBase : MonoBehaviour
 
     protected virtual void UpdateChase()
     {
-        agent.SetDestination(Player.position);
+        if (targetPlayer != null)
+        {
+            agent.SetDestination(targetPlayer.position);
+        }
     }
 
     protected virtual void UpdateAttack()
     {
-        lastAttackTime = Time.time;
+        if (targetPlayer != null)
+        {
+            // Add your actual attack logic here (damage, animation, etc.)
+            lastAttackTime = Time.time;
+        }
     }
 
     protected virtual void UpdateDead()
     {
+        isDead = true;
+
         if (Pickups.Length > 0 && Random.value <= 0.25f)
         {
             int index = Random.Range(0, Pickups.Length);
-            if (NetworkServer.active || NetworkClient.isConnected)
-            {
-                NetworkServer.Spawn(Instantiate(Pickups[index], transform.position, Quaternion.identity));
-            }
-            else Instantiate(Pickups[index], transform.position, Quaternion.identity);
+            Instantiate(Pickups[index], transform.position, Quaternion.identity);
         }
+
         Destroy(gameObject);
     }
-    
+
     protected BoxCollider FindNearestPatrolZone()
     {
         GameObject[] zones = GameObject.FindGameObjectsWithTag("PetrolZone");
@@ -187,7 +216,7 @@ public abstract class EnemyBase : MonoBehaviour
 
         return nearest;
     }
-    
+
     protected Vector3 GetRandomPointInPatrolZone()
     {
         Vector3 center = patrolZone.transform.position + patrolZone.center;
@@ -199,6 +228,6 @@ public abstract class EnemyBase : MonoBehaviour
         Vector3 randomPoint = new Vector3(x, 0, z);
         return center + patrolZone.transform.rotation * randomPoint;
     }
-    
+
     public abstract void Die();
 }

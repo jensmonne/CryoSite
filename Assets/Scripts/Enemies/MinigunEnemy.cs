@@ -11,21 +11,6 @@ public class MinigunEnemy : EnemyBase
     [SerializeField] private AudioSource Shoot;
     [SerializeField] private float distanceToPlayer;
     
-    protected override void UpdateChase()
-    {
-        if (Player == null) return;
-
-        float distance = Vector3.Distance(transform.position, Player.position);
-        if (distance > distanceToPlayer) 
-        {
-            agent.SetDestination(Player.position);
-        }
-        else
-        {
-            agent.ResetPath(); 
-        }
-    }
-    
     protected override void UpdateAttack()
     {
         UpdateChase();
