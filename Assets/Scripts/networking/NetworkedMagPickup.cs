@@ -13,29 +13,57 @@ public class NetworkedMagPickUp : NetworkBehaviour
     public HandTriggerDetector leftHandDetector;
     public HandTriggerDetector rightHandDetector;
 
-    [SerializeField] private bool LeftHandInZone = false;
-    [SerializeField] private bool RightHandInZone = false;
-
-    [SerializeField] private GameManager GM;
-
     public InputActionReference gripRightAction;
     public InputActionReference gripLeftAction;
 
     [SerializeField] private Transform leftSpawnPos;
     [SerializeField] private Transform rightSpawnPos;
-
+    
     [SerializeField] private GameObject pistolMagPrefab;
     [SerializeField] private GameObject rifleMagPrefab;
+
+    private GameManager GM;
+
+    private bool leftHandInZone = false;
+    private bool rightHandInZone = false;
+
+    private void Start()
+    {
+        gripRightAction.action.Enable();
+        gripLeftAction.action.Enable();
+    }
+
+    private void Update()
+    {
+        if (GM == null)
+        {
+            GM = FindFirstObjectByType<GameManager>();
+        }
+
+        if (GM == null || GM.Magcount <= 0)
+            return;
+
+        if (rightHandInZone && gripRightAction.action.WasPressedThisFrame())
+        {
+            CmdRequestMag("Right");
+        }
+
+        if (leftHandInZone && gripLeftAction.action.WasPressedThisFrame())
+        {
+            CmdRequestMag("Left");
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.name.Contains("Left"))
         {
-            LeftHandInZone = true;
+            leftHandInZone = true;
         }
+
         if (other.name.Contains("Right"))
         {
-            RightHandInZone = true;
+            rightHandInZone = true;
         }
     }
 
@@ -43,79 +71,64 @@ public class NetworkedMagPickUp : NetworkBehaviour
     {
         if (other.name.Contains("Left"))
         {
-            LeftHandInZone = false;
+            leftHandInZone = false;
         }
+
         if (other.name.Contains("Right"))
         {
-            RightHandInZone = false;
-        }
-    }
-
-    private void Update()
-    {
-        if (!isLocalPlayer)
-            return;
-
-        if (GM == null)
-        {
-            GM = FindFirstObjectByType<GameManager>();
-        }
-
-        if (GM.Magcount <= 0)
-            return;
-
-        if (RightHandInZone && gripRightAction.action.WasPressedThisFrame())
-        {
-            CmdRequestSpawnMagazine("Right");
-        }
-
-        if (LeftHandInZone && gripLeftAction.action.WasPressedThisFrame())
-        {
-            CmdRequestSpawnMagazine("Left");
+            rightHandInZone = false;
         }
     }
 
     [Command]
-    private void CmdRequestSpawnMagazine(string hand)
+    private void CmdRequestMag(string hand)
     {
         if (GM == null || GM.Magcount <= 0)
             return;
 
-        GameObject selectedMagPrefab = rifleMagPrefab;
-
-        // Check hand detectors on server — optional validation
-        BaseGun heldGun = rightHandDetector?.currentGun ?? leftHandDetector?.currentGun;
-
-        if (heldGun != null && heldGun.firingType == FiringType.Pistol)
-        {
-            selectedMagPrefab = pistolMagPrefab;
-        }
-
         Transform spawnPoint = hand == "Right" ? rightSpawnPos : leftSpawnPos;
+        GameObject prefabToSpawn = SelectMagPrefab(hand);
 
-        GameObject magInstance = Instantiate(selectedMagPrefab, spawnPoint.position, spawnPoint.rotation);
-        NetworkServer.Spawn(magInstance, connectionToClient); // Spawns and assigns ownership
+        GameObject magInstance = Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+        NetworkServer.Spawn(magInstance);
 
         GM.Magcount--;
 
-        RpcForceGrab(magInstance, hand);
+        RpcForceGrab(magInstance.GetComponent<NetworkIdentity>().netId, hand);
+    }
+
+    private GameObject SelectMagPrefab(string hand)
+    {
+        BaseGun heldGun = null;
+
+        if (hand == "Right" && rightHandDetector != null)
+            heldGun = rightHandDetector.currentGun;
+        else if (hand == "Left" && leftHandDetector != null)
+            heldGun = leftHandDetector.currentGun;
+
+        if (heldGun != null && heldGun.firingType == FiringType.Pistol)
+        {
+            return pistolMagPrefab;
+        }
+
+        return rifleMagPrefab;
     }
 
     [ClientRpc]
-    private void RpcForceGrab(GameObject magInstance, string hand)
+    private void RpcForceGrab(uint netId, string hand)
     {
-        if (!isLocalPlayer)
-            return;
+        NetworkIdentity obj = NetworkClient.spawned[netId];
+        if (obj == null) return;
 
-        Grabber grabber = hand == "Right" ? rightGrabber : leftGrabber;
-        Grabbable grabbable = magInstance.GetComponent<Grabbable>();
-        if (grabber != null && grabbable != null)
-        {
-            StartCoroutine(ForceGrab(grabbable, grabber));
-        }
+        Grabbable grabbable = obj.GetComponent<Grabbable>();
+        if (grabbable == null) return;
+
+        Grabber targetGrabber = hand == "Right" ? rightGrabber : leftGrabber;
+
+        StartCoroutine(DelayedGrab(grabbable, targetGrabber));
     }
 
-    private IEnumerator ForceGrab(Grabbable grabbable, Grabber grabber)
+    private IEnumerator DelayedGrab(Grabbable grabbable, Grabber grabber)
     {
         yield return null;
         grabber.GrabGrabbable(grabbable);
