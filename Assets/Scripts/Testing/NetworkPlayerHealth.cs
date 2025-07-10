@@ -1,8 +1,8 @@
+using Mirror;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using VRIF_Mirror_Package.Scripts.UI.Utils;
 
-public class PlayerHealth : MonoBehaviour
+public class NetworkPlayerHealth : NetworkBehaviour
 {
     [SerializeField] private float maxPlayerHealth = 100f;
 
@@ -27,7 +27,13 @@ public class PlayerHealth : MonoBehaviour
         hitsound.Play();
         UpdateHealthUI();
 
-        if (playerHealth <= 0) Death();
+        if (playerHealth <= 0)
+        {
+            if (isServer)
+                HandleDeathOnServer();
+            else
+                CmdRequestDeath();
+        }
     }
 
     public void Heal(float amount)
@@ -37,13 +43,29 @@ public class PlayerHealth : MonoBehaviour
         UpdateHealthUI();
     }
     
-    private void Death()
+    [Command]
+    private void CmdRequestDeath()
+    {
+        HandleDeathOnServer();
+    }
+    
+    [Server]
+    private void HandleDeathOnServer()
     {
         GameManager.Instance.CurrentState = GameManager.GameState.GameOver;
 
-        fader.DoFadeIn(() => {
-            SceneManager.LoadScene("DarkBox");
-        }, Color.red);
+        RpcDoClientFade();
+
+        NetworkManager.singleton.ServerChangeScene("DarkBox");
+    }
+    
+    [ClientRpc]
+    private void RpcDoClientFade()
+    {
+        if (fader == null)
+            fader = FindAnyObjectByType<ReworkedScreenFader>();
+
+        fader?.DoFadeIn(null, Color.red);
     }
 
     private void UpdateHealthUI()
