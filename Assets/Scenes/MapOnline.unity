@@ -901,10 +901,9 @@ PrefabInstance:
       value: Pistol (1)
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 1450336978991426380, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
-    - {fileID: 8783491683292292408, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
-    - {fileID: 5416190760294436131, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
-    - {fileID: -5464279871579188180, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -912,6 +911,14 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 101056144}
+    - targetCorrespondingSourceObject: {fileID: 3167029896872874686, guid: ebe59707fd08e8e47a7c77b3bccc7865,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 101056146}
+    - targetCorrespondingSourceObject: {fileID: 3167029896872874686, guid: ebe59707fd08e8e47a7c77b3bccc7865,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 101056145}
   m_SourcePrefab: {fileID: 100100000, guid: ebe59707fd08e8e47a7c77b3bccc7865, type: 3}
 --- !u!1 &101056143 stripped
 GameObject:
@@ -933,6 +940,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineLayerName: OutlineObjects
   noHitPlayerLayerName: Nohitplayer
+--- !u!114 &101056145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101056143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cce03842b078b04a8ebe721ba0d0ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  objectIndex: 0
+  grabbables: []
+  ringCanvas: {fileID: 0}
+  ringHelper: {fileID: 0}
+  LeftHandPoseIndex: 1
+  RightHandPoseIndex: 0
+  holdingStatus: 0
+  flightStatus: 0
+--- !u!114 &101056146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101056143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51328566bbd01dd4e8681341199abe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &114579522
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2218,12 +2260,60 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -2254104106736656334, guid: c95ae56ab53711b4e94f30d2ee5c13e1, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1809348611581969128, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248666759}
+    - targetCorrespondingSourceObject: {fileID: 1809348611581969128, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 248666758}
   m_SourcePrefab: {fileID: 100100000, guid: c95ae56ab53711b4e94f30d2ee5c13e1, type: 3}
+--- !u!1 &248666757 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1809348611581969128, guid: c95ae56ab53711b4e94f30d2ee5c13e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 248666756}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &248666758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248666757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cce03842b078b04a8ebe721ba0d0ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  objectIndex: 0
+  grabbables: []
+  ringCanvas: {fileID: 0}
+  ringHelper: {fileID: 0}
+  LeftHandPoseIndex: 1
+  RightHandPoseIndex: 0
+  holdingStatus: 0
+  flightStatus: 0
+--- !u!114 &248666759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248666757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51328566bbd01dd4e8681341199abe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &253643985
 GameObject:
   m_ObjectHideFlags: 0
@@ -3197,8 +3287,57 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2060337875657960565, guid: 5ad8571b0662863448137417f7ac64ba,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 285970246}
+    - targetCorrespondingSourceObject: {fileID: 2060337875657960565, guid: 5ad8571b0662863448137417f7ac64ba,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 285970245}
   m_SourcePrefab: {fileID: 100100000, guid: 5ad8571b0662863448137417f7ac64ba, type: 3}
+--- !u!1 &285970244 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2060337875657960565, guid: 5ad8571b0662863448137417f7ac64ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 285970243}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &285970245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285970244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cce03842b078b04a8ebe721ba0d0ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  objectIndex: 0
+  grabbables: []
+  ringCanvas: {fileID: 0}
+  ringHelper: {fileID: 0}
+  LeftHandPoseIndex: 1
+  RightHandPoseIndex: 0
+  holdingStatus: 0
+  flightStatus: 0
+--- !u!114 &285970246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285970244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51328566bbd01dd4e8681341199abe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &287092094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4512,12 +4651,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -46.646
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1732501548407035841, guid: a8d87deb640fb7a41922a29f26ee0ce5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 775164352085085075, guid: a8d87deb640fb7a41922a29f26ee0ce5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 346552767}
+    - targetCorrespondingSourceObject: {fileID: 775164352085085075, guid: a8d87deb640fb7a41922a29f26ee0ce5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 346552766}
   m_SourcePrefab: {fileID: 100100000, guid: a8d87deb640fb7a41922a29f26ee0ce5, type: 3}
+--- !u!1 &346552765 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 775164352085085075, guid: a8d87deb640fb7a41922a29f26ee0ce5,
+    type: 3}
+  m_PrefabInstance: {fileID: 346552764}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &346552766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346552765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cce03842b078b04a8ebe721ba0d0ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  objectIndex: 0
+  grabbables: []
+  ringCanvas: {fileID: 0}
+  ringHelper: {fileID: 0}
+  LeftHandPoseIndex: 1
+  RightHandPoseIndex: 0
+  holdingStatus: 0
+  flightStatus: 0
+--- !u!114 &346552767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346552765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51328566bbd01dd4e8681341199abe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &355195525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5496580280854113776, guid: d28627154a065b34e8e3d7d4b54bd8cf,
@@ -7260,7 +7447,7 @@ Transform:
   m_GameObject: {fileID: 665696899}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.629, y: 8.845, z: 18.088}
+  m_LocalPosition: {x: 9.595, y: 8.845, z: 18.088}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15051,7 +15238,7 @@ Transform:
   m_GameObject: {fileID: 1571569988}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.282, y: 8.931, z: 10.869}
+  m_LocalPosition: {x: -11.282, y: 8.931, z: 12.267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15557,7 +15744,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1624991327
 Transform:
   m_ObjectHideFlags: 0
