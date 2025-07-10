@@ -5351,6 +5351,7 @@ MonoBehaviour:
   - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
   - {fileID: 1205123371210200512, guid: 6bd053fd20ab2e74f9eecb2ae4b2a59a, type: 3}
   health: {fileID: 0}
+  playerHealth: {fileID: 0}
   dealDamage: 0
   damage: 10
   animator: {fileID: 5101121240200522553}
@@ -5519,7 +5520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a553cb17010b2403e8523b558bffbc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 1
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0
   target: {fileID: 9034208486035402318}
