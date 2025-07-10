@@ -291,23 +291,5 @@ public class BaseGun : MonoBehaviour
         if (swapFireTypeAction != null)
             swapFireTypeAction.performed -= OnSwapFireType;
     }
-
-    private void OnDrawGizmos()
-    {
-        if (muzzleTransform == null) return;
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(muzzleTransform.position, muzzleTransform.forward * range);
-
-        if (firingType == FiringType.Shotgun)
-        {
-            Gizmos.color = Color.yellow;
-            for (int i = 0; i < shotgunPelletCount; i++)
-            {
-                Vector3 dir = GetShotgunPelletDirection();
-                Gizmos.DrawRay(muzzleTransform.position, dir * range);
-            }
-        }
-    }
 }
 

@@ -389,36 +389,4 @@ public class BossBehavior : MonoBehaviour
     {
         Destroy(gameObject, 1f);
     }
-
-    private void OnDrawGizmos()
-    {
-        int shootpointSegments = 15;
-        if (shootpoints != null)
-        {
-            for (int i = 0; i < shootpoints.Length; i++)
-            {
-                if (shootpoints[i] == null) continue;
-
-                Vector3 origin = shootpoints[i].position;
-                Vector3 direction = shootpoints[i].forward.normalized;
-                float length = RangeGun;
-
-                Gizmos.color = Color.yellow;
-                Gizmos.DrawRay(origin, direction * length);
-
-                for (int j = 0; j < shootpointSegments; j++)
-                {
-                    float angle = (360f / shootpointSegments) * j;
-                    Quaternion rot = Quaternion.AngleAxis(angle, direction);
-                    Vector3 offset = rot * Vector3.up * rayThickness;
-                    Gizmos.DrawRay(origin + offset, direction * length);
-                }
-            }
-        }
-        for (int i = 0; i < firePoints.Length; i++)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawRay(firePoints[i].position, firePoints[i].forward * RangeLazer);
-        }
-    }
 }

@@ -63,15 +63,7 @@ public class MinigunEnemy : EnemyBase
         Shoot.Stop();
         base.UpdateDead();
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        for (int i = 0; i < shootpoints.Length; i++)
-        {
-            Gizmos.color = Color.magenta;
-            Gizmos.DrawRay(shootpoints[i].position,  shootpoints[i].forward * Range);
-        }
-    }
+    
     
     public override void Die()
     {

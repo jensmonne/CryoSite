@@ -67,10 +67,4 @@ public class kamikazeEnemy : EnemyBase
             ChangeState(EnemyState.Dead);
         }
     }
-    
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRange);
-    }
 }

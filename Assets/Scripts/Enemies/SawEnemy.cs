@@ -2,57 +2,57 @@ using UnityEngine;
 
 public class SawEnemy : EnemyBase
 {
-
     [SerializeField] private PlayerHealth health;
-    [SerializeField] private bool Dealdamage;
-    [SerializeField] private int Damage;
+    [SerializeField] private bool dealDamage = false;
+    [SerializeField] private int damage = 10;
     [SerializeField] private Animator animator;
     [SerializeField] private float attackRate = 1f;
-    private float attacktimer;
+    private float attackTimer = 0f;
 
     protected override void Update()
     {
         base.Update();
+
         if (health == null)
         {
             health = FindObjectOfType<PlayerHealth>();
-
         }
     }
-    
-    protected void OnTriggerEnter(Collider other)
-    {
-        if (CompareTag("Player"))
-        {
-            Dealdamage = true;
-        }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            dealDamage = true;
+        }
     }
 
-    protected void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            Dealdamage = false;
+            dealDamage = false;
+            attackTimer = 0f; 
         }
     }
 
     protected override void UpdateAttack()
     {
         UpdateChase();
-        if (Dealdamage == false) return;
 
-        attacktimer += Time.deltaTime;
+        if (!dealDamage || health == null) return;
 
-        if ( attacktimer>= attackRate)
+        attackTimer += Time.deltaTime;
+
+        if (attackTimer >= attackRate)
         {
-            health.TakeDamage(Damage);
-            attacktimer = 0f;
+            health.TakeDamage(damage);
+            attackTimer = 0f;
         }
     }
 
     public override void Die()
     {
-        throw new System.NotImplementedException();
+        // Implement death logic here
     }
 }

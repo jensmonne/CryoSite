@@ -200,14 +200,5 @@ public abstract class EnemyBase : MonoBehaviour
     
     
     public abstract void Die();
-    
-    protected virtual void OnDrawGizmosSelected()
-    {
-        if (patrolZone != null)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.matrix = patrolZone.transform.localToWorldMatrix;
-            Gizmos.DrawWireCube(patrolZone.center, patrolZone.size);
-        }
-    }
+
 }
