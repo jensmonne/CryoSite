@@ -49,6 +49,7 @@ public class VRSettingsManager : MonoBehaviour
     private IEnumerator DelayedApplyLocomotion()
     {
         yield return null;
+        yield return null;
 
         ApplyLocomotionSettings();
     }

@@ -8788,8 +8788,8 @@ OcclusionArea:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568806247}
   serializedVersion: 2
-  m_Size: {x: 72.63821, y: 10.399598, z: 50.297035}
-  m_Center: {x: 16.328209, y: -0.20515919, z: 35.196815}
+  m_Size: {x: 65.4189, y: 8.783289, z: 48.252895}
+  m_Center: {x: 19.937853, y: -1.0133135, z: 35.608536}
   m_IsViewVolume: 1
 --- !u!4 &568806249
 Transform:
