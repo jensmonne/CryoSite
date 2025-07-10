@@ -2,7 +2,7 @@ using System.Collections;
 using Mirror;
 using UnityEngine;
 
-public class NetworkedBossBehavior : NetworkBehaviour
+public class  NetworkedBossBehavior : NetworkBehaviour
 {
     public enum BossState { Idle, Attacking, Recharging, StageSwap, Death }
     public enum BossStage { Stage1, Stage2 }

@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/NetWorked.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/NetWorked/NetWorked Bomb Alter.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/NetWorked/NetWorked Bomb Alter.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/NetWorked/NetworkedBomb.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Prefab/NetWorked/NetworkedBomb.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBomb.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBomb.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Networked/Boss Networked.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Networked/Boss Networked.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Networked/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Networked/Saw Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefab/Enemies/Saw Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossDoorTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossDoorTrigger.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossHealth.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Core/GameManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossBehavior.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +163,7 @@
       <workItem from="1752043579361" duration="2274000" />
       <workItem from="1752050960996" duration="2129000" />
       <workItem from="1752129162345" duration="2282000" />
-      <workItem from="1752147787905" duration="789000" />
+      <workItem from="1752147787905" duration="2837000" />
     </task>
     <servers />
   </component>

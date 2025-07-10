@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         // implement more shit here when bomb goes BOOM
         BigKaboomSnap.ActivateBlast();
+        NetworkedBomb.RequestBlast();
     }
 
     public void AddMag()
