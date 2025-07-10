@@ -13,13 +13,13 @@ public class NetworkedTriggerSpawn : NetworkBehaviour
 
         hasTriggered = true;
 
-        if (isServer)
-        {
-            SpawnAll();
-        }
-        else if (isClient)
+        if (!isServer)
         {
             CmdRequestSpawn(); // Client asks server to do the spawning
+        }
+        else
+        {
+            SpawnAll();
         }
     }
     

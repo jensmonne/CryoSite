@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Imported Assets/BNG Framework/Prefabs/UICursor.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Personal/Daan.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossBehavior.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossBehavior.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedSpawn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedSpawn.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,6 +170,7 @@
       <workItem from="1751800189939" duration="845000" />
       <workItem from="1752043579361" duration="2274000" />
       <workItem from="1752050960996" duration="2129000" />
+      <workItem from="1752129162345" duration="487000" />
     </task>
     <servers />
   </component>
