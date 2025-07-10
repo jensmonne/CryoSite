@@ -34,7 +34,6 @@ public class NetworkedTriggerSpawn : NetworkBehaviour
     [Server]
     private void SpawnAll()
     {
-        Debug.LogError("spawned");
         foreach (var zone in spawnZones)
         {
             if (zone != null)
