@@ -9,6 +9,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    private NetworkedBomb _networkedBomb;
 
     public enum GameState
     {
@@ -52,6 +53,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (_networkedBomb)
+        {
+            _networkedBomb = FindFirstObjectByType<NetworkedBomb>();
+        }
         if (!IsBombActive) return;
         
         bombTimer += Time.deltaTime * 6;
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviour
     {
         // implement more shit here when bomb goes BOOM
         BigKaboomSnap.ActivateBlast();
-        NetworkedBomb.RequestBlast();
+        _networkedBomb.RequestBlast();
     }
 
     public void AddMag()

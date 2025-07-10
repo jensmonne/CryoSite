@@ -4,7 +4,7 @@ using Mirror;
 public class NetworkedBomb : NetworkBehaviour
 {
     [SerializeField] private SphereCollider sphereCollider;
-    [SerializeField] private static AudioSource beepingSource;
+    [SerializeField] private  AudioSource beepingSource;
 
     [SerializeField] private float blastDuration = 5f;
     [SerializeField] private float maxRadius = 600f;
@@ -12,7 +12,7 @@ public class NetworkedBomb : NetworkBehaviour
     private float blastTimer = 0f;
 
     [SyncVar(hook = nameof(OnBlastChanged))]
-    private static bool blastem = false;
+    private bool blastem = false;
 
     private bool done = false;
 
@@ -54,7 +54,7 @@ public class NetworkedBomb : NetworkBehaviour
     }
 
     // Call this from a client to trigger the blast
-    public static void RequestBlast()
+    public void RequestBlast()
     {
         // Any client can request it
         if (NetworkClient.active)
@@ -64,7 +64,7 @@ public class NetworkedBomb : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    private static void CmdActivateBlast(NetworkConnectionToClient sender = null)
+    private void CmdActivateBlast(NetworkConnectionToClient sender = null)
     {
         Debug.Log($"[Server] Blast triggered by connection {sender?.connectionId}");
 
@@ -76,7 +76,7 @@ public class NetworkedBomb : NetworkBehaviour
     }
 
     [ClientRpc]
-    private static void RpcPlayBeep()
+    private void RpcPlayBeep()
     {
         if (beepingSource != null)
         {
