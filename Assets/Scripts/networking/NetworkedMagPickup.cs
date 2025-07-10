@@ -22,10 +22,10 @@ public class NetworkedMagPickUp : NetworkBehaviour
     [SerializeField] private GameObject pistolMagPrefab;
     [SerializeField] private GameObject rifleMagPrefab;
 
-    private GameManager GM;
+    [SerializeField] private GameManager GM;
 
-    private bool leftHandInZone = false;
-    private bool rightHandInZone = false;
+    [SerializeField] private bool leftHandInZone = false;
+    [SerializeField] private bool rightHandInZone = false;
 
     private void Start()
     {
@@ -86,6 +86,7 @@ public class NetworkedMagPickUp : NetworkBehaviour
         if (GM == null || GM.Magcount <= 0)
             return;
 
+        Debug.LogError("CMDRequestMag");
         Transform spawnPoint = hand == "Right" ? rightSpawnPos : leftSpawnPos;
         GameObject prefabToSpawn = SelectMagPrefab(hand);
 
