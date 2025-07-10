@@ -3,6 +3,7 @@ using UnityEngine;
 public class SawEnemy : EnemyBase
 {
     [SerializeField] private PlayerHealth health;
+    [SerializeField] private NetworkPlayerHealth playerHealth;
     [SerializeField] private bool dealDamage = false;
     [SerializeField] private int damage = 10;
     [SerializeField] private Animator animator;
@@ -16,6 +17,7 @@ public class SawEnemy : EnemyBase
         if (health == null)
         {
             health = FindObjectOfType<PlayerHealth>();
+            playerHealth = FindObjectOfType<NetworkPlayerHealth>();
         }
     }
 
@@ -29,11 +31,10 @@ public class SawEnemy : EnemyBase
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            dealDamage = false;
-            attackTimer = 0f; 
-        }
+        if (!other.CompareTag("Player")) return;
+        
+        dealDamage = false;
+        attackTimer = 0f;
     }
 
     protected override void UpdateAttack()
@@ -47,6 +48,7 @@ public class SawEnemy : EnemyBase
         if (attackTimer >= attackRate)
         {
             health.TakeDamage(damage);
+            playerHealth.TakeDamage(damage);
             attackTimer = 0f;
         }
     }

@@ -65,8 +65,7 @@ public class BossBehavior : MonoBehaviour
     
     private Quaternion delayedTargetRotation;
     private float rotationUpdateTimer = 0f;
- 
-
+    
     private void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player")?.transform;
@@ -254,12 +253,11 @@ public class BossBehavior : MonoBehaviour
                     Debug.DrawRay(ray.origin, ray.direction * RangeGun, Color.red, 0.1f);
                     if (Physics.SphereCast(ray, rayThickness, out RaycastHit hit, RangeGun, playerlayer))
                     {
+                        NetworkPlayerHealth playerHp = hit.collider.GetComponent<NetworkPlayerHealth>();
                         PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
-                        if (playerHealth != null)
-                        {
-                            playerHealth.TakeDamage(damageamountGun);
-                            fireTimer[i] = FireRateGun;
-                        }
+                        if (playerHealth != null) playerHealth.TakeDamage(damageamountGun);
+                        if (playerHp != null) playerHealth.TakeDamage(damageamountGun);
+                        fireTimer[i] = FireRateGun;
                     }
 
                     for (int j = 0; j < gunParticles.Length; j++)
@@ -307,12 +305,11 @@ public class BossBehavior : MonoBehaviour
 
                     if (tickTimers[i] <= 0f)
                     {
+                        NetworkPlayerHealth playerHp = hit.collider.GetComponent<NetworkPlayerHealth>();
                         PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
-                        if (playerHealth != null)
-                        {
-                            playerHealth.TakeDamage(DamageAmountLazer);
-                            tickTimers[i] = FireRateLazer;
-                        }
+                        if (playerHealth != null) playerHealth.TakeDamage(DamageAmountLazer);
+                        if (playerHp != null) playerHealth.TakeDamage(DamageAmountLazer);
+                        tickTimers[i] = FireRateLazer;
                     }
                 }
                 else

@@ -28,6 +28,7 @@ public class kamikazeEnemy : EnemyBase
         ChangeState(EnemyState.Dead);
     }
 
+    // ReSharper disable Unity.PerformanceAnalysis
     protected override void UpdateDead()
     {
         base.UpdateDead();
@@ -50,13 +51,11 @@ public class kamikazeEnemy : EnemyBase
                 continue;
             }
             
-            var playerHealth = collider.GetComponent<PlayerHealth>();
-            if (playerHealth != null)
-            {
-                playerHealth.TakeDamage(explosionDamage);
-            }
+            NetworkPlayerHealth playerHp = collider.GetComponent<NetworkPlayerHealth>();
+            PlayerHealth playerHealth = collider.GetComponent<PlayerHealth>();
+            if (playerHealth != null) playerHealth.TakeDamage(explosionDamage);
+            if (playerHp != null) playerHp.TakeDamage(explosionDamage);
         }
-        
     }
 
     public override void Die()
