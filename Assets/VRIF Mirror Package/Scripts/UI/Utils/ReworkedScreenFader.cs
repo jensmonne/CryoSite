@@ -24,7 +24,7 @@ namespace VRIF_Mirror_Package.Scripts.UI.Utils
         
         private const string FaderName = "ReworkedScreenFader";
 
-        private void Awake()
+        private void Start()
         {
             Initialize();
         }
@@ -57,6 +57,8 @@ namespace VRIF_Mirror_Package.Scripts.UI.Utils
             _fadeObjectRect.pivot = new Vector2(0.5f, 0.5f);
             _fadeObjectRect.sizeDelta = new Vector2(0.2f, 0.2f);
             _fadeObjectRect.localScale = new Vector2(2f, 2f);
+            
+            StartCoroutine(FadeOutWithDelay(sceneFadeInDelay));
         }
 
         private void OnEnable()

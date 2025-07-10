@@ -1,3 +1,4 @@
+using System.Collections;
 using BNG;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -23,8 +24,6 @@ public class VRSettingsManager : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-        
         if (Instance != null && Instance != this)
         {
             Destroy(this);
@@ -36,9 +35,21 @@ public class VRSettingsManager : MonoBehaviour
         
         DontDestroyOnLoad(this);
     }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
     
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        StartCoroutine(DelayedApplyLocomotion());
+    }
+    
+    private IEnumerator DelayedApplyLocomotion()
+    {
+        yield return null;
+
         ApplyLocomotionSettings();
     }
 
