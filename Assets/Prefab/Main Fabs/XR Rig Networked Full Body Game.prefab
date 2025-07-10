@@ -8259,8 +8259,10 @@ MonoBehaviour:
   LeftHandInZone: 0
   RightHandInZone: 0
   GM: {fileID: 0}
-  gripRightAction: {fileID: 0}
-  gripLeftAction: {fileID: 0}
+  gripRightAction: {fileID: 187161793506945269, guid: e39f4b35a6db18348b41eb0262520e69,
+    type: 3}
+  gripLeftAction: {fileID: -6131295136447488360, guid: e39f4b35a6db18348b41eb0262520e69,
+    type: 3}
   leftSpawnPos: {fileID: 7177875324192877825}
   rightSpawnPos: {fileID: 623490200791330828}
   pistolMagPrefab: {fileID: 6324913149723137023, guid: 996f0675390aef34e8076ce4c6ffd18f,
