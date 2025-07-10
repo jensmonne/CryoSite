@@ -6335,6 +6335,9 @@ GameObject:
   - component: {fileID: 491291269}
   - component: {fileID: 491291268}
   - component: {fileID: 491291267}
+  - component: {fileID: 491291271}
+  - component: {fileID: 491291270}
+  - component: {fileID: 491291272}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -6384,12 +6387,75 @@ Transform:
   m_GameObject: {fileID: 491291266}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.756, y: -1.784, z: 29.028}
+  m_LocalPosition: {x: 47.64, y: -1.784, z: 29.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &491291270
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491291266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3464203, y: 4.367544, z: 5.98464}
+  m_Center: {x: 3.9020805, y: -1.0744767, z: -0.6209326}
+--- !u!65 &491291271
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491291266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.9939156, y: 4.0421185, z: 0.42147064}
+  m_Center: {x: 1.1650028, y: -1.0545261, z: -3.4836369}
+--- !u!65 &491291272
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491291266}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.915657, y: 4.2544127, z: 0.3293972}
+  m_Center: {x: 0.9878464, y: -1.3683071, z: 1.9972239}
 --- !u!1001 &492668144
 PrefabInstance:
   m_ObjectHideFlags: 0
