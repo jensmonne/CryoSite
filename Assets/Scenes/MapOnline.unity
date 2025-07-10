@@ -16551,6 +16551,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.027
       objectReference: {fileID: 0}
+    - target: {fileID: 6171531834340842383, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      propertyPath: sceneId
+      value: 3753865029
+      objectReference: {fileID: 0}
     - target: {fileID: 6381075640337857054, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16611,11 +16616,39 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Rig Networked Full Body Game
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6171531834340842383, guid: 5b126fa86a0ca0f4ab94280744dcfde0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4619135336826205030, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1694946522}
   m_SourcePrefab: {fileID: 100100000, guid: 5b126fa86a0ca0f4ab94280744dcfde0, type: 3}
+--- !u!1 &1694946521 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4619135336826205030, guid: 5b126fa86a0ca0f4ab94280744dcfde0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1694946520}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1694946522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1694946521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 967797160
+  _assetId: 473124171
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
 --- !u!1001 &1696229036
 PrefabInstance:
   m_ObjectHideFlags: 0
