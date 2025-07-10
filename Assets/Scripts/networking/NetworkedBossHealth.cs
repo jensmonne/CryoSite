@@ -6,10 +6,10 @@ public class NetworkedBossHealth : NetworkBehaviour
 {
     [SyncVar]
     public int currentHealth;
-    
+ 
     public int MaxHealth;
     [SerializeField] private ParticleSystem hit;
-    [SerializeField] private BossBehavior boss;
+    [SerializeField] private NetworkedBossBehavior boss;
     [SerializeField] private BossHealthBar healthBar;
     private OnBossTriggerEnter onBossTriggerEnter;
     [SerializeField] private Renderer[] renderers;
@@ -77,7 +77,7 @@ public class NetworkedBossHealth : NetworkBehaviour
         Debug.Log("Enemy died.");
         onBossTriggerEnter.BossDied();
         Instantiate(DeathParticles, transform.position, Quaternion.identity);
-        boss.ChangeState(BossBehavior.BossState.Death);
+        boss.ChangeState(NetworkedBossBehavior.BossState.Death);
     }
     
     private IEnumerator FlashRoutine()

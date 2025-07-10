@@ -11,6 +11,7 @@ public class NetworkedBossDoorTrigger : NetworkBehaviour
 
         if (other.CompareTag("Key")) 
         {
+            Debug.Log("[KeyCardScan]" + other.name);
             bosDoor.SetCanAutoOpen(true); 
         }
     }

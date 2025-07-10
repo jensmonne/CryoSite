@@ -15768,7 +15768,7 @@ MonoBehaviour:
   currentHealth: 0
   MaxHealth: 3000
   hit: {fileID: 3621028202091562934}
-  boss: {fileID: 0}
+  boss: {fileID: 1757001938529835414}
   healthBar: {fileID: 0}
   renderers:
   - {fileID: 7450599179272240629}
@@ -15853,17 +15853,17 @@ MonoBehaviour:
   KamikazeDrones: {fileID: 7920466840278818460, guid: 84a8d3afed2d2ce4ebccb9bdbd73326b,
     type: 3}
   SpawnpointDrone: {fileID: 5248671780647019856}
-  Timebetweenspawns: 1
-  droneCount: 5
+  Timebetweenspawns: 2
+  droneCount: 7
   shootpoints:
   - {fileID: 814373211834146316}
   - {fileID: 888614382910826922}
-  RangeGun: 0
-  FireRateGun: 0
+  RangeGun: 8
+  FireRateGun: 0.2
   playerlayer:
     serializedVersion: 2
     m_Bits: 512
-  damageamountGun: 0
+  damageamountGun: 5
   rayThickness: 0.25
   LazerRotator: {fileID: 1099284264157726468}
   rotationSpeed: 45
@@ -15871,8 +15871,8 @@ MonoBehaviour:
   firePoints:
   - {fileID: 8065279175536890835}
   - {fileID: 6179169969504237305}
-  Duration: 0
-  DamageAmountLazer: 0
+  Duration: 5
+  DamageAmountLazer: 5
   lineRendererLazer: {fileID: 7431203134509246483}
   FireRateLazer: 0.2
 --- !u!4 &5267512815181998599 stripped

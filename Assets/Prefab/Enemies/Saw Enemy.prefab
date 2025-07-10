@@ -5349,10 +5349,10 @@ MonoBehaviour:
   - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
   - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
   health: {fileID: 0}
-  Dealdamage: 0
-  Damage: 10
+  dealDamage: 0
+  damage: 10
   animator: {fileID: 7237289929053131937}
-  attackRate: 0.2
+  attackRate: 1
 --- !u!65 &3445010844878183913
 BoxCollider:
   m_ObjectHideFlags: 0

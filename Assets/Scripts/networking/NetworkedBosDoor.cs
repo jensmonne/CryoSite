@@ -18,10 +18,10 @@ public class NetworkedBosDoor : NetworkBehaviour
     private Coroutine moveCoroutine;
 
     [SyncVar(hook = nameof(OnCanAutoOpenChanged))]
-    public bool canAutoOpen = false;
+    public bool canAutoOpen;
 
     [SyncVar(hook = nameof(OnDoorStateChanged))]
-    private bool isOpen = false;
+    private bool isOpen;
 
     private void Awake()
     {
@@ -35,7 +35,7 @@ public class NetworkedBosDoor : NetworkBehaviour
     public override void OnStartClient()
     {
         base.OnStartClient();
-        SetDoorState(isOpen); // Ensure correct door state on client start
+        SetDoorState(isOpen);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,7 +44,7 @@ public class NetworkedBosDoor : NetworkBehaviour
 
         if (!isOpen)
         {
-            isOpen = true; // Will trigger hook
+            isOpen = true; 
         }
     }
 
