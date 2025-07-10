@@ -1,4 +1,4 @@
-using System;
+using BNG;
 using UnityEngine;
 
 public class MinigunEnemy : EnemyBase
@@ -48,11 +48,10 @@ public class MinigunEnemy : EnemyBase
             Ray ray = new Ray(shootpoints[i].position, shootpoints[i].forward);
             if (Physics.Raycast(ray, out RaycastHit hit, Range, playerlayer))
             {
+                NetworkPlayerHealth playerHp = hit.collider.GetComponent<NetworkPlayerHealth>();
                 PlayerHealth playerHealth = hit.collider.GetComponent<PlayerHealth>();
-                if (playerHealth != null)
-                {
-                    playerHealth.TakeDamage(damageamount);
-                }
+                if (playerHealth != null) playerHealth.TakeDamage(damageamount);
+                if (playerHp != null) playerHp.TakeDamage(damageamount);
             }
             Debug.DrawRay(shootpoints[i].position, shootpoints[i].forward * Range, Color.red, 0.2f);
         }
@@ -67,7 +66,6 @@ public class MinigunEnemy : EnemyBase
     
     public override void Die()
     {
-        
         
     }
 }
