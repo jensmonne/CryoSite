@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -156,7 +157,11 @@ public abstract class EnemyBase : MonoBehaviour
         if (Pickups.Length > 0 && Random.value <= 0.25f)
         {
             int index = Random.Range(0, Pickups.Length);
-            Instantiate(Pickups[index], transform.position, Quaternion.identity);
+            if (NetworkServer.active || NetworkClient.isConnected)
+            {
+                NetworkServer.Spawn(Instantiate(Pickups[index], transform.position, Quaternion.identity));
+            }
+            else Instantiate(Pickups[index], transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
     }
