@@ -6,17 +6,24 @@ public class ButtonStuff : MonoBehaviour
 {
     public void MainMenu()
     {
-        if (NetworkServer.active && NetworkClient.isConnected) NetworkManager.singleton.StopClient();
-
-        if (NetworkClient.isConnected) NetworkManager.singleton.StopHost();
+        if (NetworkServer.active && NetworkClient.isConnected) NetworkManager.singleton.StopHost();
+        else if (NetworkClient.isConnected) NetworkManager.singleton.StopClient();
+        else if (NetworkServer.active) NetworkManager.singleton.StopServer();
         
         SceneManager.LoadScene("MainMenu");
     }
     
-    [Server]
     public void ChangeScene()
     {
-        NetworkManager.singleton.ServerChangeScene("MapOnline");
+        if (NetworkServer.active)
+        {
+            NetworkManager.singleton.ServerChangeScene("MapOnline");
+        }
+
+        if (!NetworkClient.isConnected && !NetworkServer.active)
+        {
+            SceneManager.LoadScene("MapOnline");
+        }
     }
 
     public void SceneChange()
