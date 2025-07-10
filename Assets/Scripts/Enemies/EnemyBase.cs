@@ -75,11 +75,9 @@ public abstract class EnemyBase : MonoBehaviour
         {
             ChangeState(EnemyState.Wandering);
         }
-
-
     }
 
-    protected virtual void HandleState()
+    protected void HandleState()
     {
         switch (currentState)
         {
@@ -100,7 +98,6 @@ public abstract class EnemyBase : MonoBehaviour
                 {
                     UpdateDead();
                 }
-
                 break;
         }
     }
@@ -198,7 +195,5 @@ public abstract class EnemyBase : MonoBehaviour
         return center + patrolZone.transform.rotation * randomPoint;
     }
     
-    
     public abstract void Die();
-
 }

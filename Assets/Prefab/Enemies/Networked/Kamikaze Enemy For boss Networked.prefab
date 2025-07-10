@@ -5820,7 +5820,7 @@ MonoBehaviour:
   agent: {fileID: 8951691077316700798}
   Pickups:
   - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
-  - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
+  - {fileID: 1205123371210200512, guid: 6bd053fd20ab2e74f9eecb2ae4b2a59a, type: 3}
   explosionRange: 2
   explosionDamage: 10
   explosion: {fileID: 632445893624963395}

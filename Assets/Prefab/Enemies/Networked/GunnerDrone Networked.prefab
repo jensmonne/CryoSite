@@ -568,7 +568,7 @@ MonoBehaviour:
   agent: {fileID: 6691153466212794145}
   Pickups:
   - {fileID: 7726235243666773970, guid: 26453b54f035ec0498c6de75691f82e0, type: 3}
-  - {fileID: 1205123371210200512, guid: 2dee331b766f634448f445774f0c6c21, type: 3}
+  - {fileID: 1205123371210200512, guid: 6bd053fd20ab2e74f9eecb2ae4b2a59a, type: 3}
   shootpoints:
   - {fileID: 2688496403681766128}
   - {fileID: 806541154521032140}
@@ -689,7 +689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 4215659588
+  _assetId: 1690532472
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
