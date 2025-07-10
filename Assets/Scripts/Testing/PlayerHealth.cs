@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VRIF_Mirror_Package.Scripts.UI.Utils;
@@ -7,8 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float maxPlayerHealth = 100f;
 
     [SerializeField] private float playerHealth;
-
-
+    
     [SerializeField] private GameObject[] healthSegments;
     [SerializeField] private AudioSource hitsound;
 
@@ -37,13 +37,13 @@ public class PlayerHealth : MonoBehaviour
 
         UpdateHealthUI();
     }
-
+    
     private void Death()
     {
         GameManager.Instance.CurrentState = GameManager.GameState.GameOver;
 
         fader.DoFadeIn(() => {
-            SceneManager.LoadScene("DarkBox");
+            NetworkManager.singleton.ServerChangeScene("DarkBox");
         }, Color.red);
     }
 
