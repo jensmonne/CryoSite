@@ -5,7 +5,7 @@ public class AmmoPickup : MonoBehaviour
     private GameManager GM;
     [SerializeField] private AudioSource audioSource;
     
-    void Update()
+    private void Update()
     {
         if (GM == null)
         {
@@ -15,12 +15,10 @@ public class AmmoPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            GM.AddMag();
-            audioSource.Play();
-            Destroy(gameObject);
-        }
-
+        if (!other.CompareTag("Player")) return;
+        
+        GM.AddMag();
+        audioSource.Play();
+        Destroy(gameObject);
     }
 }
