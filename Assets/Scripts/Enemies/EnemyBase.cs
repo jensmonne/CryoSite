@@ -15,18 +15,20 @@ public abstract class EnemyBase : MonoBehaviour
 
     public EnemyState currentState;
 
-    [SerializeField] protected int FollowDistance;
-    [SerializeField] protected float AttackDistance;
-    [SerializeField] protected float AttackRate;
-    [SerializeField] private float waitTimeAtDestination;
+    [SerializeField] protected float FollowDistance = 15f;
+    [SerializeField] protected float AttackDistance = 2.5f;
+    [SerializeField] protected float AttackRate = 1f;
+    [SerializeField] private float waitTimeAtDestination = 2f;
     [SerializeField] private GameObject[] Pickups;
 
     protected float lastAttackTime;
-    protected Transform targetPlayer;
     protected NavMeshAgent agent;
+    protected Transform targetPlayer;
 
     private List<Transform> players = new List<Transform>();
-    private BoxCollider patrolZone;
+    private HashSet<int> knownPlayerIds = new HashSet<int>();
+
+    public BoxCollider patrolZone;
     private float waitTimer;
     private float patrolTimer;
     private bool destinationSet;
@@ -37,12 +39,14 @@ public abstract class EnemyBase : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         ChangeState(EnemyState.Idle);
 
-        patrolZone = FindNearestPatrolZone();
+        if (patrolZone == null)
+            patrolZone = FindNearestPatrolZone();
     }
 
     protected virtual void Update()
     {
-        UpdatePlayers();   // Dynamic player detection
+        UpdatePlayers();
+        SetTargetPlayer();
         HandleState();
         SetState();
     }
@@ -51,58 +55,53 @@ public abstract class EnemyBase : MonoBehaviour
     {
         GameObject[] playerObjects = GameObject.FindGameObjectsWithTag("Player");
 
-        foreach (GameObject playerObj in playerObjects)
+        foreach (GameObject obj in playerObjects)
         {
-            Transform playerTransform = playerObj.transform;
-
-            if (!players.Contains(playerTransform))
+            Transform tf = obj.transform;
+            if (tf != null && !knownPlayerIds.Contains(tf.GetInstanceID()))
             {
-                players.Add(playerTransform);
-                Debug.Log("Enemy added new player: " + playerTransform.name);
+                players.Add(tf);
+                knownPlayerIds.Add(tf.GetInstanceID());
             }
         }
+
+        players.RemoveAll(p => p == null); // Clean up destroyed players
     }
 
-    public void ChangeState(EnemyState newState)
+    private void SetTargetPlayer()
     {
-        if (currentState != newState)
-        {
-            currentState = newState;
-        }
-    }
-
-    protected virtual void SetState()
-    {
-        if (currentState == EnemyState.Dead) return;
-
         float closestDistance = Mathf.Infinity;
         Transform closest = null;
 
         foreach (Transform player in players)
         {
-            if (player == null) continue;
-
-            float distance = Vector3.Distance(transform.position, player.position);
-            if (distance < closestDistance)
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist < closestDistance)
             {
-                closestDistance = distance;
+                closestDistance = dist;
                 closest = player;
             }
         }
 
         targetPlayer = closest;
+    }
 
-        if (targetPlayer == null)
-        {
-            ChangeState(EnemyState.Wandering);
-            return;
-        }
+    public void ChangeState(EnemyState newState)
+    {
+        currentState = newState;
+    }
 
-        if (closestDistance < AttackDistance)
+    protected virtual void SetState()
+    {
+        if (currentState == EnemyState.Dead || targetPlayer == null) return;
+
+        float distance = Vector3.Distance(transform.position, targetPlayer.position);
+
+        if (distance <= AttackDistance)
         {
             ChangeState(EnemyState.Attack);
         }
-        else if (closestDistance < FollowDistance)
+        else if (distance <= FollowDistance)
         {
             ChangeState(EnemyState.Chase);
         }
@@ -177,16 +176,26 @@ public abstract class EnemyBase : MonoBehaviour
     {
         if (targetPlayer != null)
         {
+            agent.isStopped = false;
             agent.SetDestination(targetPlayer.position);
         }
     }
 
     protected virtual void UpdateAttack()
     {
-        if (targetPlayer != null)
+        if (targetPlayer == null) return;
+
+        agent.isStopped = true;
+
+        Vector3 lookDirection = targetPlayer.position - transform.position;
+        lookDirection.y = 0;
+        if (lookDirection != Vector3.zero)
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDirection), Time.deltaTime * 5f);
+
+        if (Time.time - lastAttackTime >= AttackRate)
         {
             lastAttackTime = Time.time;
-            // Implement actual attack behavior in subclass
+            // Perform your attack logic here
         }
     }
 
