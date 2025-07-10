@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="" />
+    <list default="true" id="0e1bf84b-4d87-4408-937b-ffa6acaaec42" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.OMFPS/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossDoorTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/networking/NetworkedBossDoorTrigger.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -152,7 +155,7 @@
       <workItem from="1752043579361" duration="2274000" />
       <workItem from="1752050960996" duration="2129000" />
       <workItem from="1752129162345" duration="2282000" />
-      <workItem from="1752147787905" duration="3567000" />
+      <workItem from="1752147787905" duration="4612000" />
     </task>
     <servers />
   </component>

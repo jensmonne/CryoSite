@@ -16412,6 +16412,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1658626454}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1671063179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 418388058576594858, guid: 2f6b0eae00113c3419cca5660a3b5c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8281299607558709413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1679005230
 GameObject:
   m_ObjectHideFlags: 0
@@ -20961,6 +20967,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   bosDoor: {fileID: 739248953}
+  obte: {fileID: 429240132}
+  arena: {fileID: 1671063179}
 --- !u!114 &7508190552194897908
 MonoBehaviour:
   m_ObjectHideFlags: 0
